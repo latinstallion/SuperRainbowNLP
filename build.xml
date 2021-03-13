@@ -2,4 +2,12 @@
 
 	
     <target name="clean">
-        <delete 
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes">
+	    	<classpath id="classpath" description="The default classpath.">
+	    	  <pathelement path="${classpath}"/>
+	    	
