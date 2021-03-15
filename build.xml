@@ -19,4 +19,10 @@
 
     <target name="jar"  depends="compile">
         <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/RainbowNLP.jar" basedir="build/clas
+        <jar destfile="build/jar/RainbowNLP.jar" basedir="build/classes">
+        	<zipgroupfileset dir="libs" includes="*.jar" /> 
+        </jar>
+    	
+    </target>
+
+</project>
