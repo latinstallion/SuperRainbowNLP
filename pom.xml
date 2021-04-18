@@ -156,4 +156,9 @@
 		</dependency>
 
 		
-		<!-- Expression Language (depends on spring-core
+		<!-- Expression Language (depends on spring-core) Define this if you use -->
+		<!-- Spring Expression APIs (org.springframework.expression.*) -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework</groupId> -->
+		<!-- <artifactId>spring-expression</artifactId> -->
+		<!-- <version>${org.springframework.version}</
