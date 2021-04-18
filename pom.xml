@@ -148,4 +148,12 @@
 			<version>1.7.9</version>
 		</dependency>
 
-		<!-- Core utilities used by other modules. Define t
+		<!-- Core utilities used by other modules. Define this if you use Spring 
+			Utility APIs (org.springframework.core.*/org.springframework.util.*) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		
+		<!-- Expression Language (depends on spring-core
