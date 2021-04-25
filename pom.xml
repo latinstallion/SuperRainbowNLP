@@ -167,4 +167,11 @@
 		<!-- Bean Factory and JavaBeans utilities (depends on spring-core) Define -->
 		<!-- this if you use Spring Bean APIs (org.springframework.beans.*) -->
 		<!-- <dependency> -->
-		<!-- <groupId>org.springframework</grou
+		<!-- <groupId>org.springframework</groupId> -->
+		<!-- <artifactId>spring-beans</artifactId> -->
+		<!-- <version>${org.springframework.version}</version> -->
+		<!-- </dependency> -->
+
+
+	</dependencies>
+</project>
