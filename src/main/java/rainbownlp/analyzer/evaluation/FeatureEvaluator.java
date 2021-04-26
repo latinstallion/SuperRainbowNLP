@@ -13,4 +13,8 @@ public class FeatureEvaluator {
 		SVMLightFormatConvertor.onlyIncludeAttributes = new ArrayList<String>();
 		List<String> features = FeatureValuePair.getAllFeatureNames();
 		String featuresIncluded = "";
-		HashMap<String, IEvaluationResult> attributeResult
+		HashMap<String, IEvaluationResult> attributeResult = new HashMap<String, IEvaluationResult>();
+		for(String feature : features){
+			SVMLightFormatConvertor.onlyIncludeAttributes.add(feature);
+			featuresIncluded+="/"+feature;
+			attributeResult.put(featuresIncluded, cfValidator.crossValidation(examples, 2));
