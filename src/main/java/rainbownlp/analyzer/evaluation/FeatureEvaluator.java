@@ -18,3 +18,9 @@ public class FeatureEvaluator {
 			SVMLightFormatConvertor.onlyIncludeAttributes.add(feature);
 			featuresIncluded+="/"+feature;
 			attributeResult.put(featuresIncluded, cfValidator.crossValidation(examples, 2));
+		}
+		
+		for(String attributesIncluded : attributeResult.keySet()){
+			System.out.println("Result for these included features: "+attributesIncluded);
+			attributeResult.get(attributesIncluded).printResult();
+			System.out.println("----------------
