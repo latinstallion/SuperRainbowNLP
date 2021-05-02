@@ -28,4 +28,9 @@ public class FeatureEvaluator {
 		
 		System.out.println("*************Integrated metric*************");
 		for(String attributesIncluded : attributeResult.keySet()){
-			System.out.println(attributesIncluded+"\t"+attributeResult.get(attributesIncluded).get
+			System.out.println(attributesIncluded+"\t"+attributeResult.get(attributesIncluded).getIntegratedMetric());
+		}
+		System.out.println("*******************************************");
+		
+	}
+}
