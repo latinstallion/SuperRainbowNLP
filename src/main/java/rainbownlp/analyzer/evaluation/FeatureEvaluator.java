@@ -23,4 +23,9 @@ public class FeatureEvaluator {
 		for(String attributesIncluded : attributeResult.keySet()){
 			System.out.println("Result for these included features: "+attributesIncluded);
 			attributeResult.get(attributesIncluded).printResult();
-			System.out.println("----------------
+			System.out.println("----------------------------");
+		}
+		
+		System.out.println("*************Integrated metric*************");
+		for(String attributesIncluded : attributeResult.keySet()){
+			System.out.println(attributesIncluded+"\t"+attributeResult.get(attributesIncluded).get
