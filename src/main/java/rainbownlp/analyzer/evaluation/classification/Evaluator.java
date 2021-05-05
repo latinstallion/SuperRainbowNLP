@@ -8,4 +8,13 @@ import rainbownlp.util.SystemUtil;
 
 public class Evaluator {
 	public static boolean saveResult = false;
-	public static String
+	public static String evaluation_mode = "HybridTest";
+
+	public static ResultRow evaluateByClass(List<MLExample> pExamplesToTest, 
+			String exampleClassToEvaluate)
+	{
+		ResultRow rr = new ResultRow();
+		
+		for(MLExample example : pExamplesToTest)
+		{
+			String expected_class = 
