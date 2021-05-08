@@ -28,4 +28,16 @@ public class Evaluator {
 			}
 			else
 			{
-				if(exampleCl
+				if(exampleClassToEvaluate.equals(predicted_class))
+					rr.FP++;
+				else
+					rr.TN++;
+			}
+		}
+		
+		return rr;
+	}
+
+	public static void evaluateDevelopementResult(String resultsRoot)
+	{
+		SystemUtil.runShellCommand("a2-evaluate.pl -g gold-devel "+res
