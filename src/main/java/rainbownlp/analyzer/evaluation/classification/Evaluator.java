@@ -40,4 +40,12 @@ public class Evaluator {
 
 	public static void evaluateDevelopementResult(String resultsRoot)
 	{
-		SystemUtil.runShellCommand("a2-evaluate.pl -g gold-devel "+res
+		SystemUtil.runShellCommand("a2-evaluate.pl -g gold-devel "+resultsRoot+"/*.a2");
+	}
+	public static EvaluationResult getEvaluationResult(List<MLExample> pExamplesToTest, 
+			String[] class_titles) {
+		EvaluationResult result = new EvaluationResult();
+		
+		for(Integer i=1;i<=class_titles.length;i++)
+		{
+			result.evaluationResultByClass.
