@@ -58,4 +58,8 @@ public class Evaluator {
 	{
 		ArrayList<String> exampleClasses = new ArrayList<String>();
 	
-		for(
+		for(MLExample example : pExamplesToTest)
+		{
+			if(!exampleClasses.contains(example.getExpectedClass()))
+				exampleClasses.add(example.getExpectedClass());
+//			if(example.getPredictedClass()!=null && !exampleClasses.contains(example.getPredictedClass())
