@@ -70,4 +70,16 @@ public class Evaluator {
 		for(String exampleClass : exampleClasses)
 		{
 			er.evaluationResultByClass.put(exampleClass.toString(), 
-					evaluateByClass(pExamplesToTest, exampleClass))
+					evaluateByClass(pExamplesToTest, exampleClass));
+		}
+		return er;
+	}
+	
+	public static ResultRow getNoClassEvaluationResult(List<MLExample> pExamplesToTest) 
+	{
+		ResultRow rr = new ResultRow();
+		
+		for(MLExample example : pExamplesToTest)
+		{
+			String expected_class = example.getExpectedClass();
+			String predicted_class =
