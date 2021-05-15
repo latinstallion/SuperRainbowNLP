@@ -62,4 +62,12 @@ public class Evaluator {
 		{
 			if(!exampleClasses.contains(example.getExpectedClass()))
 				exampleClasses.add(example.getExpectedClass());
-//			if(example.getPredictedClass()!=null && !exampleClasses.contains(example.getPredictedClass())
+//			if(example.getPredictedClass()!=null && !exampleClasses.contains(example.getPredictedClass()))
+//				exampleClasses.add(example.getPredictedClass());
+		}
+		
+		EvaluationResult er = new EvaluationResult();
+		for(String exampleClass : exampleClasses)
+		{
+			er.evaluationResultByClass.put(exampleClass.toString(), 
+					evaluateByClass(pExamplesToTest, exampleClass))
