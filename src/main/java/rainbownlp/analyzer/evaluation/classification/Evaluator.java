@@ -82,4 +82,14 @@ public class Evaluator {
 		for(MLExample example : pExamplesToTest)
 		{
 			String expected_class = example.getExpectedClass();
-			String predicted_class =
+			String predicted_class = example.getPredictedClass();
+			if(expected_class.equals(predicted_class))
+				rr.TP++;
+			else
+				rr.FN++;
+			
+		}
+		
+		return rr;
+	}
+}
