@@ -22,4 +22,15 @@ public class ResultRow
 		return resultStr;
 	}
 	public void print() {
-		System.out.println(getReport
+		System.out.println(getReport());
+//		Util.log(getReport(), Level.INFO);
+	}
+	DecimalFormat twoDForm = new DecimalFormat("###.##");
+    
+	public double getRecall()
+	{
+		if((TP+FN) == 0) return 1;
+		double r = 100*(double)TP/(double)(TP+FN);
+		return Double.valueOf(twoDForm.format(r));
+	}
+	public double getPr
