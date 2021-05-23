@@ -14,4 +14,12 @@ public class ResultRow
 		resultStr += "\nFP : "+FP;
 		resultStr += "\nTN : "+TN;
 		resultStr += "\nFN : "+FN;
-	
+		resultStr += "\nPrecision : "+getPrecision();
+		resultStr += "\nRecall : "+getRecall();
+		resultStr += "\nFValue : "+getFValue();
+		resultStr += "\n==================\n";
+		
+		return resultStr;
+	}
+	public void print() {
+		System.out.println(getReport
