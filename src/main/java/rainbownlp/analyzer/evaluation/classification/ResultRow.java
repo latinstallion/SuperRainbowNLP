@@ -33,4 +33,15 @@ public class ResultRow
 		double r = 100*(double)TP/(double)(TP+FN);
 		return Double.valueOf(twoDForm.format(r));
 	}
-	public double getPr
+	public double getPrecision()
+	{
+		if((TP+FP) == 0) return 1;
+		double p = 100*(double)TP/(double)(TP+FP);
+		return Double.valueOf(twoDForm.format(p));
+	}
+	public double getFValue()
+	{
+		double prec = getPrecision();
+		double recall = getRecall();
+		if((prec+recall) == 0) return 0;
+		double 
