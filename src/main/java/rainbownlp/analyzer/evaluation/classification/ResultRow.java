@@ -44,4 +44,7 @@ public class ResultRow
 		double prec = getPrecision();
 		double recall = getRecall();
 		if((prec+recall) == 0) return 0;
-		double 
+		double f = 2*(prec*recall)/(prec+recall);
+		 return Double.valueOf(twoDForm.format(f));
+	}
+}
