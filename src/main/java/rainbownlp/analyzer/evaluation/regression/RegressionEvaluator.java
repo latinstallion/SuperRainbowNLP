@@ -5,4 +5,14 @@ import java.util.List;
 
 import rainbownlp.analyzer.evaluation.classification.EvaluationResult;
 import rainbownlp.analyzer.evaluation.classification.ResultRow;
-import rainbownlp.machinelearn
+import rainbownlp.machinelearning.MLExample;
+import rainbownlp.util.SystemUtil;
+
+
+public class RegressionEvaluator {
+	public static boolean saveResult = false;
+	public static String evaluation_mode = "HybridTest";
+
+
+	
+	public static RegressionEvaluationResult getEvaluationResult(List<MLExample> pExampl
