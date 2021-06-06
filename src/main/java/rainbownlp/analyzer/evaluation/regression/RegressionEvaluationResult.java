@@ -109,3 +109,14 @@ public class RegressionEvaluationResult implements IEvaluationResult {
 
 	public void setPredictedValues(ArrayList<Double> predictedValues) {
 		this.predictedValues = predictedValues;
+	}
+
+	public ArrayList<Double> getExpectedValues() {
+		return expectedValues;
+	}
+
+	public void setExpectedValues(ArrayList<Double> expectedValues) {
+		this.expectedValues = expectedValues;
+	}
+
+}
