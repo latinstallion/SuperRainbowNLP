@@ -15,4 +15,12 @@ public class RegressionEvaluator {
 
 
 	
-	public static RegressionEvaluationResult getEvaluationResult(List<MLExample> pExampl
+	public static RegressionEvaluationResult getEvaluationResult(List<MLExample> pExamplesToTest) 
+	{
+		RegressionEvaluationResult er = new RegressionEvaluationResult();
+		
+		for(MLExample example : pExamplesToTest)
+		{
+			Double expected = example.getNumericExpectedClass();
+			Double predicted = example.getNumericPredictedClass();
+			er.
