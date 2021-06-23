@@ -94,3 +94,20 @@ public class Clause implements Cloneable, Comparable<Clause>{
 	{
 		boolean is_first_person = false;
 		ArrayList<String> subjs_strings = getClauseSubjStrings();
+
+		if(subjs_strings.contains("I") || subjs_strings.contains("i"))
+		{
+			is_first_person = true;
+		}
+		return is_first_person; 
+	}
+
+	@Override
+	public int compareTo(Clause o) {
+
+		return 0;
+	}
+	
+
+	
+}
