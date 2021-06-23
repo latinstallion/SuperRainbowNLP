@@ -230,3 +230,258 @@ private void analyzeSentence() throws Exception {
 					
 					curClause.clauseVerb.verbMainPart = curLine.secondPart;
 					curClause.clauseVerb.offset = curLine.secondOffset;
+					
+					clauseMap.put(curLine.firstOffset, curClause);
+					clauseMap.put(curLine.secondOffset, curClause);
+					
+				}
+			}
+//			toBeProcessesd.remove(i);	
+		}
+		
+//		xcomp, ccomp 
+		for(int i=0; i<toBeProcessesd.size();i++)
+		{
+			DependencyLine curLine = sentDepLines.get(i);
+			handleComp(curLine);
+//			toBeProcessesd.remove(i);
+		}
+//		for(DependencyLine curLine:sentDepLines)
+//		{
+//			handleComp(curLine);
+//		}
+
+//		for(DependencyLine curLine:sentDepLines)
+//		{
+//			handleVerbDependencies(curLine);
+//			handleNegation(curLine);
+//			handleModifiers(curLine);
+//			handleIobj(curLine);
+//			handleMarks(curLine);
+//		}
+		for(int i=0; i<toBeProcessesd.size();i++)
+		{
+			DependencyLine curLine = sentDepLines.get(i);
+			handleVerbDependencies(curLine);
+			handleNegation(curLine);
+			handleModifiers(curLine);
+			handleIobj(curLine);
+			handleMarks(curLine);
+//			toBeProcessesd.remove(i);
+		}
+	
+		for(int i=0; i<toBeProcessesd.size();i++)
+		{
+			DependencyLine curLine = sentDepLines.get(i);
+			handleNPClMod(curLine);
+		}
+		//add unique sentence clauses to clause
+		for (Clause c : clauseMap.values()) {
+			
+	       if (!clauses.contains(c) && c!= null) {
+	        	clauses.add(c);
+	       }
+	    }
+	}
+
+void handleComp(DependencyLine curLine) throws SQLException
+{
+	//“He says that you like to swim” ccomp(says, like) 
+	Artifact related_word = relatedSentence.getChildByWordIndex(curLine.secondOffset-1);
+	String d_tag= related_word.getPOS();
+	
+	if(curLine.relationName.equals("ccomp")|| curLine.relationName.equals("xcomp"))
+	{
+		Clause governor_clause= clauseMap.get(curLine.firstOffset);
+		Clause dependent_clause = clauseMap.get(curLine.secondOffset);
+		if (clauseMap.containsKey(curLine.firstOffset)&&
+				clauseMap.containsKey(curLine.secondOffset))
+		{		
+			governor_clause.clauseComplements.add(dependent_clause);
+			dependent_clause.governer = governor_clause;
+		//	if (d_tag.startsWith("JJ"))
+		//	{
+		//		governor_clause.complement = curLine.secondPart;
+		//		governor_clause.complementOffset = curLine.secondOffset;
+				
+		//	}
+		}
+		else if (clauseMap.containsKey(curLine.firstOffset)&&
+				!clauseMap.containsKey(curLine.secondOffset))
+		{
+			dependent_clause = new Clause();
+
+			if (d_tag != null && d_tag.startsWith("VB"))
+			{
+				dependent_clause.clauseVerb.verbMainPart =curLine.secondPart;
+				dependent_clause.clauseVerb.offset =curLine.secondOffset;
+				clauseMap.put(curLine.secondOffset, dependent_clause);
+				governor_clause.clauseComplements.add(dependent_clause);
+				dependent_clause.governer = governor_clause;
+			}
+//			if (d_tag.startsWith("JJ"))
+//			{
+//				governor_clause.complement = curLine.secondPart;
+//				governor_clause.complementOffset = curLine.secondOffset;
+//				
+//			}
+			
+				
+		}
+		else if (!clauseMap.containsKey(curLine.firstOffset)&&
+				clauseMap.containsKey(curLine.secondOffset))
+		{
+			governor_clause =  getGovernorVerbOrComplement(curLine);
+			ArrayList<Clause> cl_comps = new ArrayList<Clause>();
+			if (!governor_clause.clauseComplements.isEmpty())
+			{
+				cl_comps = governor_clause.clauseComplements;
+			}
+			cl_comps.add(dependent_clause);
+			governor_clause.clauseComplements = cl_comps;
+		}
+		else if (!clauseMap.containsKey(curLine.firstOffset)&&
+				!clauseMap.containsKey(curLine.secondOffset))
+		{
+			
+			//create both clauses and add
+			governor_clause =  getGovernorVerbOrComplement(curLine);
+			
+			dependent_clause = new Clause();
+			if (d_tag.startsWith("VB"))
+			{
+				dependent_clause.clauseVerb.verbMainPart = curLine.secondPart;
+				dependent_clause.clauseVerb.offset = curLine.secondOffset;
+				clauseMap.put(curLine.secondOffset, dependent_clause);		
+			}
+//			else
+//			{
+//				dependent_clause.complement = curLine.secondPart;
+//				dependent_clause.complementOffset = curLine.secondOffset;
+//			}				
+//			clauseMap.put(curLine.secondOffset, dependent_clause);				
+		}
+		
+		
+	}
+	else
+	{
+		// throw exception
+	}
+}
+void handleVerbDependencies(DependencyLine depLine) throws SQLException
+{
+	if(depLine.relationName.equals("prt")|| depLine.relationName.equals("aux")
+			|| depLine.relationName.equals("auxpass"))
+	{
+		Clause governor_clause = getGovernorVerbOrComplement(depLine);
+		if(depLine.relationName.equals("aux") || depLine.relationName.equals("auxpass"))
+		{
+			governor_clause.clauseVerb.auxs.add(depLine.secondPart);
+			if (depLine.relationName.equals("auxpass"))
+			{
+				governor_clause.clauseVerb.isPassive = true;
+			}
+		}
+		else if(depLine.relationName.equals("prt"))
+		{
+			governor_clause.clauseVerb.prt = depLine.secondPart;
+		}
+
+		clauseMap.put(depLine.secondOffset, governor_clause);
+	}
+}
+void handleNegation(DependencyLine depLine) throws SQLException
+{
+	
+	if(depLine.relationName.equals("neg"))
+	{
+		Clause governor  = getGovernorVerbOrComplement(depLine);
+		if (governor.clauseVerb.offset == depLine.firstOffset)
+		{
+			governor.clauseVerb.isNegated = true;
+		}	
+		governor.isNegated = true;
+		clauseMap.put(depLine.secondOffset, governor);
+	}
+	if(depLine.relationName.equals("det") && depLine.secondPart.equalsIgnoreCase("no") )
+	{
+		Clause governor  = clauseMap.get(depLine.firstOffset);
+		if (governor != null)
+		{
+			ArrayList<String> modifiers = new ArrayList<String>();
+			if (governor.modifierDepMap.containsKey(depLine.firstOffset))
+			{
+				modifiers = governor.modifierDepMap.get(depLine.firstOffset);
+			}
+			modifiers.add(depLine.secondPart);
+			governor.modifierDepMap.put(depLine.firstOffset,modifiers);
+			governor.isNegated = true;
+			clauseMap.put(depLine.secondOffset, governor);
+		}
+		else
+		{
+			phrases.add(depLine);
+		}
+		
+	}
+	
+}
+Clause getGovernorVerbOrComplement(DependencyLine depLine) throws SQLException
+{
+	Clause governor_clause = clauseMap.get(depLine.firstOffset);
+	boolean create_new_required =false;
+	//if the governor is supposed to be verb but the content of existing is not equal
+	if (governor_clause != null)
+	{
+		Artifact related_word = relatedSentence.getChildByWordIndex(depLine.firstOffset-1);
+		String g_tag = related_word.getPOS();
+		if (g_tag!= null && (g_tag.startsWith("VB") || g_tag.startsWith("MD")))
+		{
+			if (governor_clause.clauseVerb.offset != depLine.firstOffset)
+			{
+				create_new_required =true;
+			}
+		}
+		
+	}
+	
+	if (governor_clause == null || create_new_required)
+	{
+		governor_clause  = new Clause();
+		Artifact related_word =relatedSentence.getChildByWordIndex(depLine.firstOffset-1);
+		String g_tag = related_word.getPOS();
+
+		if (g_tag!= null && (g_tag.startsWith("VB") || g_tag.startsWith("MD")))
+		{
+			governor_clause.clauseVerb.verbMainPart = depLine.firstPart;
+			governor_clause.clauseVerb.offset = depLine.firstOffset;
+		}
+		else//TODO:it shoule be checked more
+		{
+			governor_clause.complement = depLine.firstPart;
+			governor_clause.complementOffset = depLine.firstOffset;
+		}
+		clauseMap.put(depLine.firstOffset, governor_clause);
+	}
+	
+	return governor_clause;
+}
+
+void handleModifiers(DependencyLine depLine) throws SQLException
+{
+	if (!(depLine.relationName.equals("amod")||
+			depLine.relationName.equals("advmod")
+			|| depLine.relationName.equals("dep")
+			|| depLine.relationName.equals("nn") 
+			|| depLine.relationName.equals("det")
+			|| depLine.relationName.equals("tmod")
+			|| depLine.relationName.equals("poss")
+			|| depLine.relationName.startsWith("prepc_")
+			|| depLine.relationName.startsWith("prep_")))
+	{
+		return;
+	}
+//	TODO: may nor working fine
+	if (depLine.relationName.startsWith("prep_"))
+	{
