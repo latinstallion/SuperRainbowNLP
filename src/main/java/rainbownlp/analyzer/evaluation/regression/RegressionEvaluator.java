@@ -23,4 +23,10 @@ public class RegressionEvaluator {
 		{
 			Double expected = example.getNumericExpectedClass();
 			Double predicted = example.getNumericPredictedClass();
-			er.
+			er.add(expected, predicted);
+		}
+		
+		
+		return er;
+	}
+}
