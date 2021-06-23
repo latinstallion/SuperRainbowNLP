@@ -485,3 +485,253 @@ void handleModifiers(DependencyLine depLine) throws SQLException
 //	TODO: may nor working fine
 	if (depLine.relationName.startsWith("prep_"))
 	{
+		Artifact related_word =relatedSentence.getChildByWordIndex(depLine.firstOffset-1);
+		String gov_pos = related_word.getPOS();
+
+//		if (!gov_pos.startsWith("NN"))
+//		{
+//			return;
+//		}
+	}
+
+	Clause governor_cl = clauseMap.get(depLine.firstOffset);
+	Clause dependent_cl = clauseMap.get(depLine.secondOffset);
+
+	if (governor_cl == null)
+	{
+		//TODO: Find a solid solution....
+		//try to find the related clause of the current governor
+		List<DependencyLine> related_dep_lines = StanfordDependencyUtil.getAllGovernors(sentDepLines, depLine.firstPart);
+		for (DependencyLine rel_dep:related_dep_lines)
+		{
+			if(rel_dep.secondOffset==depLine.firstOffset)
+			{
+				governor_cl = clauseMap.get(rel_dep.firstOffset);
+				break;
+			}
+			
+		}
+		governor_cl = findMissingClause(depLine);
+		//if it is still not found
+		if (governor_cl==null)
+		{
+			phrases.add(depLine);
+		}
+		
+	}
+
+	if (governor_cl != null && governor_cl != null)
+	{
+		
+		ArrayList<String> modifiers = new ArrayList<String>();
+		if(governor_cl.modifierDepMap.containsKey(depLine.firstOffset))
+		{
+			modifiers =governor_cl.modifierDepMap.get(depLine.firstOffset);
+		}
+		modifiers.add(depLine.secondPart);
+
+		governor_cl.modifierDepMap.put(depLine.firstOffset, modifiers);
+		
+		if (depLine.relationName.equals("amod")||
+				depLine.relationName.equals("advmod")
+				|| depLine.relationName.equals("nn") )
+		{
+			governor_cl.adjModifierDepMap.put(depLine.firstOffset, modifiers);
+		}
+		if (dependent_cl==null)
+		{
+			clauseMap.put(depLine.secondOffset, governor_cl);
+		}
+		
+	}
+	
+}
+void handleNPClMod(DependencyLine depLine) throws SQLException
+{
+	if (!(depLine.relationName.equals("infmod") || depLine.relationName.equals("rcmod")))
+	{
+		return;
+	}
+	Clause governor_cl = clauseMap.get(depLine.firstOffset);
+	Clause dependent_cl = clauseMap.get(depLine.secondOffset);
+	
+	if (governor_cl == null)
+	{
+		governor_cl = findMissingClause(depLine);
+		//if it is still not found
+		
+	}
+	if (governor_cl==null)
+	{
+		phrases.add(depLine);
+	}
+
+	else if ((dependent_cl != null && governor_cl !=dependent_cl))
+	{
+		governor_cl.clauseComplements.add(dependent_cl);
+		dependent_cl.governer = governor_cl;
+	}
+	else if (dependent_cl == null)
+	{
+		// try to build it
+		dependent_cl = buildDependentClause(depLine);
+		if (dependent_cl != null)
+		{
+			clauseMap.put(depLine.secondOffset, dependent_cl);
+			governor_cl.clauseComplements.add(dependent_cl);
+			dependent_cl.governer = governor_cl;
+		}
+		else//this should not happen
+		{
+			phrases.add(depLine);
+		}
+		
+	}
+	//they should be different
+	if (dependent_cl==governor_cl)
+	{
+		//get all governors of the second part
+		List<DependencyLine> governing_dep_lines =
+			StanfordDependencyUtil.getAllGovernors(sentDepLines, depLine.firstPart, depLine.firstOffset);
+		// from there select other one if exist
+		for(DependencyLine dep:governing_dep_lines)
+		{
+			if(dep.relationName.equals("nsubj") || dep.relationName.equals("xsubj")||
+					dep.relationName.equals("dobj")|| 
+					dep.relationName.equals("iobj")||
+					dep.relationName.equals("nsubjpass")||
+					dep.relationName.equals("cop"))
+			{
+				//if it is different form the cottenr clause
+				if (dep.firstOffset != depLine.secondOffset)
+				{
+					Clause new_cl = clauseMap.get(dep.firstOffset);
+					if (new_cl!=null)
+					{
+						clauseMap.put(depLine.firstOffset, new_cl);
+						
+					}
+					
+				}
+			}
+		}
+	}
+}
+private Clause findMissingClause(DependencyLine depLine)
+{
+	Clause cl= null;
+	List<DependencyLine> related_dep_lines = StanfordDependencyUtil.getAllGovernors(sentDepLines, depLine.firstPart,depLine.firstOffset);
+	for (DependencyLine rel_dep:related_dep_lines)
+	{
+		
+		cl = clauseMap.get(rel_dep.firstOffset);
+		break;	
+	}
+	return cl;
+}
+//needs to be completed
+Clause buildDependentClause(DependencyLine depLine) throws SQLException
+{
+	Artifact related_word =relatedSentence.getChildByWordIndex(depLine.secondOffset-1);
+	String d_pos = related_word.getPOS();
+
+	Clause dependent_clause =null;
+	
+	if (d_pos != null && (d_pos.startsWith("VB") || d_pos.startsWith("MD")))
+	{
+		dependent_clause = new Clause();
+		dependent_clause.clauseVerb.verbMainPart = depLine.secondPart;
+		dependent_clause.clauseVerb.offset = depLine.secondOffset;
+	}
+	else if (d_pos != null && d_pos.startsWith("JJ") )
+	{
+		dependent_clause = new Clause();
+		dependent_clause.complement = depLine.secondPart;
+		dependent_clause.complementOffset = depLine.secondOffset;
+	}
+	return dependent_clause;
+}
+
+void handleIobj(DependencyLine depLine) throws SQLException
+{
+	if (!(depLine.relationName.startsWith("prep_")))
+	{
+		return;
+	}
+	// if governor is a noun it is handled in modifier
+	Artifact related_word =relatedSentence.getChildByWordIndex(depLine.firstOffset-1);
+	String gov_pos = related_word.getPOS();
+
+	if (gov_pos.startsWith("NN"))
+	{
+		return;
+	}
+	Clause gov_cl = clauseMap.get(depLine.firstOffset);
+	Clause dep_cl =  clauseMap.get(depLine.secondOffset);
+	if(gov_cl != null && dep_cl!= null )
+	{
+		SentenceObject indirect_object_cl = new SentenceObject();
+		indirect_object_cl.clause = dep_cl;
+		
+		gov_cl.clauseIObjPrep.put(indirect_object_cl,getPrep(depLine.relationName) );
+		gov_cl.clauseIObjs.add(depLine.secondPart);
+	}
+	else if (gov_cl != null && dep_cl== null)
+	{
+		SentenceObject indirect_object = new SentenceObject();
+		indirect_object.content = depLine.secondPart;
+		indirect_object.contentOffset = depLine.secondOffset;
+		
+		gov_cl.clauseIObjPrep.put(indirect_object,getPrep(depLine.relationName) );
+		gov_cl.clauseIObjs.add(depLine.secondPart);
+	}
+	else
+	{
+		phrases.add(depLine);
+	}
+
+}
+void handleMarks(DependencyLine depLine)
+{
+	if (!(depLine.relationName.equals("mark")))
+	{
+		return;
+	}
+	Clause gov_cl = clauseMap.get(depLine.firstOffset);
+	
+	if(gov_cl != null)
+	{
+		gov_cl.isMarked = true;
+		gov_cl.clauseMark = depLine.secondPart;
+		clauseMap.put(depLine.secondOffset, gov_cl);
+	}
+
+	else
+	{
+		phrases.add(depLine);
+	}
+
+}
+public String getPrep(String rel_name)
+{
+	String prep = null;
+	Pattern p = Pattern.compile("prep_(\\w+)");
+	Matcher m = p.matcher(rel_name);
+	if(m.matches())
+	{
+		prep = m.group(1);
+	}
+	
+	return prep;
+}
+String getConj(String rel_name)
+{
+	String conj = null;
+	Pattern p = Pattern.compile("conj_(\\w+)");
+	Matcher m = p.matcher(rel_name);
+	if(m.matches())
+	{
+		conj = m.group(1);
+	}
+	
+	return conj;
