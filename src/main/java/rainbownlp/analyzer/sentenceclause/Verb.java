@@ -28,4 +28,17 @@ public class Verb {
 		verbMainPart = new String();
 		modifiers= new ArrayList<String> ();
 		auxs = new ArrayList<String>();
-		offset
+		offset = new Integer(0);
+		prt = new String();
+		iObjHash = null;
+	}
+	public String getPhrasalVerbLemma()
+	{
+		String p_verb= verbMainPart;
+		if (!prt.isEmpty())
+		{
+			p_verb = StringUtil.getWordLemma(verbMainPart).concat(" "+prt);
+		}
+		else
+		{
+			p_verb = StringUtil
