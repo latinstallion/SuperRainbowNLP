@@ -41,4 +41,15 @@ public class Verb {
 		}
 		else
 		{
-			p_verb = StringUtil
+			p_verb = StringUtil.getWordLemma(verbMainPart);
+		}
+		return p_verb;
+	}
+	 
+	 public boolean isDoubted(Clause clause)
+	 {
+		 boolean is_doubted = false;
+		 if (auxs.contains("may") || auxs.contains("should") || auxs.contains("might")
+				 || auxs.contains("would") || clause.isMarked )
+		 {
+	
