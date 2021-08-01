@@ -52,4 +52,17 @@ public class Verb {
 		 if (auxs.contains("may") || auxs.contains("should") || auxs.contains("might")
 				 || auxs.contains("would") || clause.isMarked )
 		 {
+			 is_doubted = true;
+		 }
+		 
+		 return is_doubted;
+	 }
+
 	
+	 public boolean isTOBe()
+	 {
+		 boolean is_tobe = false;
+		 String lemma = StringUtil.getTermByTermWordnet(verbMainPart);
+		 if (lemma.equals("be") || lemma.equals("wa"))
+		 {
+			 is_tobe = tru
