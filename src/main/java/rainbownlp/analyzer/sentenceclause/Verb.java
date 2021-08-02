@@ -65,4 +65,15 @@ public class Verb {
 		 String lemma = StringUtil.getTermByTermWordnet(verbMainPart);
 		 if (lemma.equals("be") || lemma.equals("wa"))
 		 {
-			 is_tobe = tru
+			 is_tobe = true;
+		 }
+		 return is_tobe;
+	 }
+	
+
+	public static boolean isToBeVerb(String verb)
+	{
+		Pattern p = Pattern.compile("(is|am|are|being|been|be|do|does|did|will|was|were|can|could|shall|become|became|has|had|have|would|may|might|must)");
+		Matcher m = p.matcher(verb);
+		return m.matches();
+	}
