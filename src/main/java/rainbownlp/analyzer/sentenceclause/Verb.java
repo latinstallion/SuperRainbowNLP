@@ -77,3 +77,12 @@ public class Verb {
 		Matcher m = p.matcher(verb);
 		return m.matches();
 	}
+	
+	 public Integer getTense(SentenceClauseManager relatedSentence) {
+		 if (verbMainPart.isEmpty())
+		 {
+			 return 0;
+		 }
+		 // Tense number can be 1: past 2:present 3:future 4:present+ing 
+		 Integer verb_tense_number = 2;
+		 if (auxs.contains("will")|| auxs.con
