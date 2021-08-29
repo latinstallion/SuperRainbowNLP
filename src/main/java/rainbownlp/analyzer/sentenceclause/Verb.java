@@ -103,4 +103,13 @@ public class Verb {
 		 {
 			 String verb_pos = relatedSentence.getPOSTag(offset);
 			 if((auxs.contains("have") || auxs.contains("has")) &&
-					 verb_pos.
+					 verb_pos.equals("VBN"))
+			 {
+				 verb_tense_number = VerbTense.PRESENTPERFECT.ordinal();
+			 }
+			 else if(verb_pos.equals("VBG") &&
+					 (auxs.contains("is") || auxs.contains("are") ||
+							 auxs.contains("'s") || auxs.contains("'re"))
+							 )
+			 {
+			
