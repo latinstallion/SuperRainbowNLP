@@ -85,4 +85,13 @@ public class Verb {
 		 }
 		 // Tense number can be 1: past 2:present 3:future 4:present+ing 
 		 Integer verb_tense_number = 2;
-		 if (auxs.contains("will")|| auxs.con
+		 if (auxs.contains("will")|| auxs.contains("wo"))
+		 {
+			 verb_tense_number = 3;
+		 }
+		 else if(auxs.contains("do") || auxs.contains("have") || auxs.contains("to") ||
+				 auxs.contains("am") || auxs.contains("are") || auxs.contains("can"))
+		 {
+			 verb_tense_number = 2;
+		 }
+		 else if(auxs.
