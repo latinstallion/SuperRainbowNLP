@@ -94,4 +94,13 @@ public class Verb {
 		 {
 			 verb_tense_number = 2;
 		 }
-		 else if(auxs.
+		 else if(auxs.contains("would") || auxs.contains("could")|| auxs.contains("did"))
+		 {
+			 verb_tense_number = 1;
+		 }
+		 // get the POS
+		 else
+		 {
+			 String verb_pos = relatedSentence.getPOSTag(offset);
+			 if((auxs.contains("have") || auxs.contains("has")) &&
+					 verb_pos.
