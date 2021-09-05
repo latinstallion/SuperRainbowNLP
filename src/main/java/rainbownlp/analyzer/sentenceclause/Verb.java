@@ -131,4 +131,13 @@ public class Verb {
 			 {
 				 verb_tense_number = 1;
 			 }
-			 
+			 else if (verb_pos.equals("VBN"))
+			 {
+				 String aux_pos = relatedSentence.getPOSTag(offset-1);
+				 if (aux_pos.equals("VBD"))
+				 {
+					 verb_tense_number = 1;
+				 }
+
+			 }
+			 else if(verb_pos.equals("VBG") || verb_pos.equals("VBP") || verb_pos.equals("VBZ
