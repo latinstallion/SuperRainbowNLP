@@ -118,4 +118,17 @@ public class Verb {
 					 auxs.contains("been") &&
 					 ( auxs.contains("have") || auxs.contains("has")) )
 			 {
-				 verb_tense_number = VerbTense.PRESPERFEC
+				 verb_tense_number = VerbTense.PRESPERFECTPROG.ordinal();
+			 }
+			 else if(verb_pos.equals("VBN") &&
+					 (auxs.contains("had") )
+							 )
+			 {
+				 verb_tense_number = VerbTense.PASTPERFECT.ordinal();
+			 }
+			 
+			 else if (verb_pos.equals("VBD"))
+			 {
+				 verb_tense_number = 1;
+			 }
+			 
