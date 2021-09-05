@@ -140,4 +140,19 @@ public class Verb {
 				 }
 
 			 }
-			 else if(verb_pos.equals("VBG") || verb_pos.equals("VBP") || verb_pos.equals("VBZ
+			 else if(verb_pos.equals("VBG") || verb_pos.equals("VBP") || verb_pos.equals("VBZ"))
+			 {
+				 verb_tense_number = 2;
+			 }
+			
+		 }
+		 
+		 return verb_tense_number;
+		
+	}
+	// Tense number can be 1: past 2:present 3:future 4:present+ing 
+	 public enum VerbTense {
+			PAST(1),
+			PRESENT(2),
+			FUTURE(3),
+			PRESENTPROG
