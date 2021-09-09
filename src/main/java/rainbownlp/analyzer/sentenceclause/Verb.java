@@ -155,4 +155,12 @@ public class Verb {
 			PAST(1),
 			PRESENT(2),
 			FUTURE(3),
-			PRESENTPROG
+			PRESENTPROG(4),
+			PRESENTPERFECT(5),
+			PASTPERFECT(6),
+			PRESPERFECTPROG(7);
+			 private static final Map<Integer,VerbTense> lookup 
+	         = new HashMap<Integer,VerbTense>();
+			static {
+		          for(VerbTense l : EnumSet.allOf(VerbTense.class))
+		       
