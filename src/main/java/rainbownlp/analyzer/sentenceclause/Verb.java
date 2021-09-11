@@ -163,4 +163,16 @@ public class Verb {
 	         = new HashMap<Integer,VerbTense>();
 			static {
 		          for(VerbTense l : EnumSet.allOf(VerbTense.class))
-		       
+		               lookup.put(l.getCode(), l);
+		     }
+			
+			private int code;
+
+		     private VerbTense(int code) {
+		          this.code = code;
+		     }
+
+		     public int getCode() { return code; }
+
+		     public static VerbTense getEnum(int code) { 
+		          return lookup.g
