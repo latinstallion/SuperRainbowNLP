@@ -175,4 +175,9 @@ public class Verb {
 		     public int getCode() { return code; }
 
 		     public static VerbTense getEnum(int code) { 
-		          return lookup.g
+		          return lookup.get(code); 
+		     }	
+			
+	 }
+
+}
