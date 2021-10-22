@@ -6,4 +6,8 @@ import java.util.List;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.PropertiesCredentials;
-import com.amazonaws.services.elast
+import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce;
+import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduceClient;
+import com.amazonaws.services.elasticmapreduce.model.AddJobFlowStepsRequest;
+import com.amazonaws.services.elasticmapreduce.model.AddJobFlowStepsResult;
+import com.amazona
