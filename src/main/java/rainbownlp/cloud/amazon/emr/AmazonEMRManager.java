@@ -30,4 +30,11 @@ public class AmazonEMRManager {
 
 		List<StepConfig> stepsConfig = new ArrayList<StepConfig>();
 		int counter = 0;
-		
+		for(HadoopJarStepConfig step : steps){
+			counter++;
+			stepsConfig.add(new StepConfig("Step"+counter, step));
+		}
+
+		AddJobFlowStepsResult result = client.addJobFlowSteps(new AddJobFlowStepsRequest()
+			.withJobFlowId("j-1HTE8WKS7SODR")
+			.withSteps(stepsC
