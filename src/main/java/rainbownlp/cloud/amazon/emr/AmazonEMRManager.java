@@ -37,4 +37,7 @@ public class AmazonEMRManager {
 
 		AddJobFlowStepsResult result = client.addJobFlowSteps(new AddJobFlowStepsRequest()
 			.withJobFlowId("j-1HTE8WKS7SODR")
-			.withSteps(stepsC
+			.withSteps(stepsConfig));
+		System.out.println(result.getStepIds());
+	}
+}
