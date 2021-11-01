@@ -21,4 +21,13 @@ public class AmazonEMRManager {
 			credentials = new PropertiesCredentials(
 					AmazonEMRManager.class.getResourceAsStream("AwsCredentials.properties"));
 		} catch (IOException e1) {
-			System.out.println("Credentials were not properly entered into AwsCreden
+			System.out.println("Credentials were not properly entered into AwsCredentials.properties.");
+			System.out.println(e1.getMessage());
+			System.exit(-1);
+		}
+
+		AmazonElasticMapReduce client = new AmazonElasticMapReduceClient(credentials);
+
+		List<StepConfig> stepsConfig = new ArrayList<StepConfig>();
+		int counter = 0;
+		
