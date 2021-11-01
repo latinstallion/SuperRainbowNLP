@@ -15,4 +15,10 @@ import com.amazonaws.services.elasticmapreduce.model.StepConfig;
 import com.amazonaws.services.elasticmapreduce.util.StepFactory;
 
 public class AmazonEMRManager {
-	public void runOnEMR(List<HadoopJarStepConfig>
+	public void runOnEMR(List<HadoopJarStepConfig> steps){
+		AWSCredentials credentials = null;
+		try {
+			credentials = new PropertiesCredentials(
+					AmazonEMRManager.class.getResourceAsStream("AwsCredentials.properties"));
+		} catch (IOException e1) {
+			System.out.println("Credentials were not properly entered into AwsCreden
