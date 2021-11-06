@@ -17,4 +17,10 @@ public class AmazonS3Manager {
 						AmazonS3Manager.class.getResourceAsStream(
 		                		"AwsCredentials.properties")));
 		       
-            System.out.println("Uploading a new object to S3 from a 
+            System.out.println("Uploading a new object to S3 from a file\n");
+            File file = new File(uploadFileName);
+            s3client.putObject(new PutObjectRequest(
+            		                 bucketName, keyName, file));
+
+         } catch (AmazonServiceException ase) {
+            System.ou
