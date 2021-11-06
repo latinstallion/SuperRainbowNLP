@@ -11,4 +11,10 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 public class AmazonS3Manager {
-	public void uploadFileToS3(String uploadFileN
+	public void uploadFileToS3(String uploadFileName, String bucketName, String keyName){
+		 try {
+			 AmazonS3 s3client = new AmazonS3Client(new PropertiesCredentials(
+						AmazonS3Manager.class.getResourceAsStream(
+		                		"AwsCredentials.properties")));
+		       
+            System.out.println("Uploading a new object to S3 from a 
