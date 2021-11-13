@@ -23,4 +23,8 @@ public class AmazonS3Manager {
             		                 bucketName, keyName, file));
 
          } catch (AmazonServiceException ase) {
-            System.ou
+            System.out.println("Caught an AmazonServiceException, which " +
+            		"means your request made it " +
+                    "to Amazon S3, but was rejected with an error response" +
+                    " for some reason.");
+            System.out.println("Error Message:    " + ase.getMessage());
