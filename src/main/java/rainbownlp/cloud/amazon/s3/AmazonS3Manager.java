@@ -41,4 +41,7 @@ public class AmazonS3Manager {
             System.out.println("Error Message: " + ace.getMessage());
         } catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStac
+			e.printStackTrace();
+		}
+	}
+}
