@@ -35,4 +35,10 @@ public class AmazonS3Manager {
         } catch (AmazonClientException ace) {
             System.out.println("Caught an AmazonClientException, which " +
             		"means the client encountered " +
-                    "an internal error while tryi
+                    "an internal error while trying to " +
+                    "communicate with S3, " +
+                    "such as not being able to access the network.");
+            System.out.println("Error Message: " + ace.getMessage());
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStac
