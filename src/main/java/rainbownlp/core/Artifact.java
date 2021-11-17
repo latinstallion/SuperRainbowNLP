@@ -250,3 +250,237 @@ public class Artifact {
 ////							AttributeValuePair.AttributeType.POS.name());
 ////			} catch (SQLException e) {
 ////				// TODO Auto-generated catch block
+////				e.printStackTrace();
+////			}
+//			if(POS==null && artifactType == Type.Word){
+//				String contentRegexCasted = StringUtil.castForRegex(getContent());
+//				lineOffset = getLineIndex();
+//				if(lineOffset==null) return "";
+//				String tagged = 
+//					StanfordParser.getTagged(associatedFilePath, lineOffset);
+//				String[] taggedTokens = 
+//					tagged.split(" ");
+//				wordOffset = getWordIndex();
+//				boolean index_invalid = false;
+//				if(wordOffset!=null && 
+//						taggedTokens.length>wordOffset)
+//				{
+//					String[] parts = taggedTokens[wordOffset].replace("\\/", "/"). // '/' is tagger splitter; decast to match					
+//							split(contentRegexCasted+"/");
+//					if(parts.length==2)
+//						POS = parts[1];
+//					else
+//						index_invalid = true;
+//				}
+//				else
+//					index_invalid= true;
+//
+//				if(index_invalid)
+//				{
+//					
+//					nextArtifact = getNextArtifact();
+//					previousArtifact = getPreviousArtifact();
+//					if(previousArtifact != null && nextArtifact!=null)
+//					{
+//						String preContent=previousArtifact.getContent();
+//						String nextContent=nextArtifact.getContent();
+//						if(nextContent.equals("-"))
+//						{
+//							Artifact nextnext = nextArtifact.getNextArtifact();
+//							if(nextnext!=null)
+//							{
+//								contentRegexCasted = 
+//									contentRegexCasted+
+//									nextContent+
+//									nextnext.getContent();
+//							}
+//						}
+//						// to make sure not casted before
+////							contentRegexCasted = 
+////								Util.castForRegex(Util.decastRegex(contentRegexCasted));
+//						
+//						Pattern p = Pattern.compile("(.* )?"+contentRegexCasted+"/(\\S+)( .*)?");
+//						Pattern p2 = Pattern.compile("(.* )?\\S*"+contentRegexCasted+"\\S*/(\\S+)( .*)?");
+//						Matcher m = p.matcher(tagged);
+//						if(m.matches())
+//						{
+//							POS=m.group(2);
+////								Util.log("_POS found: "+_POS+
+////										" for "+contentRegexCasted, Level.INFO);
+//						}else
+//						{
+//							m = p2.matcher(tagged);
+//							if(m.matches())
+//							{
+//								POS=m.group(2);
+////									Util.log("_POS found: "+_POS+
+////											" for "+contentRegexCasted, Level.INFO);
+//							}
+//						}
+//						
+//					}
+//					
+//					if(POS==null &&  previousArtifact != null)
+//					{
+//						POS = previousArtifact.getPOS();
+//					}
+//					if(POS==null)
+//					{
+//						POS = getContent();
+////						Util.log("Error in _POS: word index = "+_wordOffset+
+////							", tagged:"+tagged+", tagged token:"+
+////							" "+contentRegexCasted+" -> " 
+////							+getContent(), Level.WARNING);
+//					}
+//				}
+//			}
+//		}
+//		if(getContent().equals("-"))
+//			POS = "-";
+
+		
+		return POS;
+	}
+	public void setPOS(String pPOS) {
+		POS = pPOS;
+	}
+	/**
+	 * starts from 0
+	 * @return
+	 */
+	@Index(name = "index_word_index")
+	public Integer getWordIndex() {
+		if(wordOffset==null)
+		{
+			if(artifactType==Type.Word)
+			{
+			
+				wordOffset=0;
+				Artifact preWord = getPreviousArtifact();
+				while(preWord!=null)
+				{
+					wordOffset++;
+					preWord = preWord.getPreviousArtifact();
+					previousArtifact = null;
+				}
+			}
+			
+		}
+		return wordOffset;
+	}
+	
+	public void setWordIndex(Integer _wordOffset) {
+		wordOffset = _wordOffset;
+	}
+	public void setLineIndex(Integer _lineIndex) {
+		lineOffset = _lineIndex;
+	}
+	public void setStartIndex(Integer _startIndex) {
+		startIndex = _startIndex;
+	}
+	
+	/**
+	 * sentence index, starts from 1
+	 * @return
+	 */
+	@Index(name = "index_line_index")
+	public Integer getLineIndex() {
+		if(lineOffset==null)
+		{
+			if(artifactType==Type.Word)
+			{
+				Artifact sentence = getParentArtifact();
+				if(sentence==null) 
+				{
+					nextArtifact = getNextArtifact();
+					if(nextArtifact!=null)
+						sentence = nextArtifact.getParentArtifact();
+				}
+				if(sentence==null) 
+				{
+					previousArtifact = getPreviousArtifact();
+					if(previousArtifact!=null)
+						sentence = previousArtifact.getParentArtifact();
+				}
+				if(sentence==null) 
+				{
+//						Util.log("Error in getLineIndex: word '"+ _artifactId 
+//								+"' doesn't have parent!", Level.SEVERE);
+						
+					return null;
+				}
+				lineOffset = sentence.getLineIndex();
+			}
+			if(artifactType==Type.Sentence)
+			{
+				lineOffset=1;
+				Artifact preSentence = getPreviousArtifact();
+				while(preSentence!=null)
+				{
+					lineOffset++;
+					preSentence = preSentence.getPreviousArtifact();
+				}
+			}
+			
+		}
+		return lineOffset;
+	}
+
+	public void setContent(String _content) {
+		this.content = _content;
+	}
+	@Column(columnDefinition="TEXT")
+	@Index(name = "index_content")
+	public String getContent() {
+//		if(content==null) {
+//			List<Artifact> children = getChildsArtifact();
+//			for(Artifact child: children){
+//				content+=child.getContent()+" ";
+//			}
+//			content = content.trim();
+//		}
+		return content;
+	}
+
+	public void setAssociatedFilePath(String _associatedFilePath) {
+		this.associatedFilePath = _associatedFilePath;
+	}
+
+	public String getAssociatedFilePath() {
+		return associatedFilePath;
+	}
+	
+	@Column(nullable = false)
+	public void setArtifactType(Type _artifactType) {
+		this.artifactType = _artifactType;
+	}
+
+	public Type getArtifactType() {
+		return artifactType;
+	}
+
+	public void setArtifactId(int _artifactId) {
+		this.artifactId = _artifactId;
+	}
+	@Id
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
+	public int getArtifactId() {
+		return artifactId;
+	}
+	
+	@Override public String toString()
+	{
+		return associatedFilePath.substring(associatedFilePath.length()-15, 
+				associatedFilePath.length()-1) + ":"+
+			artifactId+"-"+artifactType.toString()+"-"
+			+parentArtifact.artifactId+"-"+
+			nextArtifact.artifactId+"-"+
+			previousArtifact.artifactId;
+	}
+	
+	@Override public boolean equals(Object pArtifact)
+	{
+		if(!(pArtifact instanceof Artifact))
+			return false;
+		Artifact a = (Artifact)pArtifact;
