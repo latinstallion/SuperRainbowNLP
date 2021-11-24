@@ -764,3 +764,5 @@ public class Artifact {
 		return artifact_objects;
 	}
 	
+	
+}
