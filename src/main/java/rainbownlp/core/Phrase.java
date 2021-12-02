@@ -19,4 +19,14 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.p
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Index;
+
+import rainbownlp.util.FileUtil;
+import rainbownlp.util.HibernateUtil;
+
+@Entity
+@Table( name = "Phrase" )
+@Inheritance(strategy=InheritanceType
