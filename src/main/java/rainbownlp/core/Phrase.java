@@ -29,4 +29,15 @@ import rainbownlp.util.HibernateUtil;
 
 @Entity
 @Table( name = "Phrase" )
-@Inheritance(strategy=InheritanceType
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Phrase implements Serializable  {
+	private String phraseContent;
+	
+	private Artifact startArtifact;
+	private Artifact endArtifact;
+	
+	private int phraseId;
+	
+	private String phraseEntityType;
+	private String altID;
+	privat
