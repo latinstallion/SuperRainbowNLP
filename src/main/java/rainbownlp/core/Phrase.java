@@ -49,4 +49,18 @@ public class Phrase implements Serializable  {
 	private Integer altEndWordIndex;
 	private String normalizedHead;
 	private Integer normalOffset;
-	private Artifact go
+	private Artifact govVerb;
+	
+	public Phrase()
+	{
+		
+	}
+	/**
+	 * Loads Phrase by id
+	 * @param pPhraseID
+	 * @return
+	 */
+	public static Phrase getInstance(int pPhraseID) {
+		String hql = "from Phrase where phraseId = "+pPhraseID;
+		Phrase phrase_obj = 
+			(Phrase)HibernateUtil.executeReader(h
