@@ -40,4 +40,13 @@ public class Phrase implements Serializable  {
 	
 	private String phraseEntityType;
 	private String altID;
-	privat
+	private int startCharOffset;
+	private int endCharOffset;
+	private Artifact headArtifact;
+	
+	private Integer altLineIndex;
+	private Integer altStartWordIndex;
+	private Integer altEndWordIndex;
+	private String normalizedHead;
+	private Integer normalOffset;
+	private Artifact go
