@@ -77,4 +77,8 @@ public class Phrase implements Serializable  {
 	 * @return
 	 */
 	public static Phrase getInstance(String pPhraseContent, 
-			Artifact pStartArtifact,
+			Artifact pStartArtifact, Artifact pEndArtifact){
+		String hql = "from Phrase where phraseContent = :phraseContent "+
+			" and startArtifact= :startArtifact and endArtifact = :endArtifact ";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("phraseC
