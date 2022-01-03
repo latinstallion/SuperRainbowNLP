@@ -63,4 +63,18 @@ public class Phrase implements Serializable  {
 	public static Phrase getInstance(int pPhraseID) {
 		String hql = "from Phrase where phraseId = "+pPhraseID;
 		Phrase phrase_obj = 
-			(Phrase)HibernateUtil.executeReader(h
+			(Phrase)HibernateUtil.executeReader(hql).get(0);
+		return phrase_obj;
+	}
+
+	
+	
+	/**
+	 * Loads or creates the Phrase
+	 * @param pPhraseContent
+	 * @param pFilePath
+	 * @param pStartIndex
+	 * @return
+	 */
+	public static Phrase getInstance(String pPhraseContent, 
+			Artifact pStartArtifact,
