@@ -89,4 +89,12 @@ public class Phrase implements Serializable  {
 				(List<Phrase>) HibernateUtil.executeReader(hql, params);
 	    
 		Phrase phrase_obj;
-	    if(phrase_objects.si
+	    if(phrase_objects.size()==0)
+	    {
+	    	phrase_obj = new Phrase();
+	    	phrase_obj.setPhraseContent(pPhraseContent);
+	    	phrase_obj.setStartArtifact(pStartArtifact);
+	    	phrase_obj.setEndArtifact(pEndArtifact);
+	    	
+	    	HibernateUtil.save(phrase_obj);
+	    	FileUtil.log
