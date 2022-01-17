@@ -81,4 +81,12 @@ public class Phrase implements Serializable  {
 		String hql = "from Phrase where phraseContent = :phraseContent "+
 			" and startArtifact= :startArtifact and endArtifact = :endArtifact ";
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put("phraseC
+		params.put("phraseContent", pPhraseContent);
+		params.put("startArtifact", pStartArtifact.getArtifactId());
+		params.put("endArtifact", pEndArtifact.getArtifactId());
+		
+		List<Phrase> phrase_objects = 
+				(List<Phrase>) HibernateUtil.executeReader(hql, params);
+	    
+		Phrase phrase_obj;
+	    if(phrase_objects.si
