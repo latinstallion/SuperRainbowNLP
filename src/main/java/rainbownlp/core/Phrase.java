@@ -97,4 +97,9 @@ public class Phrase implements Serializable  {
 	    	phrase_obj.setEndArtifact(pEndArtifact);
 	    	
 	    	HibernateUtil.save(phrase_obj);
-	    	FileUtil.log
+	    	FileUtil.logLine("/tmp/NonExistingPhrase.txt","pPhraseContent"+pPhraseContent
+	    			+" pStartArtifact "+pStartArtifact.getArtifactId()+ " pEndArtifact "+pEndArtifact.getArtifactId());
+	    }else
+	    {
+	    	phrase_obj = 
+	    		phrase_objects.ge
