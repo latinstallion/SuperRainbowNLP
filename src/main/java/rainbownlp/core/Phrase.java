@@ -102,4 +102,10 @@ public class Phrase implements Serializable  {
 	    }else
 	    {
 	    	phrase_obj = 
-	    		phrase_objects.ge
+	    		phrase_objects.get(0);
+	    }
+	    return phrase_obj;
+	}
+	//This is for the MADEUP discharge times NOT TO BE USED dor other purpose
+	public static Phrase getMadeUpInstance(String pPhraseContent, String altId,String PhraseType){
+		String hql = "from Phrase where phraseContent = :phraseContent "+
