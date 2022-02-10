@@ -109,3 +109,9 @@ public class Phrase implements Serializable  {
 	//This is for the MADEUP discharge times NOT TO BE USED dor other purpose
 	public static Phrase getMadeUpInstance(String pPhraseContent, String altId,String PhraseType){
 		String hql = "from Phrase where phraseContent = :phraseContent "+
+			" and altID = :paltID and phraseEntityType =:phraseEntityType ";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("phraseContent", pPhraseContent);
+		params.put("paltID",altId);
+		params.put("phraseEntityType",PhraseType);
+		
