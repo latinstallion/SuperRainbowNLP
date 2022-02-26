@@ -123,4 +123,10 @@ public class Phrase implements Serializable  {
 	    {
 	    	phrase_obj = new Phrase();
 	    	Artifact start = Artifact.getMadeUpInstance(pPhraseContent);
-	    	ph
+	    	phrase_obj.setStartArtifact(start);
+	    	phrase_obj.setEndArtifact(start);
+	    	phrase_obj.setPhraseContent(pPhraseContent);
+	    	phrase_obj.setAltID(altId);
+	    	phrase_obj.setPhraseEntityType(PhraseType);
+	    	
+	    	HibernateUtil.save(phra
