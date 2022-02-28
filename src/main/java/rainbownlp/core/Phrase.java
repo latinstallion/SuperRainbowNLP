@@ -129,4 +129,15 @@ public class Phrase implements Serializable  {
 	    	phrase_obj.setAltID(altId);
 	    	phrase_obj.setPhraseEntityType(PhraseType);
 	    	
-	    	HibernateUtil.save(phra
+	    	HibernateUtil.save(phrase_obj);
+	    	
+	    }else
+	    {
+	    	phrase_obj = 
+	    		phrase_objects.get(0);
+	    }
+	    return phrase_obj;
+	}
+	public static Phrase getInstance(String pPhraseContent, 
+			Artifact pStartArtifact, Artifact pEndArtifact, String pPhraseMentionType,
+			String pAlt_id){
