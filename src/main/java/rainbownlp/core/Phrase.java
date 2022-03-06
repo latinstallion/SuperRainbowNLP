@@ -141,3 +141,7 @@ public class Phrase implements Serializable  {
 	public static Phrase getInstance(String pPhraseContent, 
 			Artifact pStartArtifact, Artifact pEndArtifact, String pPhraseMentionType,
 			String pAlt_id){
+		String hql = "from Phrase where phraseContent = :phraseContent "+
+			" and startArtifact= :startArtifact and endArtifact = :endArtifact " +
+			" and phraseEntityType =:phraseEntityType and altID = :altId";
+		HashMap<String, Object> params = new HashMap<String, Object>
