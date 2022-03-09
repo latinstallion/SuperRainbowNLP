@@ -151,4 +151,13 @@ public class Phrase implements Serializable  {
 		params.put("phraseEntityType", pPhraseMentionType);
 		params.put("altId", pAlt_id);
 		
-		List<
+		List<Phrase> phrase_objects = 
+				(List<Phrase>) HibernateUtil.executeReader(hql, params);
+	    
+		Phrase phrase_obj;
+	    if(phrase_objects.size()==0)
+	    {
+	    	phrase_obj = new Phrase();
+	    	phrase_obj.setPhraseContent(pPhraseContent);
+	    	phrase_obj.setStartArtifact(pStartArtifact);
+	    	phrase_ob
