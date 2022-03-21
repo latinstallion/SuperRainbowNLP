@@ -164,4 +164,13 @@ public class Phrase implements Serializable  {
 	    	phrase_obj.setPhraseEntityType(pPhraseMentionType);
 	    	HibernateUtil.save(phrase_obj);
 	    	FileUtil.logLine("/tmp/NonExistingPhrase.txt","pPhraseContent"+pPhraseContent
-	    			+" pStartArtifact "+pStartArtifact.getArtifactId()+ " pEndAr
+	    			+" pStartArtifact "+pStartArtifact.getArtifactId()+ " pEndArtifact "+pEndArtifact.getArtifactId());
+	    }else
+	    {
+	    	phrase_obj = 
+	    		phrase_objects.get(0);
+	    }
+	    return phrase_obj;
+	}
+	public static Phrase getInstance(String pPhraseContent, 
+			Artifact pStartArtifact, Artifact pEndArtifact, String 
