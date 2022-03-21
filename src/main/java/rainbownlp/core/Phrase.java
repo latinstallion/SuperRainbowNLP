@@ -177,4 +177,8 @@ public class Phrase implements Serializable  {
 		String hql = "from Phrase where phraseContent = :phraseContent "+
 			" and startArtifact"+ ((pStartArtifact!=null)?"= :startArtifact":" is null")
 				+" and endArtifact"+ ((pEndArtifact!=null)?"= :endArtifact":" is null")
-				+" 
+				+" and phraseEntityType =:phraseEntityType ";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("phraseContent", pPhraseContent);
+		if(pStartArtifact!=null)
+			params.put("startArtifact", pStartArtifact.getArtifac
