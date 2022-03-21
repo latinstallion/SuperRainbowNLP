@@ -173,4 +173,8 @@ public class Phrase implements Serializable  {
 	    return phrase_obj;
 	}
 	public static Phrase getInstance(String pPhraseContent, 
-			Artifact pStartArtifact, Artifact pEndArtifact, String 
+			Artifact pStartArtifact, Artifact pEndArtifact, String pPhraseMentionType){
+		String hql = "from Phrase where phraseContent = :phraseContent "+
+			" and startArtifact"+ ((pStartArtifact!=null)?"= :startArtifact":" is null")
+				+" and endArtifact"+ ((pEndArtifact!=null)?"= :endArtifact":" is null")
+				+" 
