@@ -200,4 +200,16 @@ public class Phrase implements Serializable  {
 	    	HibernateUtil.save(phrase_obj);
 	    	FileUtil.logLine("/tmp/NonExistingPhrase.txt","pPhraseContent"+pPhraseContent
 	    			+" pStartArtifact "+((pStartArtifact!=null)?pStartArtifact.getArtifactId():"null")+ 
-	    			" pEndArtifact "+((pEndArtifact!=null)?pEnd
+	    			" pEndArtifact "+((pEndArtifact!=null)?pEndArtifact.getArtifactId():"null"));
+	    }else
+	    {
+	    	phrase_obj = 
+	    		phrase_objects.get(0);
+	    }
+	    return phrase_obj;
+	}
+	public void setPhraseContent(String content) {
+		this.phraseContent = content;
+	}
+	@Index(name = "phraseContent")
+	@Column(name = "phraseContent", nullable
