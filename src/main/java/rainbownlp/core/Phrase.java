@@ -212,4 +212,15 @@ public class Phrase implements Serializable  {
 		this.phraseContent = content;
 	}
 	@Index(name = "phraseContent")
-	@Column(name = "phraseContent", nullable
+	@Column(name = "phraseContent", nullable = false, length = 1000)
+	public String getPhraseContent() {
+		if(phraseContent==null) return "";
+		return phraseContent;
+	}
+	
+	
+	
+	public void setStartArtifact(Artifact startArtifact) {
+		this.startArtifact = startArtifact;
+	}
+	@ManyToOne( 
