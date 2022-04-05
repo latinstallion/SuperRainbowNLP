@@ -223,4 +223,13 @@ public class Phrase implements Serializable  {
 	public void setStartArtifact(Artifact startArtifact) {
 		this.startArtifact = startArtifact;
 	}
-	@ManyToOne( 
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.LAZY )
+	@JoinColumn(name="startArtifact")
+	public Artifact getStartArtifact() {
+		return startArtifact;
+	}
+	public void setEndArtifact(Artifact endArtifactId) {
+		this.endArtifact = endArtifactId;
+	}
+	
+	@
