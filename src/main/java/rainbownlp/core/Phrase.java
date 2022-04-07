@@ -232,4 +232,15 @@ public class Phrase implements Serializable  {
 		this.endArtifact = endArtifactId;
 	}
 	
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} , fetch=FetchType.LAZY)
+	@JoinColumn(name="endArtifact")
+	public Artifact getEndArtifact() {
+		return endArtifact;
+	}
+	
+	public void setPhraseId(int phraseId) {
+		this.phraseId = phraseId;
+	}
+	
+	@Id
 	@
