@@ -243,4 +243,10 @@ public class Phrase implements Serializable  {
 	}
 	
 	@Id
-	@
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
+	public int getPhraseId() {
+		return phraseId;
+	}
+//	public void setAssociatedFilePath(String _associatedFilePath) {
+//		this.associatedFilePath = _associatedFilePa
