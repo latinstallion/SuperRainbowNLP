@@ -249,4 +249,14 @@ public class Phrase implements Serializable  {
 		return phraseId;
 	}
 //	public void setAssociatedFilePath(String _associatedFilePath) {
-//		this.associatedFilePath = _associatedFilePa
+//		this.associatedFilePath = _associatedFilePath;
+//	}
+//
+//	public String getAssociatedFilePath() {
+//		return associatedFilePath;
+//	}
+	public void setPhraseEntityType(String phraseEntityType) {
+		this.phraseEntityType = phraseEntityType;
+	}
+	public String getPhraseEntityType() {
+		return ph
