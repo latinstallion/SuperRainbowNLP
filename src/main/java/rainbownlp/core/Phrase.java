@@ -259,4 +259,10 @@ public class Phrase implements Serializable  {
 		this.phraseEntityType = phraseEntityType;
 	}
 	public String getPhraseEntityType() {
-		return ph
+		return phraseEntityType;
+	}
+	public static Phrase findInstance(String pFilePath, 
+			int pStartLineOffset, int pStartWordOffset,
+			int pEndLineOffset, int pEndWordOffset){
+		Artifact startArtifcat =
+				Artifact.findInstance(Artifact.Type.Word, pFi
