@@ -265,4 +265,10 @@ public class Phrase implements Serializable  {
 			int pStartLineOffset, int pStartWordOffset,
 			int pEndLineOffset, int pEndWordOffset){
 		Artifact startArtifcat =
-				Artifact.findInstance(Artifact.Type.Word, pFi
+				Artifact.findInstance(Artifact.Type.Word, pFilePath, pStartWordOffset, pStartLineOffset);
+		
+		Artifact endArtifcat =
+			Artifact.findInstance(Artifact.Type.Word, pFilePath, pEndWordOffset, pEndLineOffset);
+		
+		String hql = "from Phrase where startArtifact =" +
+			":startArtifact and endArtifact=
