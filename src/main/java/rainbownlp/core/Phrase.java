@@ -277,4 +277,15 @@ public class Phrase implements Serializable  {
 		params.put("endArtifact", endArtifcat.getArtifactId());
 		
 		List<Phrase> phrase_objects = 
-				(Lis
+				(List<Phrase>) HibernateUtil.executeReader(hql, params);
+	    
+	    
+		Phrase phrase_obj=null;
+	    if(phrase_objects.size()!=0)
+	    {
+	    	phrase_obj = 
+	    		phrase_objects.get(0);
+	    }
+	    return phrase_obj;
+	}
+	public static Phrase findInstance(String pPart
