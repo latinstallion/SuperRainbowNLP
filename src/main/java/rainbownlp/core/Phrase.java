@@ -271,4 +271,10 @@ public class Phrase implements Serializable  {
 			Artifact.findInstance(Artifact.Type.Word, pFilePath, pEndWordOffset, pEndLineOffset);
 		
 		String hql = "from Phrase where startArtifact =" +
-			":startArtifact and endArtifact=
+			":startArtifact and endArtifact= :endArtifact";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("startArtifact", startArtifcat.getArtifactId());
+		params.put("endArtifact", endArtifcat.getArtifactId());
+		
+		List<Phrase> phrase_objects = 
+				(Lis
