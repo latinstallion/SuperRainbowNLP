@@ -288,4 +288,10 @@ public class Phrase implements Serializable  {
 	    }
 	    return phrase_obj;
 	}
-	public static Phrase findInstance(String pPart
+	public static Phrase findInstance(String pPartialFileName, 
+			String altId){
+		
+		String hql = "from Phrase where startArtifact.associatedFilePath like" +
+			":filePath and altID = :altID";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("filePath", '%'+pPartialFileName+'%')
