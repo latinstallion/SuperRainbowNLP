@@ -315,4 +315,10 @@ public class Phrase implements Serializable  {
 		String hql = "from Phrase where startArtifact = :start" +
 			" and endArtifact= :end and PhraseEntityType = :phraseEntityType ";
 		
-		Has
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("start", startArtifact.getArtifactId());
+		params.put("end", endArtifact.getArtifactId());
+		params.put("phraseEntityType", phraseEntityType);
+		
+		List<Phrase> phrase_objects = 
+				(List<Phrase>) HibernateUtil.executeRe
