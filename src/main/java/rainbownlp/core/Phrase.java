@@ -294,4 +294,17 @@ public class Phrase implements Serializable  {
 		String hql = "from Phrase where startArtifact.associatedFilePath like" +
 			":filePath and altID = :altID";
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put("filePath", '%'+pPartialFileName+'%')
+		params.put("filePath", '%'+pPartialFileName+'%');
+		params.put("altID", altId);
+		
+		List<Phrase> phrase_objects = 
+				(List<Phrase>) HibernateUtil.executeReader(hql, params);
+	    
+	    
+		Phrase phrase_obj=null;
+	    if(phrase_objects.size()!=0)
+	    {
+	    	phrase_obj = 
+	    		phrase_objects.get(0);
+	    }
+	    return phrase_ob
