@@ -307,4 +307,12 @@ public class Phrase implements Serializable  {
 	    	phrase_obj = 
 	    		phrase_objects.get(0);
 	    }
-	    return phrase_ob
+	    return phrase_obj;
+	}
+	public static Phrase findInstance(Artifact startArtifact, Artifact endArtifact,
+			String phraseEntityType){
+		
+		String hql = "from Phrase where startArtifact = :start" +
+			" and endArtifact= :end and PhraseEntityType = :phraseEntityType ";
+		
+		Has
