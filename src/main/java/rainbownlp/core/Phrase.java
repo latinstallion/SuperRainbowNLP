@@ -334,4 +334,9 @@ public class Phrase implements Serializable  {
 	}
 	
 //	public static Phrase findInstance(String pFilePath, 
-//			int pStartCharIndex,
+//			int pStartCharIndex,String pContent){
+//		
+//		String hql = "from Phrase where startArtifact.startIndex =" +
+//			":startCharIndex and startArtifact.associatedFilePath = "+
+//			":filePath and phraseContent= :phraseContent";
+//		HashMap<String, Object> params = new HashMap<S
