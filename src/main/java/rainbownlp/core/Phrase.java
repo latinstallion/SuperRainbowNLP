@@ -339,4 +339,11 @@ public class Phrase implements Serializable  {
 //		String hql = "from Phrase where startArtifact.startIndex =" +
 //			":startCharIndex and startArtifact.associatedFilePath = "+
 //			":filePath and phraseContent= :phraseContent";
-//		HashMap<String, Object> params = new HashMap<S
+//		HashMap<String, Object> params = new HashMap<String, Object>();
+//		params.put("startCharIndex", pStartCharIndex);
+//		params.put("phraseContent", pContent);
+//		params.put("filePath", pFilePath);
+//		
+//		
+//		List<Phrase> phrase_objects = 
+//				(List<Phrase>) Hibernat
