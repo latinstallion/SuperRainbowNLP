@@ -357,4 +357,9 @@ public class Phrase implements Serializable  {
 //	    }
 //	    return phrase_obj;
 //	}
-	public static Phrase findInstance(Artifact pStartA
+	public static Phrase findInstance(Artifact pStartArtifact,String pContent){
+		
+		String hql = "from Phrase where startArtifact =" +
+			":startArtifact and phraseContent= :phraseContent";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("startArtifact", pStartArtifact.getArtifactId());
