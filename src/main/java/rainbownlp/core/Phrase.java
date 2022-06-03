@@ -377,4 +377,15 @@ public class Phrase implements Serializable  {
 	    	phrase_obj = 
 	    		phrase_objects.get(0);
 	    }
-	    return phra
+	    return phrase_obj;
+	}
+	public void setAltID(String altID) {
+		this.altID = altID;
+	}
+	public String getAltID() {
+		return altID;
+	}
+	public void setStartCharOffset(int startCharOffset) {
+		this.startCharOffset = startCharOffset;
+	}
+	public int getStartCharOffset(
