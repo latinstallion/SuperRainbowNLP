@@ -388,4 +388,15 @@ public class Phrase implements Serializable  {
 	public void setStartCharOffset(int startCharOffset) {
 		this.startCharOffset = startCharOffset;
 	}
-	public int getStartCharOffset(
+	public int getStartCharOffset() {
+		return startCharOffset;
+	}
+	public void setEndCharOffset(int endCharOffset) {
+		this.endCharOffset = endCharOffset;
+	}
+	public int getEndCharOffset() {
+		return endCharOffset;
+	}
+	
+	//This method returns all artifacts that are annotated
+	@Transien
