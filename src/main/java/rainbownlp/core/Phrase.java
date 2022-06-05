@@ -399,4 +399,11 @@ public class Phrase implements Serializable  {
 	}
 	
 	//This method returns all artifacts that are annotated
-	@Transien
+	@Transient
+	public static ArrayList<Artifact> getAnnotatedWordsInSentence(Artifact sentence)
+	{
+		List<Phrase> phrase_objects = getPhrasesInSentence(sentence);
+		
+		ArrayList<Artifact> annotated_artifacts = new ArrayList<Artifact>();
+		
+		for
