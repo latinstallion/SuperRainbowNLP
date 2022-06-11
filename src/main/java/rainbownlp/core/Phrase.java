@@ -413,4 +413,16 @@ public class Phrase implements Serializable  {
 //			annotated_artifacts.add(start_artifact);
 			
 			Artifact next_artifact =start_artifact;
-			whil
+			while(next_artifact!=null &&
+					!next_artifact.equals(end_artifact))
+			{
+				annotated_artifacts.add(next_artifact);
+				next_artifact = next_artifact.getNextArtifact();
+			}
+			annotated_artifacts.add(end_artifact);
+		}
+    
+	    return annotated_artifacts;
+	}
+	
+	p
