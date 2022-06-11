@@ -406,4 +406,11 @@ public class Phrase implements Serializable  {
 		
 		ArrayList<Artifact> annotated_artifacts = new ArrayList<Artifact>();
 		
-		for
+		for (Phrase p:phrase_objects)
+		{
+			Artifact start_artifact = p.getStartArtifact();
+			Artifact end_artifact =  p.getEndArtifact();
+//			annotated_artifacts.add(start_artifact);
+			
+			Artifact next_artifact =start_artifact;
+			whil
