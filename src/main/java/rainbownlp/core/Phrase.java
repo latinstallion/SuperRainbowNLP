@@ -425,4 +425,9 @@ public class Phrase implements Serializable  {
 	    return annotated_artifacts;
 	}
 	
-	p
+	public static List<Phrase> getPhrasesInSentence(Artifact sentence)
+	{
+		String hql = "from Phrase p where p.startArtifact.parentArtifact =" +
+			":sentId and p.endArtifact.parentArtifact =:sentId";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("sentId", sentence.getAr
