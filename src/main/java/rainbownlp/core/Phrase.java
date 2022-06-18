@@ -439,4 +439,9 @@ public class Phrase implements Serializable  {
 	}
 	public static List<Phrase> getOrderedPhrasesInSentence(Artifact sentence)
 	{	
-		String hql = "from Phrase p whe
+		String hql = "from Phrase p where p.startArtifact.parentArtifact =" +
+		":sentId and p.endArtifact.parentArtifact =:sentId and phraseEntityType <> 'SECTIME'";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("sentId", sentence.getArtifactId());
+		
+		List<Phrase> phrase_ob
