@@ -452,4 +452,15 @@ public class Phrase implements Serializable  {
 	}
 	public static Phrase getNextPhraseInSentence(Phrase p,Artifact sentence)
 	{	
-		Phrase next_
+		Phrase next_Phrase = null;
+		List<Phrase> ordered =getOrderedPhrasesInSentence(sentence);
+		
+		int index_of_p = ordered.indexOf(p);
+		if (index_of_p+1< ordered.size())
+		{
+			next_Phrase = ordered.get(index_of_p+1);
+			
+		}
+		
+		
+		re
