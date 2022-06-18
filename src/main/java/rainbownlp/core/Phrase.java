@@ -444,4 +444,12 @@ public class Phrase implements Serializable  {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("sentId", sentence.getArtifactId());
 		
-		List<Phrase> phrase_ob
+		List<Phrase> phrase_objects = (List<Phrase>) HibernateUtil.executeReader(hql, params);
+		Collections.sort(phrase_objects, new phraseComparator());
+		
+		
+		return phrase_objects;
+	}
+	public static Phrase getNextPhraseInSentence(Phrase p,Artifact sentence)
+	{	
+		Phrase next_
