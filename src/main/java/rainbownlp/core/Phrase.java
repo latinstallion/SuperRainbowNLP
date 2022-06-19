@@ -463,4 +463,12 @@ public class Phrase implements Serializable  {
 		}
 		
 		
-		re
+		return next_Phrase;
+	}
+	public static Phrase getPrevPhraseInSentence(Phrase p,Artifact sentence)
+	{	
+		Phrase prev_Phrase = null;
+		List<Phrase> ordered =getOrderedPhrasesInSentence(sentence);
+		
+		int index_of_p = ordered.indexOf(p);
+		if (index_o
