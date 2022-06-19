@@ -471,4 +471,17 @@ public class Phrase implements Serializable  {
 		List<Phrase> ordered =getOrderedPhrasesInSentence(sentence);
 		
 		int index_of_p = ordered.indexOf(p);
-		if (index_o
+		if (index_of_p-1>=0)
+		{
+			prev_Phrase = ordered.get(index_of_p-1);
+			
+		}
+		
+		
+		return prev_Phrase;
+	}
+	public static Artifact getFirstNounInPhrase(Phrase p,Artifact sentence)
+	{	
+		Artifact first_noun = null;
+		Artifact cur_artifact = p.getStartArtifact();
+		while (cur_artifact 
