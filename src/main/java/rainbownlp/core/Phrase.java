@@ -484,4 +484,20 @@ public class Phrase implements Serializable  {
 	{	
 		Artifact first_noun = null;
 		Artifact cur_artifact = p.getStartArtifact();
-		while (cur_artifact 
+		while (cur_artifact != p.getEndArtifact())
+		{
+			if(cur_artifact.getPOS().startsWith("NN"))
+			{
+				first_noun = cur_artifact;
+				break;
+			}
+			cur_artifact = cur_artifact.getNextArtifact();
+		}
+		if (first_noun ==null)
+		{
+			first_noun = p.getEndArtifact();
+		}
+
+		return first_noun;
+	}
+	public static
