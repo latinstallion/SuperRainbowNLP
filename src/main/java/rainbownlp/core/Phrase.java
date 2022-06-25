@@ -500,4 +500,12 @@ public class Phrase implements Serializable  {
 
 		return first_noun;
 	}
-	public static
+	public static Artifact getLastNounInPhrase(Phrase p,Artifact sentence)
+	{	
+		Artifact last_noun = null;
+		Artifact cur_artifact = p.getEndArtifact();
+		while (cur_artifact != p.getStartArtifact())
+		{
+			if(cur_artifact.getPOS().startsWith("NN"))
+			{
+				last_nou
