@@ -508,4 +508,18 @@ public class Phrase implements Serializable  {
 		{
 			if(cur_artifact.getPOS().startsWith("NN"))
 			{
-				last_nou
+				last_noun = cur_artifact;
+				break;
+			}
+			cur_artifact = cur_artifact.getPreviousArtifact();
+		}
+		if (last_noun ==null)
+		{
+			last_noun = p.getEndArtifact();
+		}
+
+		return last_noun;
+	}
+	public static boolean isNestedPhrase(Phrase p,Artifact sentence)
+	{	
+		boolean is_nested 
