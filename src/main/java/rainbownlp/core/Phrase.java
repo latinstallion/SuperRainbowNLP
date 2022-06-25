@@ -522,4 +522,12 @@ public class Phrase implements Serializable  {
 	}
 	public static boolean isNestedPhrase(Phrase p,Artifact sentence)
 	{	
-		boolean is_nested 
+		boolean is_nested = false;
+		Phrase next_p = getNextPhraseInSentence(p, sentence);
+		if(next_p != null && p.getEndArtifact().getWordIndex() >= next_p.getStartArtifact().getWordIndex() )
+		{
+			is_nested = true;
+		}
+		if (is_nested==false)
+		{
+			Phrase prev_p
