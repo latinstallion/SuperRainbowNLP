@@ -530,4 +530,16 @@ public class Phrase implements Serializable  {
 		}
 		if (is_nested==false)
 		{
-			Phrase prev_p
+			Phrase prev_p = getPrevPhraseInSentence(p, sentence);
+			if(prev_p != null && prev_p.getEndArtifact().getWordIndex() >= p.getStartArtifact().getWordIndex() )
+			{
+				is_nested = true;
+			}
+		}
+		
+		return is_nested;
+	}
+	@Transient
+	public String getPOS() {
+		
+		
