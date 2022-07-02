@@ -542,4 +542,12 @@ public class Phrase implements Serializable  {
 	@Transient
 	public String getPOS() {
 		
+		Artifact start_artifact = getStartArtifact();
+		Artifact end_Artifact  = getEndArtifact();
+		Artifact cur_artifact = start_artifact;
 		
+		String pos = "";
+		while(!cur_artifact.equals(end_Artifact))
+		{
+			pos += cur_artifact.getPOS()+"-";
+			cur_artifact = cur_artifact.getNextArtifact();
