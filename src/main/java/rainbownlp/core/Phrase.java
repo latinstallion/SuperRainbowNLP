@@ -562,4 +562,14 @@ public class Phrase implements Serializable  {
 	{
 		List<Integer> included_offsets =  new ArrayList();
 		
-		Artifact start_artifact = getStartArti
+		Artifact start_artifact = getStartArtifact();
+		Artifact end_Artifact  = getEndArtifact();
+		Artifact cur_artifact = start_artifact;
+		
+		while(!cur_artifact.equals(end_Artifact))
+		{
+			
+			included_offsets.add(cur_artifact.getWordIndex());
+			cur_artifact = cur_artifact.getNextArtifact();
+		}
+		included_offsets.add(cur_artifac
