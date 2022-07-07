@@ -551,3 +551,15 @@ public class Phrase implements Serializable  {
 		{
 			pos += cur_artifact.getPOS()+"-";
 			cur_artifact = cur_artifact.getNextArtifact();
+		}
+		pos += cur_artifact.getPOS();
+		
+		return pos;
+		
+	}
+	//this returns the offsets included in this phrase
+	public List<Integer> listWordOffsetsInPhrase()
+	{
+		List<Integer> included_offsets =  new ArrayList();
+		
+		Artifact start_artifact = getStartArti
