@@ -572,4 +572,12 @@ public class Phrase implements Serializable  {
 			included_offsets.add(cur_artifact.getWordIndex());
 			cur_artifact = cur_artifact.getNextArtifact();
 		}
-		included_offsets.add(cur_artifac
+		included_offsets.add(cur_artifact.getWordIndex());
+		return included_offsets;
+	}
+	//this is somehow duplicate with normalizedhead...
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+    @JoinColumn(name="headArtifact")
+	public Artifact getHeadArtifact() throws SQLException {
+		
+		if
