@@ -593,4 +593,14 @@ public class Phrase implements Serializable  {
 		}
 	}
 //	TODO: improve and make it a solid approach
-	private Artifact cal
+	private Artifact calculateHeadWord() throws SQLException
+	{
+		Artifact head = getEndArtifact();
+		if (getStartArtifact().getArtifactId() == getEndArtifact().getArtifactId())
+		{
+			return head;
+		}
+		String phrase_pos= getPOS();
+		String type = getPhraseEntityType();
+		
+	
