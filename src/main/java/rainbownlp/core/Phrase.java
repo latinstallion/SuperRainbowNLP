@@ -580,4 +580,17 @@ public class Phrase implements Serializable  {
     @JoinColumn(name="headArtifact")
 	public Artifact getHeadArtifact() throws SQLException {
 		
-		if
+		if (headArtifact!=null)
+		{
+			return headArtifact;
+		}
+		else
+		{
+//			Artifact h= calculateHeadWord();
+//			setHeadArtifact(h);
+//			HibernateUtil.save(this);
+			return null;
+		}
+	}
+//	TODO: improve and make it a solid approach
+	private Artifact cal
