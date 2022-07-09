@@ -603,4 +603,8 @@ public class Phrase implements Serializable  {
 		String phrase_pos= getPOS();
 		String type = getPhraseEntityType();
 		
-	
+		if(type.equals("EVENT"))
+		{	
+			if (phrase_pos != null && (phrase_pos.equals("VB-RP") || phrase_pos.equals("VBG-RP")
+					|| phrase_pos.equals("VBN-JJ") || phrase_pos.equals("VB-IN") || phrase_pos.equals("VBN-IN"))
+					||  phrase_pos.equals("JJ-TO-VB
