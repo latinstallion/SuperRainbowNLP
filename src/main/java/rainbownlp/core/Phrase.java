@@ -607,4 +607,15 @@ public class Phrase implements Serializable  {
 		{	
 			if (phrase_pos != null && (phrase_pos.equals("VB-RP") || phrase_pos.equals("VBG-RP")
 					|| phrase_pos.equals("VBN-JJ") || phrase_pos.equals("VB-IN") || phrase_pos.equals("VBN-IN"))
-					||  phrase_pos.equals("JJ-TO-VB
+					||  phrase_pos.equals("JJ-TO-VB") ||  phrase_pos.startsWith("VBG-TO"))
+			{
+				head = getStartArtifact();
+			}
+			else if(!getEndArtifact().getContent().matches(".*\\W$"))
+			{
+				head = getEndArtifact();
+			}
+			else
+			{
+				Artifact cur_artifact = getEndArtifact();
+				while(cur_artifact 
