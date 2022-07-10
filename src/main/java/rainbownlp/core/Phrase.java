@@ -632,4 +632,9 @@ public class Phrase implements Serializable  {
 			//get the type of the timex
 //			TimexPhrase timex_obj = TimexPhrase.getRelatedTimexFromPhrase(this);
 //			TimexPhrase.TimexType  timex_type = timex_obj.getTimexType();
-			Artifact sentence = getStartArtifact().g
+			Artifact sentence = getStartArtifact().getParentArtifact();
+//			Phrase next_p= Phrase.getNextPhraseInSentence(this, sentence);
+//		
+//			if(timex_type != null && timex_type.equals(TimexPhrase.TimexType.DATE))
+//			{
+				if (getPhraseContent().startsWith("\\d+\\/") || getPhraseContent().s
