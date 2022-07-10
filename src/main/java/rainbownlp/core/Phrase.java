@@ -657,4 +657,8 @@ public class Phrase implements Serializable  {
 		return head;
 	}
 	
-	public void setHe
+	public void setHeadArtifact(Artifact headArtifact) {
+		this.headArtifact = headArtifact;
+	}
+	public static List<Phrase> getPhrasesInDocument(String file_path) {
+		String hql = "from Phrase p where p.startArtifact.associatedFilePath = :filePath " 
