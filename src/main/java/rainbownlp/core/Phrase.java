@@ -637,4 +637,24 @@ public class Phrase implements Serializable  {
 //		
 //			if(timex_type != null && timex_type.equals(TimexPhrase.TimexType.DATE))
 //			{
-				if (getPhraseContent().startsWith("\\d+\\/") || getPhraseContent().s
+				if (getPhraseContent().startsWith("\\d+\\/") || getPhraseContent().startsWith("\\d+-"))
+				{
+					head = getStartArtifact();
+				}
+				else
+				{
+					head = Phrase.getFirstNounInPhrase(this, sentence);
+				}
+				
+//			}
+//			else
+//			{
+//				
+//				head = Phrase.getFirstNounInPhrase(this, sentence);
+//			}
+			
+		}
+		return head;
+	}
+	
+	public void setHe
