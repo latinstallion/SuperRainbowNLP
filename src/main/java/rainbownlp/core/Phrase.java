@@ -627,4 +627,9 @@ public class Phrase implements Serializable  {
 			}
 //			
 		}
-		else if (ty
+		else if (type.equals("TIMEX3"))
+		{
+			//get the type of the timex
+//			TimexPhrase timex_obj = TimexPhrase.getRelatedTimexFromPhrase(this);
+//			TimexPhrase.TimexType  timex_type = timex_obj.getTimexType();
+			Artifact sentence = getStartArtifact().g
