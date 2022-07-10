@@ -618,4 +618,13 @@ public class Phrase implements Serializable  {
 			else
 			{
 				Artifact cur_artifact = getEndArtifact();
-				while(cur_artifact 
+				while(cur_artifact != null && cur_artifact != getStartArtifact() && (cur_artifact.getContent().matches("\\W") ||
+						cur_artifact.getContent().matches("\\W.*")))
+				{
+					cur_artifact = cur_artifact.getPreviousArtifact();
+				}
+				head = cur_artifact;
+			}
+//			
+		}
+		else if (ty
