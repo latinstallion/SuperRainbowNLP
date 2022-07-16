@@ -661,4 +661,13 @@ public class Phrase implements Serializable  {
 		this.headArtifact = headArtifact;
 	}
 	public static List<Phrase> getPhrasesInDocument(String file_path) {
-		String hql = "from Phrase p where p.startArtifact.associatedFilePath = :filePath " 
+		String hql = "from Phrase p where p.startArtifact.associatedFilePath = :filePath " +
+				"and p.phraseEntityType is not null";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("filePath", file_path);
+		
+		List<Phrase> phrase_objects = 
+			(List<Phrase>) HibernateUtil.executeReader(hql, params);
+		
+		return phrase_objects;
+	}
