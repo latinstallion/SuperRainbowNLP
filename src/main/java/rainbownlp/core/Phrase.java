@@ -671,3 +671,16 @@ public class Phrase implements Serializable  {
 		
 		return phrase_objects;
 	}
+	@Override
+	public String toString()
+	{
+		return "Id="+getPhraseId()+"/Content="+
+			getPhraseContent();
+	}
+	public void setAltLineIndex(Integer altLineIndex) {
+		this.altLineIndex = altLineIndex;
+	}
+	public Integer getAltLineIndex() {
+		return altLineIndex;
+	}
+	public void set
