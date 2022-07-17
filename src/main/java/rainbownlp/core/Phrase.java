@@ -683,4 +683,13 @@ public class Phrase implements Serializable  {
 	public Integer getAltLineIndex() {
 		return altLineIndex;
 	}
-	public void set
+	public void setAltStartWordIndex(Integer altStartWordIndex) {
+		this.altStartWordIndex = altStartWordIndex;
+	}
+	public Integer getAltStartWordIndex() {
+		return altStartWordIndex;
+	}
+	public void setAltEndWordIndex(Integer altEndWordIndex) {
+		this.altEndWordIndex = altEndWordIndex;
+	}
+	public Integer 
