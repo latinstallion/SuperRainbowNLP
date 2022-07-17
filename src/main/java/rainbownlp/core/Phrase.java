@@ -692,4 +692,13 @@ public class Phrase implements Serializable  {
 	public void setAltEndWordIndex(Integer altEndWordIndex) {
 		this.altEndWordIndex = altEndWordIndex;
 	}
-	public Integer 
+	public Integer getAltEndWordIndex() {
+		return altEndWordIndex;
+	}
+	
+	public static boolean isSecTime(Phrase p)
+	{
+		boolean is_sectime = false;
+		Artifact startArtifact = p.getStartArtifact();
+		String hql = "from Phrase where startArtifact = "+
+		startArtifact.getArtifactId()+
