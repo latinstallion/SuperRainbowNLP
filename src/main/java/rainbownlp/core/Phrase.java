@@ -701,4 +701,14 @@ public class Phrase implements Serializable  {
 		boolean is_sectime = false;
 		Artifact startArtifact = p.getStartArtifact();
 		String hql = "from Phrase where startArtifact = "+
-		startArtifact.getArtifactId()+
+		startArtifact.getArtifactId()+" and endArtifact="+
+		p.getEndArtifact().getArtifactId()+
+		" and phraseEntityType = 'SECTIME'";
+		List<Phrase> phrase_obj = 
+			(List<Phrase>)HibernateUtil.executeReader(hql);
+		if (phrase_obj.size()!=0)
+		{
+			is_sectime = true;
+		}
+			
+		return i
