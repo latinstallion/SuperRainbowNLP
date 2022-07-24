@@ -711,4 +711,15 @@ public class Phrase implements Serializable  {
 			is_sectime = true;
 		}
 			
-		return i
+		return is_sectime;
+	}
+	public void setNormalizedHead(String normalizedHead) {
+		this.normalizedHead = normalizedHead;
+	}
+	public String getNormalizedHead() {
+		return normalizedHead;
+	}
+	public void setNormalOffset(Integer normalOffset) {
+		this.normalOffset = normalOffset;
+	}
+	
