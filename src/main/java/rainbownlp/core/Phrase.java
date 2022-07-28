@@ -722,4 +722,14 @@ public class Phrase implements Serializable  {
 	public void setNormalOffset(Integer normalOffset) {
 		this.normalOffset = normalOffset;
 	}
+	public Integer getNormalOffset() {
+		return normalOffset;
+	}
 	
+	@Override public boolean equals(Object pPhrase)
+	{
+		if(!(pPhrase instanceof Phrase))
+			return false;
+		Phrase p = (Phrase)pPhrase;
+		return (p.getPhraseId() == phraseId) || 
+				(p.getPhraseContent()==phraseContent 
