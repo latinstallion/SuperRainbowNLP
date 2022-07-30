@@ -732,4 +732,12 @@ public class Phrase implements Serializable  {
 			return false;
 		Phrase p = (Phrase)pPhrase;
 		return (p.getPhraseId() == phraseId) || 
-				(p.getPhraseContent()==phraseContent 
+				(p.getPhraseContent()==phraseContent && 
+				p.getStartArtifact().equals(getStartArtifact()) &&
+				p.getEndArtifact().equals(getEndArtifact()));
+	}
+	@Override public int hashCode()
+	{
+		return phraseId;
+	}
+	public static class phraseComparator implements
