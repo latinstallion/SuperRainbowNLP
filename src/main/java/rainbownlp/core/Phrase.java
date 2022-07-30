@@ -740,4 +740,10 @@ public class Phrase implements Serializable  {
 	{
 		return phraseId;
 	}
-	public static class phraseComparator implements
+	public static class phraseComparator implements Comparator<Phrase>{
+	    public int compare(Phrase p1, Phrase p2) {
+	        return ((Integer)p1.getStartCharOffset()).compareTo((Integer)(p2.getStartCharOffset()));
+	    }
+	}
+	@Transient	
+	public static List<Phrase> getPhrasesBetweenPhrases(Phrase phrase1,Phrase phrase2
