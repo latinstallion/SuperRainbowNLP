@@ -765,4 +765,14 @@ public class Phrase implements Serializable  {
 		{
 			gov_verb = this.getStartArtifact();
 		}
-		e
+		else
+		{
+			Artifact next = this.getEndArtifact().getNextArtifact();
+			if (next != null && next.getPOS().startsWith("VB"))
+			{
+				Artifact next_verb = next.getNextArtifact();
+				if (next_verb.getPOS().matches("VBD"))
+				{
+					gov_verb = next_verb;
+				}
+		
