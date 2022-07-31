@@ -760,4 +760,9 @@ public class Phrase implements Serializable  {
 		Artifact gov_verb = null;
 		String pos = getPOS();
 
-		if (pos != null && (pos.
+		if (pos != null && (pos.matches("VB|VBD|VBN|VBP|VBZ") || pos.equals("VB-RP") || pos.equals("VBG-RP")|| pos.equals("VBN-JJ") || pos.equals("VB-IN") || pos.equals("VBN-IN"))
+				||  pos.equals("JJ-TO-VB") ||  pos.startsWith("VBG-TO"))
+		{
+			gov_verb = this.getStartArtifact();
+		}
+		e
