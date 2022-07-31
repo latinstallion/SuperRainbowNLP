@@ -749,4 +749,15 @@ public class Phrase implements Serializable  {
 	public static List<Phrase> getPhrasesBetweenPhrases(Phrase phrase1,Phrase phrase2, String filePath) {
 		String hql = "FROM Phrase where startCharOffset > :endphrase1 and endCharOffset<:startphrase2 and startArtifact.associatedFilePath=:filePath";
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put("endphrase1", phrase1.getEndCh
+		params.put("endphrase1", phrase1.getEndCharOffset());
+		params.put("startphrase2", phrase2.getStartCharOffset());
+		params.put("filePath", filePath);
+		return (List<Phrase>) HibernateUtil.executeReader(hql, params);
+	}
+
+		
+	public Artifact calclateGovVerb() {
+		Artifact gov_verb = null;
+		String pos = getPOS();
+
+		if (pos != null && (pos.
