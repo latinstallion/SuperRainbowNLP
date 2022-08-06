@@ -788,4 +788,15 @@ public class Phrase implements Serializable  {
 				{
 					prev = prev.getPreviousArtifact();
 				}
-				i
+				if (prev != null && prev.getPOS().startsWith("VB"))
+				{
+					gov_verb = prev;
+				}
+			}
+			//if still null
+			if (gov_verb == null)
+			{
+				while (next != null  &&
+						!next.getPOS().matches("VB|VBD|VBN|VBP|VBZ") )
+				{
+					next = next.get
