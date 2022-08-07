@@ -813,3 +813,21 @@ public class Phrase implements Serializable  {
 						gov_verb = next;
 					}
 					
+				}
+			}
+		}
+		
+		return gov_verb;
+	}
+	public Phrase getPreviousPhrase(List<Phrase> oregered_list)
+	{
+		Phrase prev = null;
+		int index = oregered_list.indexOf(this)-1;
+		if (index !=-1)
+		{
+			prev = oregered_list.get(index);
+		}
+		return prev;
+		
+	}
+	@ManyToOne( cascade = {Cascad
