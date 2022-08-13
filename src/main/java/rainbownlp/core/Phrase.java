@@ -830,4 +830,14 @@ public class Phrase implements Serializable  {
 		return prev;
 		
 	}
-	@ManyToOne( cascade = {Cascad
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+    @JoinColumn(name="govVerb")
+	public Artifact getGovVerb() {
+		return govVerb;
+	}
+	public void setGovVerb(Artifact govVerb) {
+		this.govVerb = govVerb;
+	}
+	public static Phrase createIndependentPhrase(String term) {
+		
+		r
