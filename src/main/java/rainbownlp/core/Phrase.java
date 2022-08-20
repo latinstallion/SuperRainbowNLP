@@ -840,4 +840,6 @@ public class Phrase implements Serializable  {
 	}
 	public static Phrase createIndependentPhrase(String term) {
 		
-		r
+		return getInstance(term, null, null, "SINGLEPHRASE");
+	}
+}
