@@ -16,4 +16,15 @@ import rainbownlp.preprocess.SimpleDocumentLoader;
  * @author eemadzadeh
  *
  */
-public 
+public class RainbowEngine {
+	List<Artifact> documentsInPipe = null;
+	List<MLExample> trainExamplesInPipe = null;
+	List<MLExample> testExamplesInPipe = null;
+	public static enum DatasetType{
+		TRAIN_SET,
+		TEST_SET
+	}
+	/**
+	 * Load the input data
+	 * @param inputRootPath
+	 * @param
