@@ -211,3 +211,208 @@ String betweenContent = null;
 				}
 				if(curArtifact==null) betweenContent="<BETWEENSENTENCE>";
 				else			
+					betweenContent = betweenContent.trim();
+			}
+		}
+		return betweenContent;
+	}
+
+	
+	@Transient
+	public Phrase getFirstPhrase() {
+	if(toPhrase.getStartArtifact().getStartIndex()<
+			fromPhrase.getStartArtifact().getStartIndex())
+				return toPhrase;
+		else
+			return fromPhrase;
+	}
+
+@Transient
+	public Phrase getSecondPhrase() {
+		if(toPhrase.getStartArtifact().getStartIndex()<
+		fromPhrase.getStartArtifact().getStartIndex())
+			return fromPhrase;
+		else
+			return toPhrase;
+	}
+
+
+public boolean linkedWithAnotherPhraseInBetween() {
+	String hql = "from PhraseLink where fromPhrase = "+ fromPhrase.getPhraseId()+
+			" and toPhrase <> "+ toPhrase.getPhraseId()+" and toPhrase.startArtifact.startIndex < "
+			+ toPhrase.getStartArtifact().getStartIndex();
+	
+	List<PhraseLink> link_objects = 
+	(List<PhraseLink>) HibernateUtil.executeReader(hql);
+		
+	return link_objects.size()>0;
+}
+
+
+public void setAltLinkID(String altLinkID) {
+	this.altLinkID = altLinkID;
+}
+
+
+public String getAltLinkID() {
+	return altLinkID;
+}
+
+
+public static List<PhraseLink> findAllPhraseLinkInDocument(Artifact doc) {
+	String hql = "from PhraseLink where toPhrase.endArtifact.parentArtifact.parentArtifact= :docId ";
+	HashMap<String, Object> params = new HashMap<String, Object>();
+	params.put("docId", doc.getArtifactId());
+	
+	List<PhraseLink> link_objects = 
+			(List<PhraseLink>) HibernateUtil.executeReader(hql,params);
+	
+	return link_objects;
+}
+public static String findLargestAltLinkId(String filePath,String altIdNameGroup)
+{
+	String largest_id = null;
+	String hql = "from PhraseLink where fromPhrase.startArtifact.associatedFilePath= :filePath " +
+			" and altLinkId like :altLinkIDGroup order by altLinkId desc ";
+	HashMap<String, Object> params = new HashMap<String, Object>();
+	params.put("filePath", filePath);
+	params.put("altLinkIDGroup", altIdNameGroup+'%');
+	
+	List<PhraseLink> link_objects = 
+		(List<PhraseLink>) HibernateUtil.executeReader(hql,params);
+	PhraseLink pl = null;
+	String altId = null;
+	
+	if (link_objects.get(0) != null)
+	{
+		pl = link_objects.get(0);
+		altId =  pl.getAltLinkID();
+		largest_id = altId.replaceAll(altIdNameGroup+"(\\d+)", "$1");
+	}
+	
+	
+	return largest_id;
+}
+public static List<PhraseLink> getPhraseLinkBetweenSent() {
+	String hql = "from PhraseLink where " +
+			" fromPhrase.startArtifact.parentArtifact <>  toPhrase.startArtifact.parentArtifact " +
+			" and altLinkID is not null and altLinkID not like 'SECTIME%'" +
+			" order by fromPhrase.startArtifact.parentArtifact.parentArtifact";
+	List<PhraseLink> link_objects = 
+		(List<PhraseLink>) HibernateUtil.executeReader(hql);
+	return link_objects;
+}
+public static List<PhraseLink> getPhraseLinkBetweenSentByType(LinkType type) {
+	String hql = "from PhraseLink where " +
+			" fromPhrase.startArtifact.parentArtifact <>  toPhrase.startArtifact.parentArtifact " +
+			" and altLinkID is not null and altLinkID not like 'SECTIME%' " +
+			"and linkType ="+type.ordinal();
+	List<PhraseLink> link_objects = 
+		(List<PhraseLink>) HibernateUtil.executeReader(hql);
+	return link_objects;
+}
+
+
+public static PhraseLink getInstance(Artifact artifact1, Artifact artifact2) {
+	Phrase phrase1 = Phrase.getInstance(artifact1.getContent(), artifact1, artifact1);
+	Phrase phrase2 = Phrase.getInstance(artifact2.getContent(), artifact2, artifact2);
+	
+	return getInstance(phrase1, phrase2);
+}
+
+
+public static boolean sentencesLinked(Artifact sentence1, Artifact sentence2) {
+	String hql = "from PhraseLink where " +
+			" fromPhrase.startArtifact.parentArtifact = "+ sentence1.getArtifactId() +
+			" and toPhrase.startArtifact.parentArtifact = " + sentence2.getArtifactId() +
+			" and altLinkID is not null and altLinkID not like 'SECTIME%' ";
+	Session session = HibernateUtil.sessionFactory.openSession();
+	List<PhraseLink> link_objects = 
+		(List<PhraseLink>) HibernateUtil.executeReader(hql, null, null, session);
+	session.clear();
+	session.close();
+	return link_objects.size()>0?true:false;
+}
+
+public static PhraseLink findPhraseLink(Phrase pfromPhrase, Phrase pToPhrase){
+	String hql = "from PhraseLink where fromPhrase = "+
+		pfromPhrase.getPhraseId()+" and toPhrase="+pToPhrase.getPhraseId();
+	
+	List<PhraseLink> link_objects = 
+			(List<PhraseLink>) HibernateUtil.executeReader(hql);
+    
+    
+	PhraseLink phraseLink_obj = null;
+    if(link_objects.size()!=0)
+    {
+    	phraseLink_obj = link_objects.get(0);
+    	
+    }
+    return phraseLink_obj;
+}
+public static PhraseLink findPhraseLinkForExamples(Phrase pfromPhrase, Phrase pToPhrase){
+	String hql = "from PhraseLink where forTrain is null and fromPhrase = "+
+		pfromPhrase.getPhraseId()+" and toPhrase="+pToPhrase.getPhraseId();
+	
+	List<PhraseLink> link_objects = 
+			(List<PhraseLink>) HibernateUtil.executeReader(hql);
+    
+    
+	PhraseLink phraseLink_obj = null;
+    if(link_objects.size()!=0)
+    {
+    	phraseLink_obj = link_objects.get(0);
+    	
+    }
+//    else
+//    {
+//    	String hql2 = "from PhraseLink where fromPhrase = "+
+//    	pToPhrase.getPhraseId()+" and toPhrase="+pfromPhrase.getPhraseId();
+//	
+//    	link_objects = 
+//			(List<PhraseLink>) HibernateUtil.executeReader(hql);
+//    	if(link_objects.size()!=0)
+//        {
+//        	phraseLink_obj = link_objects.get(0);
+//        	
+//        }
+//    }
+    return phraseLink_obj;
+}
+@Transient
+public boolean isLeftToRight() {
+	
+	return getFirstPhrase().equals(fromPhrase);
+}
+
+
+public void setLinkTypeReal(LinkType linkTypeReal) {
+	this.linkTypeReal = linkTypeReal;
+}
+
+
+public LinkType getLinkTypeReal() {
+	return linkTypeReal;
+}
+
+
+public void setLinkTypeClosure(LinkType linkTypeClosure) {
+	this.linkTypeClosure = linkTypeClosure;
+}
+
+
+public LinkType getLinkTypeClosure() {
+	return linkTypeClosure;
+}
+
+
+public void setLinkTypeIntegrated(LinkType linkTypeIntegrated) {
+	this.linkTypeIntegrated = linkTypeIntegrated;
+}
+
+
+public LinkType getLinkTypeIntegrated() {
+	return linkTypeIntegrated;
+}
+	
+}
