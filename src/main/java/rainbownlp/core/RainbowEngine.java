@@ -27,4 +27,12 @@ public class RainbowEngine {
 	/**
 	 * Load the input data
 	 * @param inputRootPath
-	 * @param
+	 * @param inputType
+	 * @return
+	 */
+	public RainbowEngine readInput(String inputRootPath, InputType inputType, DatasetType datasetType){
+		switch (inputType) {
+			case TextFiles:
+				SimpleDocumentLoader loader = new SimpleDocumentLoader();
+				loader.setDatasetType(datasetType);
+				
