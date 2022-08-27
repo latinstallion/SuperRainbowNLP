@@ -35,4 +35,17 @@ public class RainbowEngine {
 			case TextFiles:
 				SimpleDocumentLoader loader = new SimpleDocumentLoader();
 				loader.setDatasetType(datasetType);
-				
+				documentsInPipe = loader.processDocuments(inputRootPath);
+				break;
+			default:
+				break;
+		}
+		return this;
+	}
+	/**
+	 * Create example on the latest documents loaded by readInput and train the model
+	 * @param exampleBuilder
+	 * @param learner
+	 * @return
+	 * @throws Exception
+	 
