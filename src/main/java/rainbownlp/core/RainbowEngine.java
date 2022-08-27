@@ -48,4 +48,12 @@ public class RainbowEngine {
 	 * @param learner
 	 * @return
 	 * @throws Exception
-	 
+	 */
+	public RainbowEngine train(IMLExampleBuilder exampleBuilder, LearnerEngine learner) throws Exception{
+		trainExamplesInPipe = exampleBuilder.getExamples(DatasetType.TRAIN_SET.name());
+		learner.train(trainExamplesInPipe);
+		return this;
+	}
+	
+	/**
+	 * Crea
