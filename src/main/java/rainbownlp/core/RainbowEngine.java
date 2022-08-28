@@ -62,4 +62,11 @@ public class RainbowEngine {
 	 * @return
 	 * @throws Exception
 	 */
-	public IEvaluationResult test(IMLExampleBuilder exampleBuilder, LearnerEngine learner)
+	public IEvaluationResult test(IMLExampleBuilder exampleBuilder, LearnerEngine learner) throws Exception{
+		testExamplesInPipe = exampleBuilder.getExamples(DatasetType.TEST_SET.name());
+		learner.test(testExamplesInPipe);
+		return Evaluator.getEvaluationResult(testExamplesInPipe);
+	}
+	
+	/**
+	 * Perform classfold validation on the trai
