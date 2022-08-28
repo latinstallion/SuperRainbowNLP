@@ -56,4 +56,10 @@ public class RainbowEngine {
 	}
 	
 	/**
-	 * Crea
+	 * Create example on the latest documents loaded by readInput and apply trained model
+	 * @param exampleBuilder
+	 * @param learner
+	 * @return
+	 * @throws Exception
+	 */
+	public IEvaluationResult test(IMLExampleBuilder exampleBuilder, LearnerEngine learner)
