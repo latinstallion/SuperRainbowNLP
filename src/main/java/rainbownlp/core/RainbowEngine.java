@@ -69,4 +69,11 @@ public class RainbowEngine {
 	}
 	
 	/**
-	 * Perform classfold validation on the trai
+	 * Perform classfold validation on the trainset. trainset must be loaded before calling this method with readInput
+	 * @param cfValidator
+	 * @param exampleBuilder
+	 * @param folds
+	 * @return
+	 * @throws Exception
+	 */
+	public IEvaluationResult crossValidate(ICrossfoldValidator cfValidator, IMLE
