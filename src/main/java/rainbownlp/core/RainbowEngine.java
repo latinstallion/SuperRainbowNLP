@@ -76,4 +76,7 @@ public class RainbowEngine {
 	 * @return
 	 * @throws Exception
 	 */
-	public IEvaluationResult crossValidate(ICrossfoldValidator cfValidator, IMLE
+	public IEvaluationResult crossValidate(ICrossfoldValidator cfValidator, IMLExampleBuilder exampleBuilder, int folds) throws Exception{
+		if(trainExamplesInPipe == null)
+			trainExamplesInPipe = exampleBuilder.getExamples(DatasetType.TRAIN_SET.name());
+		return cfValidator.crossValidation(trainExamplesInPipe, fold
