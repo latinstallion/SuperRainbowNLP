@@ -9,4 +9,15 @@ import java.util.Properties;
 import rainbownlp.parser.ParseHandler;
 
 
-public class Setti
+public class Setting {
+	public static final String RuleSureCorpus = "RuleSure";
+	public static boolean SaveInGetInstance = true;
+	static Properties configFile;
+	public enum OperationMode
+	{
+		TRIGGER,
+		EDGE,
+		ARTIFACT
+	}
+	public static OperationMode Mode = OperationMode.TRIGGER;
+	public static boolean Training
