@@ -31,4 +31,11 @@ public class Setting {
 	public static enum SVMKernels  {
 		  Linear, //0: linear (default)
         Polynomial, //1: polynomial (s a*b+c)^d
-        Radial, //2: r
+        Radial, //2: radial basis function exp(-gamma ||a-b||^2)
+        SigmoidTanh //3: sigmoid tanh(s a*b + c)
+	};
+	public static SVMKernels SVMKernel;
+
+	public static boolean batchMode = false;
+	public static int crossValidationFold;
+	public static int crossFol
