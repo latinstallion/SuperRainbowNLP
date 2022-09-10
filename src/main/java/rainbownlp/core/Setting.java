@@ -24,4 +24,11 @@ public class Setting {
 	// This switch between using Development set or Test set for evaluation, set to true if you want to generate test submission files
 	public static boolean ReleaseMode = false;
 	public static int NotTriggerNumericValue = 10;
-	public st
+	public static int NotEdgeNumericValue = 9;
+	public static int MinInstancePerLeaf;
+	public static Double SVMCostParameter;
+	public static Double SVMPolyCParameter;
+	public static enum SVMKernels  {
+		  Linear, //0: linear (default)
+        Polynomial, //1: polynomial (s a*b+c)^d
+        Radial, //2: r
