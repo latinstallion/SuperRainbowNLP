@@ -38,4 +38,16 @@ public class Setting {
 
 	public static boolean batchMode = false;
 	public static int crossValidationFold;
-	public static int crossFol
+	public static int crossFoldCurrent = 0;
+	
+//	public static String[] getClasses()
+//	{
+//		String[] classes = getValue("classes").split("|");
+//		return classes;
+//	}
+	public static void init()
+	{
+		if(configFile == null){
+			  configFile = new Properties();
+			try {
+				InputStream config_fil
