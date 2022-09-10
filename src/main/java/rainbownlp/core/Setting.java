@@ -20,4 +20,8 @@ public class Setting {
 		ARTIFACT
 	}
 	public static OperationMode Mode = OperationMode.TRIGGER;
-	public static boolean Training
+	public static boolean TrainingMode = true;
+	// This switch between using Development set or Test set for evaluation, set to true if you want to generate test submission files
+	public static boolean ReleaseMode = false;
+	public static int NotTriggerNumericValue = 10;
+	public st
