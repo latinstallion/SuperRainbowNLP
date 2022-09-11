@@ -67,4 +67,16 @@ public class Setting {
 	
 	public static String getValue(String key){
 		init();
-		return configFile.getPropert
+		return configFile.getProperty(key);
+	}
+
+	public static int getValueInteger(String key) {
+		int result = Integer.parseInt(getValue(key));
+		return result;
+	}
+
+	public static String getResourcePath(String resourceName) {
+		return Setting.class.getClassLoader().getResource(resourceName).getPath();
+	}
+
+	public static InputSt
