@@ -55,4 +55,9 @@ public class Setting {
 				configFile.load(config_file);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.
+				e.printStackTrace();
+			}
+			MinInstancePerLeaf = Integer.parseInt(configFile.getProperty("MinInstancePerLeaf"));
+			SVMCostParameter = Double.parseDouble(configFile.getProperty("SVMCostParameter"));
+			SVMPolyCParameter = Double.parseDouble(configFile.getProperty("SVMPolyCParameter"));
+			R
