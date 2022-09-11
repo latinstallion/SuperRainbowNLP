@@ -60,4 +60,11 @@ public class Setting {
 			MinInstancePerLeaf = Integer.parseInt(configFile.getProperty("MinInstancePerLeaf"));
 			SVMCostParameter = Double.parseDouble(configFile.getProperty("SVMCostParameter"));
 			SVMPolyCParameter = Double.parseDouble(configFile.getProperty("SVMPolyCParameter"));
-			R
+			ReleaseMode = Boolean.parseBoolean(configFile.getProperty("ReleaseMode"));
+			SVMKernel = SVMKernels.values()[Integer.parseInt(configFile.getProperty("SVMKernel"))];
+		}
+	}
+	
+	public static String getValue(String key){
+		init();
+		return configFile.getPropert
