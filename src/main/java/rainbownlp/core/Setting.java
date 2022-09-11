@@ -50,4 +50,9 @@ public class Setting {
 		if(configFile == null){
 			  configFile = new Properties();
 			try {
-				InputStream config_fil
+				InputStream config_file = Setting.class.getClassLoader().getResourceAsStream("configuration.conf");//
+					//Configuration.class.getClassLoader().getResourceAsStream("/configuration.properties");
+				configFile.load(config_file);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.
