@@ -79,4 +79,11 @@ public class Setting {
 		return Setting.class.getClassLoader().getResource(resourceName).getPath();
 	}
 
-	public static InputSt
+	public static InputStream getResourceStream(String resourceName) {
+		return Setting.class.getClassLoader().getResourceAsStream(resourceName);
+	}
+	
+
+	
+	
+}
