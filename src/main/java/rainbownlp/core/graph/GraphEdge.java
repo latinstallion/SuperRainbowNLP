@@ -24,4 +24,6 @@ public class GraphEdge extends DefaultEdge {
 	public Object getTarget()
 	{
 		//"(" + source + " : " + target + ")"
-		return super.toString().
+		return super.toString().split(":")[1].replaceAll("\\)$", "");
+	}
+}
