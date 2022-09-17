@@ -15,4 +15,13 @@ public class GraphEdge extends DefaultEdge {
     //~ Methods ----------------------------------------------------------------
 
 //	@Override
-	publi
+	public Object getSource()
+	{
+		//"(" + source + " : " + target + ")"
+		return super.toString().split(":")[0].replaceAll("^\\(", "");
+	}
+//	@Override
+	public Object getTarget()
+	{
+		//"(" + source + " : " + target + ")"
+		return super.toString().
