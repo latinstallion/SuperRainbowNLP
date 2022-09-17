@@ -12,4 +12,12 @@ public class TimeStamp {
 	public static void setEnd(String blockName) {
 		Date now = new Date();
 		Date start = blockTimes.get(blockName);
-		if(start
+		if(start!=null){
+			Double timePassed = (double)(now.getTime() - start.getTime())/(double)1000;
+			if(timePassed>1)
+			System.out.println("TIME - "+blockName+" : "+timePassed);
+		}
+		
+	}
+
+}
