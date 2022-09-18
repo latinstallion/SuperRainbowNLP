@@ -5,4 +5,7 @@ import java.sql.SQLException;
 import org.springframework.scheduling.annotation.Async;
 
 
-public 
+public interface IFeatureCalculator {
+	@Async
+	public void calculateFeatures(MLExample exampleToProcess) throws SQLException, Exception;
+}
