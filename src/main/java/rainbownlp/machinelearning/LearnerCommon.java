@@ -15,4 +15,13 @@ public class LearnerCommon {
 //		}
 //		if(Setting.Mode==OperationMode.TRIGGER)
 //		{
-//			ArtifactExampleTable.setTest
+//			ArtifactExampleTable.setTestAsTrain();
+//			ArtifactExampleTable.include(updateTo);
+//		}
+	}
+
+	public static String[] getClassTitles() {
+		String[] class_titles = new String[1];
+		if (ConfigurationUtil.getValue("RelationMode").equals("BioNLP")) {
+//			if(Configuration.Mode==OperationMode.EDGE)
+//			{
