@@ -35,4 +35,10 @@ public class LearnerCommon {
 //					class_titles[i] = BioNLPLoader.TriggerTypes.values()[i].name();
 //			}
 		}else if (ConfigurationUtil.getValue("RelationMode").equals("I2B2")) {
-//			i
+//			if(Configuration.Mode==OperationMode.ARTIFACT)
+//			{
+//				class_titles = new String[]{"NoRelation","HasRelation"};
+//			}else
+//			{
+//				Configuration.Mode=OperationMode.EDGE;
+//				class_titles = new String[ClinicalRelationTypes.values()
