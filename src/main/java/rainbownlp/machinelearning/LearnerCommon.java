@@ -50,4 +50,9 @@ public class LearnerCommon {
 	}
 
 	public static int getTrainingExamplesCount() throws SQLException {
-		int trainigExamplesCount
+		int trainigExamplesCount = 0;
+//		if(Setting.Mode==OperationMode.EDGE)
+//			trainigExamplesCount=RelationExampleTable.getTrainingExamplesCount();
+//		if(Setting.Mode==OperationMode.TRIGGER)
+//			trainigExamplesCount=ArtifactExampleTable.getTrainingExamplesCount();
+//		if(Setti
