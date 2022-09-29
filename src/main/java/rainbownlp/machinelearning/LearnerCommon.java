@@ -41,4 +41,13 @@ public class LearnerCommon {
 //			}else
 //			{
 //				Configuration.Mode=OperationMode.EDGE;
-//				class_titles = new String[ClinicalRelationTypes.values()
+//				class_titles = new String[ClinicalRelationTypes.values().length];
+//				for(int i=0;i<ClinicalRelationTypes.values().length;i++)
+//					class_titles[i] = ClinicalRelationTypes.values()[i].name();
+//			}
+		}
+		return class_titles;
+	}
+
+	public static int getTrainingExamplesCount() throws SQLException {
+		int trainigExamplesCount
