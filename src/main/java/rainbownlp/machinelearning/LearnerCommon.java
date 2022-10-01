@@ -61,4 +61,10 @@ public class LearnerCommon {
 	}
 
 	public static void setPortionOfTrainAsTest(int foldIndex, int foldCount) throws SQLException {
-//		if(Setting.Mode==Oper
+//		if(Setting.Mode==OperationMode.EDGE)
+//			RelationExampleTable.setPortionOfTrainsetAsTest(foldIndex, foldCount);
+//		if(Setting.Mode==OperationMode.TRIGGER)
+//			ArtifactExampleTable.setPortionOfTrainsetAsTest(foldIndex, foldCount);
+	}
+
+	public static void excludeExamples(String wha
