@@ -67,4 +67,11 @@ public class LearnerCommon {
 //			ArtifactExampleTable.setPortionOfTrainsetAsTest(foldIndex, foldCount);
 	}
 
-	public static void excludeExamples(String wha
+	public static void excludeExamples(String whatToExclude) throws SQLException {
+//		if(Setting.Mode==OperationMode.EDGE)
+//			RelationExampleTable.exclude(whatToExclude);
+//		if(Setting.Mode==OperationMode.TRIGGER)
+//			ArtifactExampleTable.exclude(whatToExclude);
+	}
+
+}
