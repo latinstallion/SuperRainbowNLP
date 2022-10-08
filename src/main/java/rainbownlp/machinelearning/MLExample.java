@@ -48,4 +48,13 @@ public class MLExample  implements Serializable {
 	
 	PhraseLink relatedPhraseLink;
 	private String associatedFilePath;
-	private dou
+	private double predictionWeight;
+	private int expectedReal;
+	private int expectedClosure;
+	private int expectedIntegrated;
+	private String expectedClassOptionalCategory;
+	private String predictedClassOptionalCategory;
+	private String relatedConcept;
+	
+	@Transient
+	List<MLExampleFeat
