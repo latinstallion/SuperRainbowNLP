@@ -25,4 +25,13 @@ import org.hibernate.annotations.GenericGenerator;
 import rainbownlp.core.Artifact;
 import rainbownlp.core.Artifact.Type;
 import rainbownlp.core.FeatureValuePair;
-import rainbownlp.core.
+import rainbownlp.core.Phrase;
+import rainbownlp.core.PhraseLink;
+import rainbownlp.core.PhraseLink.LinkType;
+import rainbownlp.util.FileUtil;
+import rainbownlp.util.HibernateUtil;
+import rainbownlp.util.ConfigurationUtil;
+
+@Entity
+@Table( name = "MLExample" )
+public class MLExample  implements Serializable {
