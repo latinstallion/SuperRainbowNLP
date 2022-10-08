@@ -16,4 +16,13 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-import javax.persistence.T
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.hibernate.Session;
+import org.hibernate.annotations.GenericGenerator;
+
+import rainbownlp.core.Artifact;
+import rainbownlp.core.Artifact.Type;
+import rainbownlp.core.FeatureValuePair;
+import rainbownlp.core.
