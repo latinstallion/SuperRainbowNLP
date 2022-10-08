@@ -35,3 +35,17 @@ import rainbownlp.util.ConfigurationUtil;
 @Entity
 @Table( name = "MLExample" )
 public class MLExample  implements Serializable {
+	int exampleId;
+
+
+	String predictedClass;
+	String expectedClass;
+	boolean forTrain;
+	String corpusName;
+	String predictionEngine;
+	Artifact relatedArtifact;
+	Phrase relatedPhrase;
+	
+	PhraseLink relatedPhraseLink;
+	private String associatedFilePath;
+	private dou
