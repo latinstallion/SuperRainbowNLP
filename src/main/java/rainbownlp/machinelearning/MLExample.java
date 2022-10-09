@@ -84,4 +84,18 @@ public class MLExample  implements Serializable {
 				getExampleId()+ " and featureValuePair="+featureValuePairId;
 		List<MLExampleFeature> exampleFeatures = (List<MLExampleFeature>) HibernateUtil.executeReader(hql,null,null,hibernateSession);
 		if(exampleFeatures!=null && exampleFeatures.size()>0)
-			return example
+			return exampleFeatures.get(0);
+		else
+			return null;
+	}
+
+	public String getPredictionEngine() {
+		return predictionEngine;
+	}
+
+	public void setPredictionEngine(String pPredictionEngine) {
+		predictionEngine = pPredictionEngine;
+	}
+
+
+	@ManyToOne( cascade = {CascadeType.P
