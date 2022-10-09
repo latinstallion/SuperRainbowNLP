@@ -81,4 +81,7 @@ public class MLExample  implements Serializable {
 		if(hibernateSession == null)
 			hibernateSession = HibernateUtil.sessionFactory.openSession();
 		String hql = "from MLExampleFeature where relatedExample="+
-			
+				getExampleId()+ " and featureValuePair="+featureValuePairId;
+		List<MLExampleFeature> exampleFeatures = (List<MLExampleFeature>) HibernateUtil.executeReader(hql,null,null,hibernateSession);
+		if(exampleFeatures!=null && exampleFeatures.size()>0)
+			return example
