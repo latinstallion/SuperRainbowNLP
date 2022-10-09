@@ -57,4 +57,13 @@ public class MLExample  implements Serializable {
 	private String relatedConcept;
 	
 	@Transient
-	List<MLExampleFeat
+	List<MLExampleFeature> exampleFeatures;
+	static public Session hibernateSession; 
+	@Transient
+	public List<MLExampleFeature> getExampleFeatures()
+	{
+		if(exampleFeatures==null)
+		{
+			if(hibernateSession == null)
+				hibernateSession = HibernateUtil.sessionFactory.openSession();
+			String hql = "from 
