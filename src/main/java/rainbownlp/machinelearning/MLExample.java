@@ -74,4 +74,11 @@ public class MLExample  implements Serializable {
 		return exampleFeatures;
 	}
 
-	@T
+	@Transient
+	public MLExampleFeature getExampleFeatureById(int featureValuePairId)
+	{
+		
+		if(hibernateSession == null)
+			hibernateSession = HibernateUtil.sessionFactory.openSession();
+		String hql = "from MLExampleFeature where relatedExample="+
+			
