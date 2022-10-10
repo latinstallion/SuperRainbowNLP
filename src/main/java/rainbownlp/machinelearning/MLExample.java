@@ -105,4 +105,19 @@ public class MLExample  implements Serializable {
 	}
 
 	public void setRelatedPhrase(Phrase relatedPhrase) {
-		this.relatedPhrase = relatedPhr
+		this.relatedPhrase = relatedPhrase;
+	}
+	
+	public String getCorpusName() {
+		return corpusName;
+	}
+	
+	public void setCorpusName(String pCorpusName) {
+		corpusName = pCorpusName;
+	}
+	
+	public boolean getForTrain() {
+		return forTrain;
+	}
+		
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE }, fetch=FetchType.LAZY
