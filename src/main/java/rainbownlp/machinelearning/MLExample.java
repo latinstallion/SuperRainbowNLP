@@ -98,4 +98,11 @@ public class MLExample  implements Serializable {
 	}
 
 
-	@ManyToOne( cascade = {CascadeType.P
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE }, fetch=FetchType.LAZY )
+    @JoinColumn(name="relatedPhrase")
+	public Phrase getRelatedPhrase() {
+		return relatedPhrase;
+	}
+
+	public void setRelatedPhrase(Phrase relatedPhrase) {
+		this.relatedPhrase = relatedPhr
