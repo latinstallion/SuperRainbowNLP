@@ -137,4 +137,19 @@ public class MLExample  implements Serializable {
 	}
 
 	public void setRelatedPhraseLink(PhraseLink relatedPhraseLink) {
-		this.relatedPh
+		this.relatedPhraseLink = relatedPhraseLink;
+	}
+
+	public void setForTrain(boolean isForTrain) {
+		forTrain = isForTrain;
+	}
+	
+	public String getPredictedClass() {
+		return predictedClass;
+	}
+	
+	public void setPredictedClass(String pPredictedClass) {
+		predictedClass = pPredictedClass;
+	}
+	
+	
