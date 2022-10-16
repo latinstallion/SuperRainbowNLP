@@ -158,4 +158,13 @@ public class MLExample  implements Serializable {
 	public void setPredictedClass(Integer pPredictedClass) {
 		setPredictedClass(pPredictedClass.toString());
 	}	
-	public void setExpectedClass(Integer pExpectedClass
+	public void setExpectedClass(Integer pExpectedClass) {
+		setExpectedClass(pExpectedClass.toString());
+	}	
+	public void setExpectedClass(String pExpectedClass) {
+		expectedClass = pExpectedClass;
+	}
+	@Id
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
+	public int
