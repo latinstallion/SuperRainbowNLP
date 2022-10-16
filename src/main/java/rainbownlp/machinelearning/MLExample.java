@@ -183,4 +183,12 @@ public class MLExample  implements Serializable {
 		updateTime = new Date();
     }
 
-    @PreUp
+    @PreUpdate
+    protected void onUpdate() {
+    	updateTime = new Date();
+    }
+
+	public static MLExample getInstanceForArtifact(Artifact artifact,
+			String experimentgroup) {
+		String hql = "from MLExample where relatedArtifact = "+
+				artifact.ge
