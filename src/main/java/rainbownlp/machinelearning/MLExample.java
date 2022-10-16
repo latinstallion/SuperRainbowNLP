@@ -167,4 +167,20 @@ public class MLExample  implements Serializable {
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
-	public int
+	public int getExampleId() {
+		return exampleId;
+	}
+
+	public void setExampleId(int exampleId) {
+		this.exampleId = exampleId;
+	}
+	@Temporal(TemporalType.TIMESTAMP)
+    Date updateTime;
+	
+	
+	@PrePersist
+    protected void onCreate() {
+		updateTime = new Date();
+    }
+
+    @PreUp
