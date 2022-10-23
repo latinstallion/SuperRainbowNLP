@@ -191,4 +191,15 @@ public class MLExample  implements Serializable {
 	public static MLExample getInstanceForArtifact(Artifact artifact,
 			String experimentgroup) {
 		String hql = "from MLExample where relatedArtifact = "+
-				artifact.ge
+				artifact.getArtifactId() + " and corpusName = '"+
+				experimentgroup+"'";
+			List<MLExample> example_objects = 
+					getExamplesList(hql);
+		    
+			MLExample example_obj;
+		    if(example_objects.size()==0)
+		    {
+		    	example_obj = new MLExample();
+		  
+		    	
+		    	exa
