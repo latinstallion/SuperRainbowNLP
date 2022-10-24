@@ -202,4 +202,12 @@ public class MLExample  implements Serializable {
 		    	example_obj = new MLExample();
 		  
 		    	
-		    	exa
+		    	example_obj.setCorpusName(experimentgroup);
+		    	example_obj.setRelatedArtifact(artifact);
+		    	
+		    	if(ConfigurationUtil.SaveInGetInstance)
+			    	saveExample(example_obj);
+		    }else
+		    {
+		    	example_obj = 
+		    			example_objects.get(
