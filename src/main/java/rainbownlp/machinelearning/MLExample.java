@@ -210,4 +210,14 @@ public class MLExample  implements Serializable {
 		    }else
 		    {
 		    	example_obj = 
-		    			example_objects.get(
+		    			example_objects.get(0);
+		    }
+		    return example_obj;
+	}
+
+	public void calculateFeatures(
+			List<IFeatureCalculator> featureCalculators) throws Exception {
+		for(IFeatureCalculator feature_calculator : featureCalculators)
+		{
+			Date before = new Date(); 
+			feature_calculator.calculateFeatu
