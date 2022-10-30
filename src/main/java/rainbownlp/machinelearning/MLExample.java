@@ -220,4 +220,13 @@ public class MLExample  implements Serializable {
 		for(IFeatureCalculator feature_calculator : featureCalculators)
 		{
 			Date before = new Date(); 
-			feature_calculator.calculateFeatu
+			feature_calculator.calculateFeatures(this);
+			Date after = new Date(); 
+			FileUtil.logLine(null, feature_calculator.getClass().toString()+"       "+(after.getTime()-before.getTime()));
+		}
+		
+	}
+
+	public static MLExample getInstanceForLink(PhraseLink phrase_link,
+			String experimentgroup) {
+		St
