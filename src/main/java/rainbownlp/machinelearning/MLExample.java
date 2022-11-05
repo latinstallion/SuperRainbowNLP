@@ -229,4 +229,11 @@ public class MLExample  implements Serializable {
 
 	public static MLExample getInstanceForLink(PhraseLink phrase_link,
 			String experimentgroup) {
-		St
+		String hql = "from MLExample where relatedPhraseLink = "+
+				phrase_link.getPhraseLinkId() + " and corpusName = '"+
+						experimentgroup+"'";
+			List<MLExample> example_objects = 
+					getExamplesList(hql);
+		    
+			MLExample example_obj;
+		
