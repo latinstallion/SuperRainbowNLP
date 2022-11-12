@@ -264,4 +264,11 @@ public class MLExample  implements Serializable {
 		
 		HibernateUtil.save(example, hibernateSession);
 	}
-	static List<MLExa
+	static List<MLExample> getExamplesList(String hql, Integer limit)
+	{
+		List<MLExample> examples;
+		if(hibernateSession == null)
+			hibernateSession = HibernateUtil.loaderSession;
+		if(!hibernateSession.isOpen())
+			hibernateSession = HibernateUtil.sessionFactory.openSession();
+		example
