@@ -251,4 +251,17 @@ public class MLExample  implements Serializable {
 		    }else
 		    {
 		    	example_obj = 
-		    			exam
+		    			example_objects.get(0);
+		    }
+		    return example_obj;
+	}
+
+
+	public static void saveExample(MLExample example)
+	{
+		if(hibernateSession == null)
+			hibernateSession = HibernateUtil.loaderSession;
+		
+		HibernateUtil.save(example, hibernateSession);
+	}
+	static List<MLExa
