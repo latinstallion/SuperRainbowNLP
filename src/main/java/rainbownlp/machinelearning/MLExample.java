@@ -244,4 +244,11 @@ public class MLExample  implements Serializable {
 		    	example_obj.setCorpusName(experimentgroup);
 		    	example_obj.setRelatedPhraseLink(phrase_link);
 		    	if(phrase_link.getFromPhrase().getStartArtifact()!=null)
-		    		example_obj.s
+		    		example_obj.setAssociatedFilePath(phrase_link.getFromPhrase().getStartArtifact().getAssociatedFilePath());
+		    	
+		    	if(ConfigurationUtil.SaveInGetInstance)
+		    		saveExample(example_obj);
+		    }else
+		    {
+		    	example_obj = 
+		    			exam
