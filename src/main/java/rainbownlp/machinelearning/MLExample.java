@@ -285,4 +285,12 @@ public class MLExample  implements Serializable {
 			(List<MLExample>) HibernateUtil.executeReader(hql, params, null, hibernateSession);
 		return examples;
 	}
-	public static List<MLExample> getAllExamples(String experimentgroup, boolean for
+	public static List<MLExample> getAllExamples(String experimentgroup, boolean for_train, Integer limit)
+	{
+		return getAllExamples(experimentgroup, for_train, "exampleId", limit);
+	}
+	
+	public static List<MLExample> getAllExamples(String experimentgroup, boolean for_train)
+	{
+		return getAllExamples(experimentgroup, for_train, "exampleId", null);
+	}
