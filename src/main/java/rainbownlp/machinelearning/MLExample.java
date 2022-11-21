@@ -311,4 +311,11 @@ public class MLExample  implements Serializable {
 		
 		return getExamplesList(hql, limit);
 	}
-	publ
+	public static List<MLExample> getAllExamples(boolean for_train)
+	{
+		String hql = "from MLExample where  forTrain="+(for_train?1:0)
+						+"  order by exampleId";
+		
+		return getExamplesList(hql);
+	}
+	private static List<MLExample> getExamplesList(S
