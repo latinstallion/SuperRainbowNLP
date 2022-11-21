@@ -299,4 +299,16 @@ public class MLExample  implements Serializable {
 	{
 		String hql = "from MLExample where corpusName = '"+
 						experimentgroup+"' and forTrain="+(for_train?1:0)
-						+"  order by "
+						+"  order by "+orderByPhrase;
+		
+		return getExamplesList(hql, limit);
+	}
+
+	public static List<MLExample> getAllExamples(boolean for_train, Integer limit)
+	{
+		String hql = "from MLExample where  forTrain="+(for_train?1:0)
+						+"  order by exampleId";
+		
+		return getExamplesList(hql, limit);
+	}
+	publ
