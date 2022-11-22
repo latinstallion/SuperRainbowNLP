@@ -326,4 +326,11 @@ public class MLExample  implements Serializable {
 	{
 		String hql = "from MLExample where corpusName = '"+
 						experimentgroup+"' and exampleId="+example_id
-						+" or
+						+" order by exampleId";
+		return getExamplesList(hql);
+	}
+	public static MLExample getExampleById(int example_id)
+	{
+		String hql = "from MLExample where exampleId="+example_id;
+		List<MLExample> example_objects = 
+			(List<MLExample>) HibernateUtil.executeReader(hql);
