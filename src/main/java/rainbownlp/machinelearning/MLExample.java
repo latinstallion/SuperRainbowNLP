@@ -318,4 +318,12 @@ public class MLExample  implements Serializable {
 		
 		return getExamplesList(hql);
 	}
-	private static List<MLExample> getExamplesList(S
+	private static List<MLExample> getExamplesList(String hql) {
+		return getExamplesList(hql, Integer.MAX_VALUE);
+	}
+
+	public static List<MLExample> getExampleById(int example_id, String experimentgroup)
+	{
+		String hql = "from MLExample where corpusName = '"+
+						experimentgroup+"' and exampleId="+example_id
+						+" or
