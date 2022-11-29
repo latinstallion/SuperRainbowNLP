@@ -357,4 +357,9 @@ public class MLExample  implements Serializable {
 		return getExamplesList(hql);
 	}
 	
-	public static List<MLExample> getExampleByExpectedClass(String e
+	public static List<MLExample> getExampleByExpectedClass(String experimentgroup,boolean for_train, int expectedClass)
+	{
+		String hql = "from MLExample where corpusName = '"+
+						experimentgroup+"' and expectedClass="+expectedClass
+						+" and  forTrain="+(for_train?1:0)+" order by exampleId";
+		return 
