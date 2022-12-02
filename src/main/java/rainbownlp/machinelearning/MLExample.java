@@ -382,4 +382,13 @@ public class MLExample  implements Serializable {
 	}
 	/**
 	 * Get examples in document with the given expectedClass
-	 
+	 * @param experimentgroup
+	 * @param doc_path
+	 * @return
+	 */
+	public static List<MLExample> getExamplesInDocument(String experimentgroup, 
+			String doc_path,Integer expectedClass)
+	{
+		
+		String hql = "FROM MLExample "  +
+				"where expectedClass = :expe
