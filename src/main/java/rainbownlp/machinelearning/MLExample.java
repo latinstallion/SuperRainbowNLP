@@ -406,4 +406,11 @@ public class MLExample  implements Serializable {
 	public static List<MLExample> getExamplesByDocument(String experimentgroup, 
 			boolean for_train, int num_of_documents)
 	{
-		List<Artifact> docs = Artifact.li
+		List<Artifact> docs = Artifact.listByType(Type.Document, for_train);
+		if(docs.size()<num_of_documents)
+			num_of_documents = docs.size();
+		
+		String docPaths = "";
+		for(int i=0;i<num_of_documents;i++)
+			docPaths = docPaths.concat(", '"+docs.get(i).getAssociatedFilePath()+"'");
+		docPath
