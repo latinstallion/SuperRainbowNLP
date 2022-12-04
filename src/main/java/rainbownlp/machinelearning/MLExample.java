@@ -398,4 +398,12 @@ public class MLExample  implements Serializable {
 		
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("corpusName", experimentgroup);
-		params
+		params.put("expectedClass", expectedClass);
+		
+		return getExamplesList(hql, params);
+	}
+	
+	public static List<MLExample> getExamplesByDocument(String experimentgroup, 
+			boolean for_train, int num_of_documents)
+	{
+		List<Artifact> docs = Artifact.li
