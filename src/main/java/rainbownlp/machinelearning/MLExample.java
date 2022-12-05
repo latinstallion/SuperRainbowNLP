@@ -421,4 +421,12 @@ public class MLExample  implements Serializable {
 						docPaths + ") " +
 						"order by associatedFilePath desc";
 		
-		HashMap<String, Object> p
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("corpusName", experimentgroup);
+		
+		return getExamplesList(hql, params);
+	}
+	
+	public static List<MLExample> getExamplesByEventTypeByDocument(String experimentgroup, 
+			boolean for_train, int num_of_documents, String type1,
+			S
