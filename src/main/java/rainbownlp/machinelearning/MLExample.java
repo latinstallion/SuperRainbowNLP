@@ -439,4 +439,10 @@ public class MLExample  implements Serializable {
 		if (order.equals("top"))
 		{
 			for(int i=0;i<num_of_documents;i++)
-				docP
+				docPaths = docPaths.concat(", '"+docs.get(i).getAssociatedFilePath()+"'");
+			docPaths = docPaths.replaceFirst(",", "");
+		}
+		else if(order.equals("last"))
+		{
+			for(int i=docs.size()-1;i>docs.size()-num_of_documents-1;i--)
+				docPaths = docPaths.concat(", '"+docs
