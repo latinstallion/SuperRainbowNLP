@@ -429,4 +429,14 @@ public class MLExample  implements Serializable {
 	
 	public static List<MLExample> getExamplesByEventTypeByDocument(String experimentgroup, 
 			boolean for_train, int num_of_documents, String type1,
-			S
+			String type2,String order)
+	{
+		List<Artifact> docs = Artifact.listByType(Type.Document,for_train);
+		if(docs.size()<num_of_documents)
+			num_of_documents = docs.size();
+		
+		String docPaths = "";
+		if (order.equals("top"))
+		{
+			for(int i=0;i<num_of_documents;i++)
+				docP
