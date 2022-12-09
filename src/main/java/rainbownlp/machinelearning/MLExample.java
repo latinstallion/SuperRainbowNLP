@@ -445,4 +445,9 @@ public class MLExample  implements Serializable {
 		else if(order.equals("last"))
 		{
 			for(int i=docs.size()-1;i>docs.size()-num_of_documents-1;i--)
-				docPaths = docPaths.concat(", '"+docs
+				docPaths = docPaths.concat(", '"+docs.get(i).getAssociatedFilePath()+"'");
+			docPaths = docPaths.replaceFirst(",", "");
+		}
+		Integer type1_from_fvpIds = FeatureValuePair.getRelatedFromEventTypeFValuePairIds(type1);
+		Integer type1_to_fvpIds = FeatureValuePair.getRelatedToEventTypeFValuePairIds(type1);
+		Integer type2_from
