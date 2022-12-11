@@ -466,4 +466,8 @@ public class MLExample  implements Serializable {
 //		{
 //			to_fvpIds = to_fvpIds.concat(", '"+id+"'");
 //		}
-//		to_fvpIds = to_fvpIds.replaceFir
+//		to_fvpIds = to_fvpIds.replaceFirst(",", "");
+		
+		String hql = " FROM MLExample m  "  +
+	    "where (( exists (from MLExampleFeature f where m.exampleId =f.relatedExample and featureValuePair in ("+type1_from_fvpIds+"))" +
+	    " and exists (from MLExampleFeature f where m.exampleId =f.related
