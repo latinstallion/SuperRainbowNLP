@@ -456,4 +456,14 @@ public class MLExample  implements Serializable {
 //		String from_fvpIds = "";
 //		for(Integer id: fromFeatureValuePairIds)
 //		{
-//			from_fvpIds = f
+//			from_fvpIds = from_fvpIds.concat(", '"+id+"'");
+//		}
+//		from_fvpIds = from_fvpIds.replaceFirst(",", "");
+//		
+//
+//		String to_fvpIds = "";
+//		for(Integer id: toTeatureValuePairIds)
+//		{
+//			to_fvpIds = to_fvpIds.concat(", '"+id+"'");
+//		}
+//		to_fvpIds = to_fvpIds.replaceFir
