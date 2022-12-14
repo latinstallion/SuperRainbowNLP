@@ -470,4 +470,6 @@ public class MLExample  implements Serializable {
 		
 		String hql = " FROM MLExample m  "  +
 	    "where (( exists (from MLExampleFeature f where m.exampleId =f.relatedExample and featureValuePair in ("+type1_from_fvpIds+"))" +
-	    " and exists (from MLExampleFeature f where m.exampleId =f.related
+	    " and exists (from MLExampleFeature f where m.exampleId =f.relatedExample and featureValuePair in ("+type2_to_fvpIds+"))) or" +
+	    " (exists (from MLExampleFeature f where m.exampleId =f.relatedExample and featureValuePair in ("+type2_from_fvpIds+")) and " +
+	    		"exists (from MLExampleFeature f where m.exampleId =f.
