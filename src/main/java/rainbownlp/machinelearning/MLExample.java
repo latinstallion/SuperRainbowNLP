@@ -472,4 +472,9 @@ public class MLExample  implements Serializable {
 	    "where (( exists (from MLExampleFeature f where m.exampleId =f.relatedExample and featureValuePair in ("+type1_from_fvpIds+"))" +
 	    " and exists (from MLExampleFeature f where m.exampleId =f.relatedExample and featureValuePair in ("+type2_to_fvpIds+"))) or" +
 	    " (exists (from MLExampleFeature f where m.exampleId =f.relatedExample and featureValuePair in ("+type2_from_fvpIds+")) and " +
-	    		"exists (from MLExampleFeature f where m.exampleId =f.
+	    		"exists (from MLExampleFeature f where m.exampleId =f.relatedExample and featureValuePair in ("+type1_to_fvpIds+")))) " +
+	    " and corpusName =:corpusName " +
+	    " and forTrain="+(for_train?1:0) +" and " +
+	      "associatedFilePath in (" +
+	      docPaths + ") " +
+      "order by associatedFilePath de
