@@ -485,4 +485,11 @@ public class MLExample  implements Serializable {
 		return getExamplesList(hql, params);
 	}
 	public static List<MLExample> getLastExamplesByDocument(String experimentgroup, 
-			boo
+			boolean for_train, int num_of_documents)
+	{
+		List<Artifact> docs = Artifact.listByType(Type.Document,for_train);
+		if(docs.size()<num_of_documents)
+			num_of_documents = docs.size();
+		
+		String docPaths = "";
+		for(int i=docs.size()-1;i>docs.size()-num_of_documents-1;i--
