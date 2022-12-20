@@ -492,4 +492,10 @@ public class MLExample  implements Serializable {
 			num_of_documents = docs.size();
 		
 		String docPaths = "";
-		for(int i=docs.size()-1;i>docs.size()-num_of_documents-1;i--
+		for(int i=docs.size()-1;i>docs.size()-num_of_documents-1;i--)
+			docPaths = docPaths.concat(", '"+docs.get(i).getAssociatedFilePath()+"'");
+		docPaths = docPaths.replaceFirst(",", "");
+		
+		String hql = "FROM MLExample "  +
+				"where corpusName =:corpusName " +
+				" and forTrain="+(for_train?1
