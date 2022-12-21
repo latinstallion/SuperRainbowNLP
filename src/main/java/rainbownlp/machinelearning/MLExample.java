@@ -508,4 +508,14 @@ public class MLExample  implements Serializable {
 		return getExamplesList(hql, params);
 	}
 
-	@Ove
+	@Override
+	public MLExample clone()
+	{
+		if(relatedArtifact!=null)
+			return getInstanceForArtifact(relatedArtifact, corpusName);
+		else
+			return getInstanceForLink(relatedPhraseLink, corpusName);	}
+
+
+	
+	public static void resetExamplesPredicted(String exp
