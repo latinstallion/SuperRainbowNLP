@@ -518,4 +518,9 @@ public class MLExample  implements Serializable {
 
 
 	
-	public static void resetExamplesPredicted(String exp
+	public static void resetExamplesPredicted(String experimentgroup, boolean for_train) {
+		String hql = "update MLExample set predictedClass = -1 where corpusName = '"+
+				experimentgroup+"' and forTrain="+(for_train?1:0);
+		HibernateUtil.executeNonReader(hql);
+	}
+	public static void setExamplePredictedClass(int exampl
