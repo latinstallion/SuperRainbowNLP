@@ -533,4 +533,13 @@ public class MLExample  implements Serializable {
 		HibernateUtil.executeNonReader(hql);
 	}
 
-	public void setAssociatedFilePath(String assoc
+	public void setAssociatedFilePath(String associatedFilePath) {
+		this.associatedFilePath = associatedFilePath;
+	}
+
+	public String getAssociatedFilePath() {
+		return associatedFilePath;
+	}
+	public static void updateAssociatedFilePath() {
+		String hql = "from MLExample ";
+		Session tempSession = Hib
