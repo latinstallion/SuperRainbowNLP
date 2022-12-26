@@ -542,4 +542,10 @@ public class MLExample  implements Serializable {
 	}
 	public static void updateAssociatedFilePath() {
 		String hql = "from MLExample ";
-		Session tempSession = Hib
+		Session tempSession = HibernateUtil.sessionFactory.openSession();
+		List<MLExample> examples = 
+				(List<MLExample>) HibernateUtil.executeReader(hql, null,null, tempSession);
+		
+		for (MLExample example: examples)
+		{
+			PhraseLink related_phrase_link = example
