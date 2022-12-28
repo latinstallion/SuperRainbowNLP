@@ -548,4 +548,10 @@ public class MLExample  implements Serializable {
 		
 		for (MLExample example: examples)
 		{
-			PhraseLink related_phrase_link = example
+			PhraseLink related_phrase_link = example.getRelatedPhraseLink();
+			Phrase from_phrase = related_phrase_link.getFromPhrase();
+			Artifact start_artifact = from_phrase.getStartArtifact();
+			
+			String file_path = start_artifact.getAssociatedFilePath();
+			example.setAssociatedFilePath(file_path);
+			HibernateUtil.s
