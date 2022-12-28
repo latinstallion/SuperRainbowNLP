@@ -554,4 +554,14 @@ public class MLExample  implements Serializable {
 			
 			String file_path = start_artifact.getAssociatedFilePath();
 			example.setAssociatedFilePath(file_path);
-			HibernateUtil.s
+			HibernateUtil.save(example, tempSession);
+			
+		}
+		tempSession.clear();
+		tempSession.close();
+	}
+
+	public static MLExample findInstance(PhraseLink phrase_link,
+			String experimentgroup) {
+		String hql = "from MLExample where relatedPhraseLink = "+
+				phrase_li
