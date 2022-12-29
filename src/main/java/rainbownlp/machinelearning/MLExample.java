@@ -573,4 +573,13 @@ public class MLExample  implements Serializable {
 		    if(example_objects.size()!=0)
 		    {
 		    	example_obj = 
-		    			example_objects.g
+		    			example_objects.get(0);
+		    }
+		    return example_obj;
+	}
+	public static MLExample findInstance(PhraseLink phrase_link) {
+		String hql = "from MLExample where relatedPhraseLink = "+
+				phrase_link.getPhraseLinkId();
+		
+			List<MLExample> example_objects = 
+					getExam
