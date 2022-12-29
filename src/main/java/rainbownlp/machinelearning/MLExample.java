@@ -564,4 +564,13 @@ public class MLExample  implements Serializable {
 	public static MLExample findInstance(PhraseLink phrase_link,
 			String experimentgroup) {
 		String hql = "from MLExample where relatedPhraseLink = "+
-				phrase_li
+				phrase_link.getPhraseLinkId() + " and corpusName = '"+
+						experimentgroup+"'";
+			List<MLExample> example_objects = 
+					getExamplesList(hql);
+		    
+			MLExample example_obj=null;
+		    if(example_objects.size()!=0)
+		    {
+		    	example_obj = 
+		    			example_objects.g
