@@ -582,4 +582,16 @@ public class MLExample  implements Serializable {
 				phrase_link.getPhraseLinkId();
 		
 			List<MLExample> example_objects = 
-					getExam
+					getExamplesList(hql);
+		    
+			MLExample example_obj=null;
+		    if(example_objects.size()!=0)
+		    {
+		    	example_obj = 
+		    			example_objects.get(0);
+		    }
+		    return example_obj;
+	}
+	
+	public static List<MLExample> getDecidedExamplesForGraph(Artifact p_sentence) {
+		Strin
