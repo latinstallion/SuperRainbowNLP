@@ -599,4 +599,13 @@ public class MLExample  implements Serializable {
 		p_sentence.getArtifactId()+" and relatedPhraseLink.toPhrase.startArtifact.parentArtifact = "+
 		p_sentence.getArtifactId();
 
-		L
+		List<MLExample> example_objects = 
+				getExamplesList(hql);
+	    
+	    return example_objects;
+	}
+
+	/**
+	 * Get Artifact-RelatedConcept example. 
+	 * This example is suitable to classify artifacts into unknown set of classes, use linkedConcept to store class
+	 * For example finding wh
