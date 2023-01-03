@@ -614,4 +614,9 @@ public class MLExample  implements Serializable {
 	 * @param experimentGroup
 	 * @return
 	 */
-	public static MLExample getInstance(Artifact artifac
+	public static MLExample getInstance(Artifact artifact, String linkedConcept,
+			String experimentGroup) {
+		String hql = "from MLExample where relatedArtifact = "+
+				artifact.getArtifactId() + " and relatedConcept = :relatedConcept " +  
+				" and corpusName = :corpusName";
+		HashMap<String, Object> params = new HashMap
