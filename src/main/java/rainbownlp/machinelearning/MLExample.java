@@ -608,4 +608,10 @@ public class MLExample  implements Serializable {
 	/**
 	 * Get Artifact-RelatedConcept example. 
 	 * This example is suitable to classify artifacts into unknown set of classes, use linkedConcept to store class
-	 * For example finding wh
+	 * For example finding whether a sentence is evidence for an specific gene, pass the sentence artifact and the gene as linkedConcept
+	 * @param artifact
+	 * @param linkedConcept
+	 * @param experimentGroup
+	 * @return
+	 */
+	public static MLExample getInstance(Artifact artifac
