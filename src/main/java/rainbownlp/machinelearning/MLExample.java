@@ -635,4 +635,16 @@ public class MLExample  implements Serializable {
 		    	example_obj.setCorpusName(experimentGroup);
 		    	example_obj.setRelatedArtifact(artifact);
 		    	example_obj.setRelatedConcept(linkedConcept);
-		    	example_obj.setAssociatedFilePath(
+		    	example_obj.setAssociatedFilePath(artifact.getAssociatedFilePath());
+		    	
+		    	if(ConfigurationUtil.SaveInGetInstance)
+			    	saveExample(example_obj);
+		    }else
+		    {
+		    	example_obj = example_objects.get(0);
+		    }
+		    return example_obj;
+	}
+
+
+	public void setPredictionWeight(d
