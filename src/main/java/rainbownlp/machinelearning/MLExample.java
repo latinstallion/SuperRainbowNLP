@@ -627,4 +627,12 @@ public class MLExample  implements Serializable {
 					getExamplesList(hql, params);
 		    
 			MLExample example_obj;
-		    if(example_objects.size()
+		    if(example_objects.size()==0)
+		    {
+		    	example_obj = new MLExample();
+		  
+		    	
+		    	example_obj.setCorpusName(experimentGroup);
+		    	example_obj.setRelatedArtifact(artifact);
+		    	example_obj.setRelatedConcept(linkedConcept);
+		    	example_obj.setAssociatedFilePath(
