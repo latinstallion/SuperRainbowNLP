@@ -661,4 +661,16 @@ public class MLExample  implements Serializable {
 	}
 
 	public int getExpectedReal() {
-		return expec
+		return expectedReal;
+	}
+
+	public void setExpectedClosure(int expectedClosure) {
+		this.expectedClosure = expectedClosure;
+	}
+
+	public int getExpectedClosure() {
+		return expectedClosure;
+	}
+
+	public void setExpectedIntegrated(int expectedIntegrated) {
+		th
