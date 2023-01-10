@@ -685,3 +685,13 @@ public class MLExample  implements Serializable {
 	}
 
 	public void setRelatedConcept(String relatedConcept) {
+		this.relatedConcept = relatedConcept;
+	}
+
+	public static void deleteAllExamples(String experimentgroup) {
+		String hql = "delete from MLExample where corpusName = '"+
+				experimentgroup+"'";
+		HibernateUtil.executeNonReader(hql, true);
+	}
+
+	public sta
