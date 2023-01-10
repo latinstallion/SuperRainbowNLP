@@ -673,4 +673,15 @@ public class MLExample  implements Serializable {
 	}
 
 	public void setExpectedIntegrated(int expectedIntegrated) {
-		th
+		this.expectedIntegrated = expectedIntegrated;
+	}
+
+	public int getExpectedIntegrated() {
+		return expectedIntegrated;
+	}
+
+	public String getRelatedConcept() {
+		return relatedConcept;
+	}
+
+	public void setRelatedConcept(String relatedConcept) {
