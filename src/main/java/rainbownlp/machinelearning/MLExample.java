@@ -694,4 +694,8 @@ public class MLExample  implements Serializable {
 		HibernateUtil.executeNonReader(hql, true);
 	}
 
-	public sta
+	public static MLExample findInstance(Artifact artifact, String linkedConcept) {
+		String hql = "from MLExample where relatedArtifact = "+
+				artifact.getArtifactId() + " and relatedConcept = :relatedConcept ";
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.p
