@@ -698,4 +698,17 @@ public class MLExample  implements Serializable {
 		String hql = "from MLExample where relatedArtifact = "+
 				artifact.getArtifactId() + " and relatedConcept = :relatedConcept ";
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.p
+		params.put("relatedConcept", linkedConcept);
+		
+			List<MLExample> example_objects = 
+					getExamplesList(hql, params);
+		    
+			MLExample example_obj = null;
+		    if(example_objects.size()!=0)
+		    {
+		    	example_obj = example_objects.get(0);
+		    }
+		    return example_obj;
+	}
+
+	publ
