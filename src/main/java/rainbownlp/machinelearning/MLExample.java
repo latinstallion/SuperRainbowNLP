@@ -717,4 +717,13 @@ public class MLExample  implements Serializable {
 	}
 
 	public String getExpectedClassOptionalCategory() {
-		return expectedClassOp
+		return expectedClassOptionalCategory;
+	}
+
+	public void setPredictedClassOptionalCategory(
+			String predictedClassOptionalCategory) {
+		this.predictedClassOptionalCategory = predictedClassOptionalCategory;
+	}
+
+	public String getPredictedClassOptionalCategory() {
+		return predictedC
