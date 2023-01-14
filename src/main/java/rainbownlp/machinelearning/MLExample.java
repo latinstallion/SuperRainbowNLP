@@ -726,4 +726,14 @@ public class MLExample  implements Serializable {
 	}
 
 	public String getPredictedClassOptionalCategory() {
-		return predictedC
+		return predictedClassOptionalCategory;
+	}
+
+	public static List<MLExample> getAllExamples(String pathLike) {
+		String hql = "from MLExample where associatedFilePath like '%"+
+				pathLike+"%' order by exampleId";
+		return getExamplesList(hql);
+	}
+
+	@Transient
+	public Double getNumericExpected
