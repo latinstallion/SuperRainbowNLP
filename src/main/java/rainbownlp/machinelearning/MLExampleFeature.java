@@ -85,3 +85,100 @@ public class MLExampleFeature {
 		HibernateUtil.save(artifact_feature, session);
 		
 		session.clear();
+		session.close();
+		
+		return artifact_feature;
+	}
+	private static void deleteExampleFeatures(MLExample pExample,
+			String featureName, String featureValue) {
+		
+		Session session = HibernateUtil.sessionFactory.openSession();
+		session.beginTransaction();
+		String hql = "from MLExampleFeature af where af.relatedExample = " +
+				pExample.getExampleId()+" AND "+
+				"af.featureValuePair.featureName = :featureName"+
+				" AND af.featureValuePair.featureValue = :featureValue";
+		
+		List<MLExampleFeature> artifact_feature_list = 
+			session.createQuery(hql).setParameter("featureValue", featureValue)
+			.setParameter("featureName", featureName).list();
+		
+		
+		for(MLExampleFeature af : artifact_feature_list)
+			session.delete(af);
+		
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	/*
+	 * delete all attribute name for an specific artifact
+	 */
+	public static void deleteExampleFeatures(MLExample pExample,
+			String featureName) {
+		String hql = "from MLExampleFeature as af inner join fetch af.featureValuePair " +
+				"where af.relatedExample = " +
+				pExample.getExampleId()+" AND "+
+				"af.featureValuePair.featureName = :featureName";
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("featureName", featureName);
+		Session session = HibernateUtil.sessionFactory.openSession();
+		
+		List<MLExampleFeature> artifact_feature_list = 
+			(List<MLExampleFeature>) HibernateUtil.executeReader(hql, params,null, session);
+		
+		if(artifact_feature_list.size()>0)
+		{
+			String example_feature_ids = "";
+			for(MLExampleFeature af : artifact_feature_list)
+				example_feature_ids=example_feature_ids.concat(af.getExampleFeatureId()+",");
+			example_feature_ids = example_feature_ids.replaceAll(",$", "");
+			HibernateUtil.executeNonReader("delete from MLExampleFeature where exampleFeatureId in ("+
+					example_feature_ids+")");
+		}
+		
+		session.close();
+	}
+	
+	/*
+	 * delete all attribute name for an specific artifact
+	 */
+	public static void deleteExampleFeatures(MLExample pExample) {
+		String hql = "from MLExampleFeature as af inner join fetch af.featureValuePair " +
+				"where af.relatedExample = " +
+				pExample.getExampleId();
+		
+		Session session = HibernateUtil.sessionFactory.openSession();
+		
+		List<MLExampleFeature> artifact_feature_list = 
+			(List<MLExampleFeature>) HibernateUtil.executeReader(hql, null,null, session);
+		
+		if(artifact_feature_list.size()>0)
+		{
+			String example_feature_ids = "";
+			for(MLExampleFeature af : artifact_feature_list)
+				example_feature_ids=example_feature_ids.concat(af.getExampleFeatureId()+",");
+			example_feature_ids = example_feature_ids.replaceAll(",$", "");
+			HibernateUtil.executeNonReader("delete from MLExampleFeature where exampleFeatureId in ("+
+					example_feature_ids+")");
+		}
+		
+		session.close();
+	}
+
+	@Override public String toString()
+	{
+		return " Example = "+relatedExample.toString()+
+			" / Feature = "+
+			featureValuePair.toString();
+	}
+	
+	@Transient
+	public static void truncateTable()
+	{
+		String hql = "delete from MLExampleFeature";
+		HibernateUtil.executeNonReader(hql);
+	}
+
+}
