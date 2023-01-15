@@ -61,3 +61,55 @@ public abstract class SVMLightBasedLearnerEngine extends LearnerEngine {
 			testFile = SVMLightFormatConvertor.writeToFileBinary(test_example_ids, taskName);
 		else 
 			testFile = SVMLightFormatConvertor.writeToFile(test_example_ids, taskName);
+		
+		
+		SystemUtil.runShellCommand(getTestCommand(resultFile));
+				
+		File f=new File(resultFile);
+		if (!f.exists()) {
+			throw(new Exception("SVM result not generated!"));
+		}
+	
+		// 2. read classification output and update database
+		FileReader fileR = new FileReader(resultFile);
+		BufferedReader reader = new BufferedReader(fileR);
+	
+		int counter = 0;
+		while (counter<pTestExamples.size() && reader.ready()) {
+			String line = reader.readLine();
+			Double classNum = -1D;
+			Double weight = 0D;
+			String[] lineParts = line.split(" ");
+			if(isBinaryClassification()){
+				weight = Double.parseDouble(lineParts[0]);
+				classNum = 1D;
+				if(weight>0)
+					classNum=2D;
+			}else{
+				classNum = Double.parseDouble(lineParts[0]) - 1;//convert to index (e.g. 1 -> 0)
+				if(lineParts.length>classNum+1)
+					weight = Double.parseDouble(lineParts[classNum.intValue()]);
+			}
+			
+			pTestExamples.get(counter).setPredictedClass(classNum.toString());
+			pTestExamples.get(counter).setPredictionWeight(weight);
+			
+			MLExample test = pTestExamples.get(counter);
+			String savePredictedQuery = "update MLExample set predictedClass ="+test.getPredictedClass()+" , predictionWeight = " +
+					weight+" where exampleId="+test.getExampleId();
+			HibernateUtil.executeNonReader(savePredictedQuery);
+			
+			counter++;
+		}
+
+		assert !reader.ready() : "Something wrong file remained, updated rows:"+counter;
+		assert counter==pTestExamples.size() : "Something wrong resultset remained, updated rows:"+counter;
+		
+		reader.close();
+		
+	}
+	protected abstract boolean isBinaryClassification();
+	protected abstract String getTrainCommand();
+
+	protected abstract String getTestCommand(String resultFile);
+}
