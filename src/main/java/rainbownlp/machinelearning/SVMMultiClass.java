@@ -15,4 +15,18 @@ public class SVMMultiClass extends SVMLightBasedLearnerEngine {
 
 	public static LearnerEngine getLearnerEngine(String pTaskName) {
 		SVMMultiClass learnerEngine = new SVMMultiClass();
-		learnerEngine.setTaskName(pT
+		learnerEngine.setTaskName(pTaskName);
+		
+		return learnerEngine;
+	}
+
+	@Override
+	protected boolean isBinaryClassification() {
+		return false;
+	}
+
+	@Override
+	protected String getTrainCommand() {
+		String myShellScript = 
+				ConfigurationUtil.getValue("SVMMulticlassLearnerPath")
+					+ " -t " +ConfigurationUtil.getValue("SVMKer
