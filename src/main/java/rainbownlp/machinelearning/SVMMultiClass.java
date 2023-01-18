@@ -38,4 +38,11 @@ public class SVMMultiClass extends SVMLightBasedLearnerEngine {
 	@Override
 	protected String getTestCommand(String resultFile) {
 		String myShellScript = 
-				ConfigurationUtil.get
+				ConfigurationUtil.getValue("SVMMulticlassClassifierPath") + " "
+						+ testFile + " " + modelFile +
+						" " + resultFile;
+			
+		return myShellScript;
+	}
+
+}
