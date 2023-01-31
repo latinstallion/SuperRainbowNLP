@@ -20,4 +20,15 @@ public class WekaClassifier extends LearnerEngine {
 	String testFile;
 	
 	int reinforcedCount = 0;
-	String[] reinforcedModels = new String[reinforcedCo
+	String[] reinforcedModels = new String[reinforcedCount];
+	public Classifier wekaAlgorithm = new NaiveBayes();
+	public String[] options = null;
+	public String wekaAlgorithmName = "NaiveBayes";
+	private WekaClassifier()
+	{
+		
+	}
+
+	@Override
+	public void train(List<MLExample> pTrainExamples) throws Exception {
+		Configurat
