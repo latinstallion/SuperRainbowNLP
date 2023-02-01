@@ -38,4 +38,10 @@ public class WekaClassifier extends LearnerEngine {
 		List<Integer> train_example_ids = new ArrayList<Integer>();
 		for(MLExample example : pTrainExamples)
 		{
-			train_example_ids.add(example.getExampleId())
+			train_example_ids.add(example.getExampleId());
+		}
+		WekaFormatConvertor.writeToFile(train_example_ids, trainFile,taskName, new String[]{"1", "2"});
+
+		DataSource source = new DataSource(trainFile);
+		Instances data = source.getDataSet();
+		// setting class attribute if the data format does not provide this infor
