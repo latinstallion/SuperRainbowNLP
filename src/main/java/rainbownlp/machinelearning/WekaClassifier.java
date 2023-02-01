@@ -31,4 +31,11 @@ public class WekaClassifier extends LearnerEngine {
 
 	@Override
 	public void train(List<MLExample> pTrainExamples) throws Exception {
-		Configurat
+		ConfigurationUtil.TrainingMode = true;
+		setPaths();
+
+		//This part added since the session was so slow
+		List<Integer> train_example_ids = new ArrayList<Integer>();
+		for(MLExample example : pTrainExamples)
+		{
+			train_example_ids.add(example.getExampleId())
