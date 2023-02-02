@@ -53,4 +53,11 @@ public class WekaClassifier extends LearnerEngine {
 		wekaAlgorithm.buildClassifier(data);   // build classifier
 		
 		 // serialize model
-		 Serialization
+		 SerializationHelper.write(modelFile, wekaAlgorithm);
+	}
+	@Override
+	public void test(List<MLExample> pTestExamples) throws Exception {
+		ConfigurationUtil.TrainingMode = false;
+		List<Integer> test_example_ids = new ArrayList<Integer>();
+		String exampleids = "";
+		for(MLExam
