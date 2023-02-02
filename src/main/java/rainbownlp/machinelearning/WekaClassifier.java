@@ -44,4 +44,13 @@ public class WekaClassifier extends LearnerEngine {
 
 		DataSource source = new DataSource(trainFile);
 		Instances data = source.getDataSet();
-		// setting class attribute if the data format does not provide this infor
+		// setting class attribute if the data format does not provide this information
+		if (data.classIndex() == -1)
+			data.setClassIndex(data.numAttributes() - 1);
+
+		if(options!=null)
+			wekaAlgorithm.setOptions(options);     // set the options
+		wekaAlgorithm.buildClassifier(data);   // build classifier
+		
+		 // serialize model
+		 Serialization
