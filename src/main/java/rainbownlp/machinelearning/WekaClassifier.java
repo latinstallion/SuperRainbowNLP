@@ -60,4 +60,11 @@ public class WekaClassifier extends LearnerEngine {
 		ConfigurationUtil.TrainingMode = false;
 		List<Integer> test_example_ids = new ArrayList<Integer>();
 		String exampleids = "";
-		for(MLExam
+		for(MLExample example : pTestExamples)
+		{
+			exampleids = exampleids.concat(","+example.getExampleId());
+			test_example_ids.add(example.getExampleId());
+		}
+			
+		exampleids = exampleids.replaceFirst(",", "");
+		String resetQuery = "update MLExample 
