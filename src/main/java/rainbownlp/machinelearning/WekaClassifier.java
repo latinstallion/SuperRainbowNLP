@@ -67,4 +67,10 @@ public class WekaClassifier extends LearnerEngine {
 		}
 			
 		exampleids = exampleids.replaceFirst(",", "");
-		String resetQuery = "update MLExample 
+		String resetQuery = "update MLExample set predictedClass = -1 where exampleId in ("+ exampleids +")";
+		HibernateUtil.executeNonReader(resetQuery);
+					
+		WekaFormatConvertor.writeToFile(test_example_ids, testFile,taskName, new String[]{"1", "2"});
+		
+		// deserialize model
+		wekaAlgorithm = (Classifier) Ser
