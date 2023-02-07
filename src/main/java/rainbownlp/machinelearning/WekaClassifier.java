@@ -73,4 +73,10 @@ public class WekaClassifier extends LearnerEngine {
 		WekaFormatConvertor.writeToFile(test_example_ids, testFile,taskName, new String[]{"1", "2"});
 		
 		// deserialize model
-		wekaAlgorithm = (Classifier) Ser
+		wekaAlgorithm = (Classifier) SerializationHelper.read(modelFile);
+		 
+		// classify new examples and update database
+		DataSource source = new DataSource(testFile);
+		Instances testData = source.getDataSet();
+		// setting class attribute if the data format does not provide this information
+		if (testData.cl
