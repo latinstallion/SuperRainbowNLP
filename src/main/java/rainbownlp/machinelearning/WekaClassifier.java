@@ -79,4 +79,10 @@ public class WekaClassifier extends LearnerEngine {
 		DataSource source = new DataSource(testFile);
 		Instances testData = source.getDataSet();
 		// setting class attribute if the data format does not provide this information
-		if (testData.cl
+		if (testData.classIndex() == -1)
+			testData.setClassIndex(testData.numAttributes() - 1);
+	
+		System.out.println(pTestExamples.size() +"=="+ testData.numInstances());
+		int counter = 0;
+		while (counter<pTestExamples.size() && counter<testData.numInstances()) {
+			Double clsLabel = wekaAlgo
