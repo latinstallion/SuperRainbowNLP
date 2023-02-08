@@ -89,4 +89,12 @@ public class WekaClassifier extends LearnerEngine {
 			   
 			pTestExamples.get(counter).setPredictedClass(clsLabel.toString());
 			MLExample test = pTestExamples.get(counter);
-			String savePredictedQuery = "update MLExample set predictedClass ="+test.ge
+			String savePredictedQuery = "update MLExample set predictedClass ="+test.getPredictedClass()+
+					" where exampleId="+test.getExampleId();
+			HibernateUtil.executeNonReader(savePredictedQuery);
+			
+			counter++;
+			System.out.println("Processed :"+counter+"/"+pTestExamples.size());
+		}
+		
+		 Evaluation eval = new Evaluation
