@@ -97,4 +97,10 @@ public class WekaClassifier extends LearnerEngine {
 			System.out.println("Processed :"+counter+"/"+pTestExamples.size());
 		}
 		
-		 Evaluation eval = new Evaluation
+		 Evaluation eval = new Evaluation(testData);
+		 eval.evaluateModel(wekaAlgorithm, testData);
+		 System.out.println("\n====\n"+eval.toSummaryString()+"\n"+eval.toClassDetailsString()+"\n====\n");
+	}
+
+	public static LearnerEngine getLearnerEngine(String pTaskName) {
+		WekaClassifier learnerEngine = new WekaC
