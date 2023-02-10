@@ -103,4 +103,13 @@ public class WekaClassifier extends LearnerEngine {
 	}
 
 	public static LearnerEngine getLearnerEngine(String pTaskName) {
-		WekaClassifier learnerEngine = new WekaC
+		WekaClassifier learnerEngine = new WekaClassifier();
+		learnerEngine.setTaskName(pTaskName);
+		
+		learnerEngine.setPaths();
+		return learnerEngine;
+	}
+
+	private void setPaths() {
+		String fold = (ConfigurationUtil.crossFoldCurrent>0)?("Fold"+ConfigurationUtil.crossFoldCurrent):"";
+		setModelFilePath(Configurat
