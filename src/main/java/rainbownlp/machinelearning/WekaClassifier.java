@@ -112,4 +112,11 @@ public class WekaClassifier extends LearnerEngine {
 
 	private void setPaths() {
 		String fold = (ConfigurationUtil.crossFoldCurrent>0)?("Fold"+ConfigurationUtil.crossFoldCurrent):"";
-		setModelFilePath(Configurat
+		setModelFilePath(ConfigurationUtil.getValue("TempFolder")+
+				fold+"-"+wekaAlgorithmName+
+				taskName+".weka");
+		setTrainFilePath(ConfigurationUtil.getValue("TempFolder")+
+				fold+"-"+wekaAlgorithmName+
+				"-train-" + taskName + ".arff");
+		setTestFilePath(ConfigurationUtil.getValue("TempFolder")+
+	
