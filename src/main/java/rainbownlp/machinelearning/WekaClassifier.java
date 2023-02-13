@@ -119,4 +119,16 @@ public class WekaClassifier extends LearnerEngine {
 				fold+"-"+wekaAlgorithmName+
 				"-train-" + taskName + ".arff");
 		setTestFilePath(ConfigurationUtil.getValue("TempFolder")+
-	
+				fold+"-" + wekaAlgorithmName+
+				"-test-" + taskName + ".arff");	
+	}
+
+	private void setTestFilePath(String pTestFile) {
+		testFile = pTestFile;
+	}
+
+	private void setTrainFilePath(String pTrainFile) {
+		trainFile = pTrainFile;		
+	}
+
+	private void setModelFilePath(S
