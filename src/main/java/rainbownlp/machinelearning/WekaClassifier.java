@@ -131,4 +131,9 @@ public class WekaClassifier extends LearnerEngine {
 		trainFile = pTrainFile;		
 	}
 
-	private void setModelFilePath(S
+	private void setModelFilePath(String pModelFile) {
+		modelFile = pModelFile;
+	}
+
+
+}
