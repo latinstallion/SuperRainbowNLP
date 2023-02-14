@@ -181,3 +181,42 @@ public class SVMLightFormatConvertor {
 				continue;
 			}
 
+
+
+			Double numericValue = 0.0;
+			if(fvp.getFeatureValueAuxiliary()!=null)
+				numericValue = Double.parseDouble(fvp.getFeatureValueAuxiliary());
+			else
+				numericValue = Double.parseDouble(fvp.getFeatureValue());
+
+			if (numericValue!=null && 
+					numericValue != 0 &&
+					!Double.isNaN(numericValue) && 
+					!Double.isInfinite(numericValue)) {
+				//				double maxVal = getAttributeMaxValue(attribute_id);
+				//				numericValue = numericValue/maxVal;
+
+				//				FileUtil.logLine(FileUtil.DEBUG_FILE, fvp.getFeatureName());
+				if (!usedFeatureNames.contains(fvp.getFeatureName()))
+				{
+					FileUtil.logLine("/tmp/featuresUsed", fvp.getFeatureName());
+					usedFeatureNames.add(fvp.getFeatureName());
+				}
+
+
+				SVMLightFormatLine += featureIndex + ":" + numericValue
+						+ " ";
+			}
+			HibernateUtil.clearLoaderSession();
+
+		}
+		MLExample.hibernateSession.clear();
+		MLExample.hibernateSession.close();
+		MLExample.hibernateSession = old_session;
+		FileUtil.logLine(FileUtil.DEBUG_FILE, "getArtifactAttributes(): feature string for example: "+example.getExampleId()+" -> "+SVMLightFormatLine);
+
+
+		return SVMLightFormatLine;
+	}
+
+}
