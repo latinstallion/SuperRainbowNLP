@@ -24,4 +24,14 @@ public class ConceptsDistance implements IFeatureCalculator {
 			ConceptsDistance lbf = new ConceptsDistance();
 			lbf.calculateFeatures(example);
 			counter++;
-			FileUtil.logLine(null, "Processed : "+counter +"/"
+			FileUtil.logLine(null, "Processed : "+counter +"/"+trainExamples.size());
+		}
+		
+	}
+	@Override
+	public void calculateFeatures(MLExample exampleToProcess) {
+		
+	
+	}
+	
+}
