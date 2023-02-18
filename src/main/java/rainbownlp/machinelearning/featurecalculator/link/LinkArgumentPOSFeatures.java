@@ -156,3 +156,20 @@ public class LinkArgumentPOSFeatures implements IFeatureCalculator {
 //				}
 //			}
 //			
+//			
+//			//POS between two concepts
+//			start_artifact = phrase1.getEndArtifact().getNextArtifact();
+//			end_Artifact  = phrase2.getStartArtifact();
+//			cur_artifact = start_artifact;
+//			while(cur_artifact!=null && !cur_artifact.equals(end_Artifact))
+//			{
+//				FeatureValuePair posFeature = FeatureValuePair.getInstance(
+//						FeatureName.LinkPOSBetween, 
+//						cur_artifact.getPOS(), "1");
+//				MLExampleFeature.setFeatureExample(exampleToProcess, posFeature);
+//				cur_artifact = cur_artifact.getNextArtifact();
+//			}
+	}
+
+	
+}
