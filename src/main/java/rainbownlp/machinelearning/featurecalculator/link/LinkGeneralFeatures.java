@@ -36,4 +36,10 @@ public class LinkGeneralFeatures implements IFeatureCalculator {
 		
 	}
 	@Override
-	public void calculateFeatures(MLExample examp
+	public void calculateFeatures(MLExample exampleToProcess) {
+			
+			PhraseLink phraseLink = exampleToProcess.getRelatedPhraseLink();
+			Phrase phrase1 = phraseLink.getFromPhrase();
+			Phrase phrase2 = phraseLink.getToPhrase();
+			
+			String relation_location_type = getInterMentionLocationType(phrase1,phrase2)
