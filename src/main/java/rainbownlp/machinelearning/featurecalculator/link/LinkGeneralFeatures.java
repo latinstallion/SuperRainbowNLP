@@ -26,4 +26,14 @@ public class LinkGeneralFeatures implements IFeatureCalculator {
 		List<MLExample> trainExamples = 
 			MLExample.getAllExamples(experimentgroup, true);
 		int counter = 0;
-		for (MLExample example:trainExampl
+		for (MLExample example:trainExamples)
+		{
+			LinkGeneralFeatures lbf = new LinkGeneralFeatures();
+			lbf.calculateFeatures(example);
+			counter++;
+			FileUtil.logLine(null, "Processed : "+counter +"/"+trainExamples.size());
+		}
+		
+	}
+	@Override
+	public void calculateFeatures(MLExample examp
