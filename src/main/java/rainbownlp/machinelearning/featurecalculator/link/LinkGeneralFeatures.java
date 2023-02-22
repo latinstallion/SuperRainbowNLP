@@ -50,3 +50,12 @@ public class LinkGeneralFeatures implements IFeatureCalculator {
 						relation_location_type,"1");
 				
 			MLExampleFeature.setFeatureExample(exampleToProcess, argumentTypeFeature);
+			
+			// The content of the args
+			FeatureValuePair fromPhraseContentFeature = FeatureValuePair.getInstance(
+					FeatureName.FromPhraseContent, 
+					phrase1.getPhraseContent(), "1");
+			
+			MLExampleFeature.setFeatureExample(exampleToProcess, fromPhraseContentFeature);
+			
+		
