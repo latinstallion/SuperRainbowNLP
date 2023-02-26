@@ -58,4 +58,11 @@ public class LinkGeneralFeatures implements IFeatureCalculator {
 			
 			MLExampleFeature.setFeatureExample(exampleToProcess, fromPhraseContentFeature);
 			
-		
+			FeatureValuePair toPhraseContentFeature = FeatureValuePair.getInstance(
+					FeatureName.ToPhraseContent, 
+					phrase2.getPhraseContent(), "1");
+			
+			MLExampleFeature.setFeatureExample(exampleToProcess, toPhraseContentFeature);
+			
+	}
+	//it can retuen Betwe
