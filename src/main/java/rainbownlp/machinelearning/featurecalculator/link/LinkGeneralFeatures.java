@@ -65,4 +65,10 @@ public class LinkGeneralFeatures implements IFeatureCalculator {
 			MLExampleFeature.setFeatureExample(exampleToProcess, toPhraseContentFeature);
 			
 	}
-	//it can retuen Betwe
+	//it can retuen BetweenSentence or WithinSentence(within)
+	public static String getInterMentionLocationType(Phrase p1, Phrase p2)
+	{
+		String relation_type = "withinSent";
+		if(p1.getStartArtifact().getParentArtifact().equals(p2.getEndArtifact().getParentArtifact()))
+		{
+			relation_typ
