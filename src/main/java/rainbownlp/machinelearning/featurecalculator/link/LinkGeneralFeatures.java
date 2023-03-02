@@ -71,4 +71,15 @@ public class LinkGeneralFeatures implements IFeatureCalculator {
 		String relation_type = "withinSent";
 		if(p1.getStartArtifact().getParentArtifact().equals(p2.getEndArtifact().getParentArtifact()))
 		{
-			relation_typ
+			relation_type = "withinSent";
+		}
+		//TODO we can further analyze
+		else
+		{
+			relation_type = "betweenSent";
+		}
+		return relation_type;
+	}
+
+	
+}
