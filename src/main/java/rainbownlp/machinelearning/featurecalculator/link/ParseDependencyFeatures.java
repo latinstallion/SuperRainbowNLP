@@ -12,4 +12,9 @@ import rainbownlp.analyzer.sentenceclause.SentenceClauseManager;
 import rainbownlp.core.Artifact;
 import rainbownlp.core.FeatureValuePair;
 import rainbownlp.core.Phrase;
-import rai
+import rainbownlp.core.PhraseLink;
+import rainbownlp.core.FeatureValuePair.FeatureName;
+import rainbownlp.machinelearning.IFeatureCalculator;
+import rainbownlp.machinelearning.MLExample;
+import rainbownlp.machinelearning.MLExampleFeature;
+import rainbown
