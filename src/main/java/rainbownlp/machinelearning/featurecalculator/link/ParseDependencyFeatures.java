@@ -17,4 +17,15 @@ import rainbownlp.core.FeatureValuePair.FeatureName;
 import rainbownlp.machinelearning.IFeatureCalculator;
 import rainbownlp.machinelearning.MLExample;
 import rainbownlp.machinelearning.MLExampleFeature;
-import rainbown
+import rainbownlp.parser.DependencyLine;
+import rainbownlp.util.HibernateUtil;
+import rainbownlp.util.StanfordDependencyUtil;
+import rainbownlp.util.StringUtil;
+
+/**
+ * @author Azadeh
+ * 
+ */
+public class ParseDependencyFeatures implements IFeatureCalculator {
+	
+	
