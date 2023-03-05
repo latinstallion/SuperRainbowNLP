@@ -28,4 +28,9 @@ import rainbownlp.util.StringUtil;
  */
 public class ParseDependencyFeatures implements IFeatureCalculator {
 	
-	
+	public static void main (String[] args) throws Exception
+	{
+////		List<MLExample> trainExamples = 
+////			MLExample.getAllExamples(LinkExampleBuilder.ExperimentGroupTimexEvent, true);
+//		List<MLExample> trainExamples2 = 
+//			MLExample.getAllExamples(LinkExampleBuilder.ExperimentGroupEventEve
