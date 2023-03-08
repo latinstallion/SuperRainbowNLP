@@ -39,4 +39,13 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 //		all_train_examples.addAll(trainExamples2);
 //		for (MLExample example:all_train_examples)
 //		{
-////			if(exampl
+////			if(example.getExampleId() != 4893) continue;
+//			ParseDependencyFeatures lbf = new ParseDependencyFeatures();
+//			lbf.calculateFeatures(example);
+//		}
+		
+	}
+	@Override
+	public void calculateFeatures(MLExample exampleToProcess) throws Exception {
+			
+			PhraseL
