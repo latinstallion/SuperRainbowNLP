@@ -33,4 +33,10 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 ////		List<MLExample> trainExamples = 
 ////			MLExample.getAllExamples(LinkExampleBuilder.ExperimentGroupTimexEvent, true);
 //		List<MLExample> trainExamples2 = 
-//			MLExample.getAllExamples(LinkExampleBuilder.ExperimentGroupEventEve
+//			MLExample.getAllExamples(LinkExampleBuilder.ExperimentGroupEventEvent, true,100);
+//		List<MLExample> all_train_examples = new ArrayList<MLExample>();
+////		all_train_examples.addAll(trainExamples);
+//		all_train_examples.addAll(trainExamples2);
+//		for (MLExample example:all_train_examples)
+//		{
+////			if(exampl
