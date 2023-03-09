@@ -48,4 +48,7 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 	@Override
 	public void calculateFeatures(MLExample exampleToProcess) throws Exception {
 			
-			PhraseL
+			PhraseLink phraseLink = exampleToProcess.getRelatedPhraseLink();
+			Phrase phrase1 = Phrase.getInstance(phraseLink.getFromPhrase().getPhraseId());
+			Phrase phrase2 = Phrase.getInstance(phraseLink.getToPhrase().getPhraseId());
+			Artifact parent_sent = phrase1.g
