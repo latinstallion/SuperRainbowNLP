@@ -51,4 +51,10 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			PhraseLink phraseLink = exampleToProcess.getRelatedPhraseLink();
 			Phrase phrase1 = Phrase.getInstance(phraseLink.getFromPhrase().getPhraseId());
 			Phrase phrase2 = Phrase.getInstance(phraseLink.getToPhrase().getPhraseId());
-			Artifact parent_sent = phrase1.g
+			Artifact parent_sent = phrase1.getStartArtifact().getParentArtifact();
+			SentenceClauseManager clauseManager =
+					new SentenceClauseManager(parent_sent);
+	
+			ArrayList<DependencyLine> dep_lines = clauseManager.sentDepLines;
+			
+			String rel_prep1 = getRelPrepositionToPhrase(phrase1
