@@ -77,4 +77,10 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			}
 			
 			FeatureValuePair toPhraserelPrep = FeatureValuePair.getInstance
-			(FeatureName.ToPhraseRelPrep, rel_pre
+			(FeatureName.ToPhraseRelPrep, rel_prep2,"1");
+		
+		    MLExampleFeature.setFeatureExample(exampleToProcess, toPhraserelPrep);
+			
+			////////////////////////////////////////////////////////////////
+			boolean are_gov_connected = areGovVerbsDirectlyConnected(phrase1, phrase2, clauseManager);
+			FeatureVa
