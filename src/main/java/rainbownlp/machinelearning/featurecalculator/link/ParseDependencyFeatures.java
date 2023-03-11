@@ -69,4 +69,12 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			MLExampleFeature.setFeatureExample(exampleToProcess, fromPhraserelPrep);
 			
 			
-			//To
+			//To phrase related prep
+			String rel_prep2 = getRelPrepositionToPhrase(phrase2,dep_lines);
+			if (rel_prep2==null)
+			{
+				rel_prep2="no-preposition";
+			}
+			
+			FeatureValuePair toPhraserelPrep = FeatureValuePair.getInstance
+			(FeatureName.ToPhraseRelPrep, rel_pre
