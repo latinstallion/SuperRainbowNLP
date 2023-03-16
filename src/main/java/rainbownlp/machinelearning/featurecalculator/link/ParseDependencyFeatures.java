@@ -83,4 +83,8 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			
 			////////////////////////////////////////////////////////////////
 			boolean are_gov_connected = areGovVerbsDirectlyConnected(phrase1, phrase2, clauseManager);
-			FeatureVa
+			FeatureValuePair gov_connected_feature = FeatureValuePair.getInstance
+			(FeatureName.areGovVerbsConnected, are_gov_connected?"1":"0");
+		
+		    MLExampleFeature.setFeatureExample(exampleToProcess, gov_connected_feature);
+		   ///// /////////////
