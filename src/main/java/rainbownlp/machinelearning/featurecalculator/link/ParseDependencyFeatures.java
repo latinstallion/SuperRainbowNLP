@@ -94,4 +94,13 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		    {
 		    	gov_verb1 ="#notFound#";
 		    }
-		    if (go
+		    if (gov_verb2 ==null)
+		    {
+		    	gov_verb2 ="#notFound#";
+		    }
+		   
+	    	FeatureValuePair fromGovVerb = FeatureValuePair.getInstance
+			(FeatureName.FromPhraseGovVerb, gov_verb1, "1");
+		
+		    MLExampleFeature.setFeatureExample(exampleToProcess, fromGovVerb);
+	 
