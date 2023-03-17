@@ -87,4 +87,11 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			(FeatureName.areGovVerbsConnected, are_gov_connected?"1":"0");
 		
 		    MLExampleFeature.setFeatureExample(exampleToProcess, gov_connected_feature);
-		   ///// /////////////
+		   ///// ///////////////////////////////////////////////////////////
+		    String gov_verb1 = getGovernorVerb(phrase1,clauseManager);
+		    String gov_verb2 = getGovernorVerb(phrase2,clauseManager);
+		    if (gov_verb1 ==null)
+		    {
+		    	gov_verb1 ="#notFound#";
+		    }
+		    if (go
