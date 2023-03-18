@@ -103,4 +103,13 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			(FeatureName.FromPhraseGovVerb, gov_verb1, "1");
 		
 		    MLExampleFeature.setFeatureExample(exampleToProcess, fromGovVerb);
+	    
 	 
+	    	FeatureValuePair toGovVerb = FeatureValuePair.getInstance
+			(FeatureName.ToPhraseGovVerb, gov_verb2, "1");
+		
+		    MLExampleFeature.setFeatureExample(exampleToProcess, toGovVerb);
+		    
+		    
+		    //get verb ausxilaries
+		    List<String> from_verb_auxs = getVerbA
