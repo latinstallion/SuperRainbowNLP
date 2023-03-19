@@ -118,4 +118,11 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		    	FeatureValuePair fromverbAuxFeatures = FeatureValuePair.getInstance
 				(FeatureName.FromPhraseGovVerbAux, verb_aux,"1");
 			
-			    MLExampleFeature.setFeatureExampl
+			    MLExampleFeature.setFeatureExample(exampleToProcess, fromverbAuxFeatures);
+		    }
+		    
+		    List<String> to_verb_auxs = getVerbAuxilaries(phrase2, clauseManager);
+		    for (String verb_aux: to_verb_auxs)
+		    {
+		    	FeatureValuePair toverbAuxFeatures = FeatureValuePair.getInstance
+				(Feat
