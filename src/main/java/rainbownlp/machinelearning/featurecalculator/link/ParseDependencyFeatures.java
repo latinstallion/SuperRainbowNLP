@@ -125,4 +125,11 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		    for (String verb_aux: to_verb_auxs)
 		    {
 		    	FeatureValuePair toverbAuxFeatures = FeatureValuePair.getInstance
-				(Feat
+				(FeatureName.toPhraseGovVerbAux, verb_aux,"1");
+			
+			    MLExampleFeature.setFeatureExample(exampleToProcess, toverbAuxFeatures);
+		    }
+				
+	}
+	
+	public static String getRelPrepositionToPhrase(Phrase pPhrase, ArrayList<DependencyLine> dep_lines) throws SQLExceptio
