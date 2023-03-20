@@ -132,4 +132,12 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 				
 	}
 	
-	public static String getRelPrepositionToPhrase(Phrase pPhrase, ArrayList<DependencyLine> dep_lines) throws SQLExceptio
+	public static String getRelPrepositionToPhrase(Phrase pPhrase, ArrayList<DependencyLine> dep_lines) throws SQLException
+	{
+		String related_prep = null;
+//		List<Integer> included_offsets = pPhrase.listWordOffsetsInPhrase();
+		String sent_dep_string;
+		if (dep_lines ==null)
+		{
+			dep_lines =StanfordDependencyUtil.parseDepLinesFromString
+				(pPhrase.getStart
