@@ -140,4 +140,8 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		if (dep_lines ==null)
 		{
 			dep_lines =StanfordDependencyUtil.parseDepLinesFromString
-				(pPhrase.getStart
+				(pPhrase.getStartArtifact().getParentArtifact().getStanDependency());
+		}
+		int head_offset = pPhrase.getHeadArtifact().getWordIndex();
+		// looking for pre_ relations that have any of the words in the phrase as the gov or 
+		for (DependencyLine dep: dep_lin
