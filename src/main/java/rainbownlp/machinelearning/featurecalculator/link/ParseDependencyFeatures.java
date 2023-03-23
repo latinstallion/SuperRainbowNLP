@@ -154,4 +154,15 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 				{
 					if (rel_name.matches("prep_.*"))
 					{
-						related_prep = rel_name.replaceAll("prep_(
+						related_prep = rel_name.replaceAll("prep_(.*)", "$1");
+						break;
+					}
+					
+				}
+			}
+		}
+		// check the original line also
+		if (related_prep==null)
+		{
+			Artifact prev_artifact = pPhrase.getStartArtifact().getPreviousArtifact();
+			if (prev_artifact != null && prev_artifact.getP
