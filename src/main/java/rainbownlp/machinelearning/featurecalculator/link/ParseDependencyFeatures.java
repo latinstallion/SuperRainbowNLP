@@ -144,4 +144,14 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		}
 		int head_offset = pPhrase.getHeadArtifact().getWordIndex();
 		// looking for pre_ relations that have any of the words in the phrase as the gov or 
-		for (DependencyLine dep: dep_lin
+		for (DependencyLine dep: dep_lines)
+		{
+			String rel_name = dep.relationName.toLowerCase();
+			if (rel_name.startsWith("prep_"))
+			{
+				if (head_offset == dep.secondOffset-1 ||
+						head_offset == dep.firstOffset-1)
+				{
+					if (rel_name.matches("prep_.*"))
+					{
+						related_prep = rel_name.replaceAll("prep_(
