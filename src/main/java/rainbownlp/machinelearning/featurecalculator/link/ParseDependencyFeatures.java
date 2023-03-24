@@ -165,4 +165,15 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		if (related_prep==null)
 		{
 			Artifact prev_artifact = pPhrase.getStartArtifact().getPreviousArtifact();
-			if (prev_artifact != null && prev_artifact.getP
+			if (prev_artifact != null && prev_artifact.getPOS().toLowerCase().equals("dt"))
+			{
+				related_prep = prev_artifact.getContent();
+			}
+			if (prev_artifact != null && prev_artifact.getPOS().toLowerCase().equals("in"))
+			{
+				related_prep = prev_artifact.getContent();
+			}
+		}
+		return related_prep;
+	}
+	public s
