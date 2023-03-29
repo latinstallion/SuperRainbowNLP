@@ -185,4 +185,9 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		}
 		else
 		{
-			// 
+			// get sentence clauses
+			Artifact head = pPhrase.getHeadArtifact();
+			SentenceClauseManager clauseManager;
+			if (pClauseManager.getRelatedSentence() != pPhrase.getStartArtifact().getParentArtifact())
+			{
+				clauseManager = new SentenceClauseManager(pPhrase.getStartArtifact()
