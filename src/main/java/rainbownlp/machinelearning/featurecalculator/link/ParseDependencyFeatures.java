@@ -176,4 +176,13 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		}
 		return related_prep;
 	}
-	public s
+	public static String getGovernorVerb(Phrase pPhrase, SentenceClauseManager pClauseManager ) throws Exception
+	{
+		String gov_verb = null;
+		if (pPhrase.getGovVerb()!=null)
+		{
+			return StringUtil.getWordLemma(pPhrase.getGovVerb().getContent());
+		}
+		else
+		{
+			// 
