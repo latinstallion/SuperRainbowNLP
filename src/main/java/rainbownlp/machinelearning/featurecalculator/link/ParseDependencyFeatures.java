@@ -190,4 +190,18 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			SentenceClauseManager clauseManager;
 			if (pClauseManager.getRelatedSentence() != pPhrase.getStartArtifact().getParentArtifact())
 			{
-				clauseManager = new SentenceClauseManager(pPhrase.getStartArtifact()
+				clauseManager = new SentenceClauseManager(pPhrase.getStartArtifact().getParentArtifact());
+			}
+			else
+			{
+				clauseManager = pClauseManager;
+			}
+			Clause related_clause = clauseManager.clauseMap.get(head.getWordIndex()+1);
+			
+			if (related_clause!=null)
+			{
+				gov_verb = related_clause.clauseVerb.verbMainPart;
+	
+				if (!gov_verb.matches(""))
+				{
+		
