@@ -204,4 +204,12 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 	
 				if (!gov_verb.matches(""))
 				{
+					Artifact gov_verb_artifact = 
+						Artifact.findInstance(clauseManager.getRelatedSentence(), 
+								related_clause.clauseVerb.offset-1);
+					if (!gov_verb_artifact.getPOS().startsWith("VB"))
+					{
+						gov_verb = null;
+					}
+					else
 		
