@@ -212,4 +212,18 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 						gov_verb = null;
 					}
 					else
-		
+					{
+						pPhrase.setGovVerb(gov_verb_artifact);
+						HibernateUtil.save(pPhrase);
+					}
+				}
+				
+				
+			}
+			if (gov_verb ==null || gov_verb.equals("") )
+			{
+				Artifact ga= pPhrase.calclateGovVerb();
+				if (ga != null)
+				{
+					gov_verb= ga.getContent();
+					pPhrase.se
