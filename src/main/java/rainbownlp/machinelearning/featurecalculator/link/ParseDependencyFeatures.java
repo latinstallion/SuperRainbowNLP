@@ -226,4 +226,16 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 				if (ga != null)
 				{
 					gov_verb= ga.getContent();
-					pPhrase.se
+					pPhrase.setGovVerb(ga);
+					HibernateUtil.save(pPhrase);
+				}
+			}
+		}
+		if (gov_verb != null)
+		{
+			gov_verb = StringUtil.getWordLemma(gov_verb);
+		}
+		
+		return gov_verb;
+	}
+	public static String getGovernorVerbPOS(Phrase pPhrase, SentenceClauseManager pClauseManager ) throws Except
