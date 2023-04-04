@@ -238,4 +238,15 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		
 		return gov_verb;
 	}
-	public static String getGovernorVerbPOS(Phrase pPhrase, SentenceClauseManager pClauseManager ) throws Except
+	public static String getGovernorVerbPOS(Phrase pPhrase, SentenceClauseManager pClauseManager ) throws Exception
+	{
+		String gov_verb_pos = null;
+		Artifact gov_verb = pPhrase.getGovVerb();
+		if (gov_verb != null)
+		{
+			return gov_verb.getPOS();
+		}
+		// get sentence clauses
+		Artifact head = pPhrase.getHeadArtifact();
+		SentenceClauseManager clauseManager;
+		if (pClauseMa
