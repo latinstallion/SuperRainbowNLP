@@ -257,4 +257,12 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		{
 			clauseManager = pClauseManager;
 		}
-		Clause 
+		Clause related_clause = clauseManager.clauseMap.get(head.getWordIndex()+1);
+		
+		if (related_clause!=null)
+		{
+			
+			gov_verb_pos = clauseManager.getPOSTag(related_clause.clauseVerb.offset);
+		}
+//		TODO: perform the right action
+//	
