@@ -265,4 +265,17 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			gov_verb_pos = clauseManager.getPOSTag(related_clause.clauseVerb.offset);
 		}
 //		TODO: perform the right action
-//	
+//		if (gov_verb==null)
+//		{
+//			 throw (new Exception());
+//		}
+		
+
+		return gov_verb_pos;
+	}
+	public static Integer getGovernorVerbTense(Phrase pPhrase, SentenceClauseManager pClauseManager ) throws Exception
+	{
+		Integer gov_verb_tense = null;
+		Artifact head;
+
+		Artifact gov_verb = pPh
