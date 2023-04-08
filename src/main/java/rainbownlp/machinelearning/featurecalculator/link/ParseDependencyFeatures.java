@@ -278,4 +278,17 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		Integer gov_verb_tense = null;
 		Artifact head;
 
-		Artifact gov_verb = pPh
+		Artifact gov_verb = pPhrase.getGovVerb();
+		if (gov_verb != null)
+		{
+			head = gov_verb;
+		}
+		else
+		{
+			head = pPhrase.getHeadArtifact();
+		}
+		// get sentence clauses
+		
+		SentenceClauseManager clauseManager;
+		if (pClauseManager ==null || pClauseManager.getRelatedSentence() != 
+				pPhrase.getSta
