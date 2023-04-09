@@ -291,4 +291,12 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		
 		SentenceClauseManager clauseManager;
 		if (pClauseManager ==null || pClauseManager.getRelatedSentence() != 
-				pPhrase.getSta
+				pPhrase.getStartArtifact().getParentArtifact())
+		{
+			clauseManager = new SentenceClauseManager(pPhrase.getStartArtifact().getParentArtifact());
+		}
+		else
+		{
+			clauseManager = pClauseManager;
+		}
+		Clause related_clause = clauseManager.clauseMap.get(head.getWordIndex()
