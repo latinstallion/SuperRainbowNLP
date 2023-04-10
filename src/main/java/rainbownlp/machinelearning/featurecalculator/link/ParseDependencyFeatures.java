@@ -299,4 +299,15 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		{
 			clauseManager = pClauseManager;
 		}
-		Clause related_clause = clauseManager.clauseMap.get(head.getWordIndex()
+		Clause related_clause = clauseManager.clauseMap.get(head.getWordIndex()+1);
+		
+		if (related_clause!=null)
+		{
+			gov_verb_tense = related_clause.clauseVerb.getTense(clauseManager);
+			
+		}
+		
+
+		return gov_verb_tense;
+	}
+	public static List<String> getVerbAuxilaries(Phrase pPhrase, SentenceClauseManager pClauseManager ) thr
