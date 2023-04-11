@@ -310,4 +310,16 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 
 		return gov_verb_tense;
 	}
-	public static List<String> getVerbAuxilaries(Phrase pPhrase, SentenceClauseManager pClauseManager ) thr
+	public static List<String> getVerbAuxilaries(Phrase pPhrase, SentenceClauseManager pClauseManager ) throws Exception
+	{
+		List<String> aux =  new ArrayList<String>();
+		
+		Clause related_clause = getPhraseRelatedClause(pPhrase,pClauseManager);
+		
+		if (related_clause!=null)
+		{
+			aux =related_clause.clauseVerb.auxs;
+		}
+		return aux;
+	}
+	public static Clause getPhra
