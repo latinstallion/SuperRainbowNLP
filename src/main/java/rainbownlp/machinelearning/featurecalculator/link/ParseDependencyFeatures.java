@@ -322,4 +322,15 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		}
 		return aux;
 	}
-	public static Clause getPhra
+	public static Clause getPhraseRelatedClause(Phrase pPhrase, SentenceClauseManager pClauseManager) throws Exception
+	{
+		// get sentence clauses
+		Artifact head;
+		Artifact gov_verb = pPhrase.getGovVerb();
+		if (gov_verb != null)
+		{
+			head = gov_verb;
+		}
+		else
+		{
+			head = pPhrase.getHeadArtifact(
