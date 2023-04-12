@@ -333,4 +333,15 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		}
 		else
 		{
-			head = pPhrase.getHeadArtifact(
+			head = pPhrase.getHeadArtifact();
+		}
+		
+		SentenceClauseManager clauseManager;
+		
+		if (pClauseManager.getRelatedSentence() != pPhrase.getStartArtifact().getParentArtifact())
+		{
+			clauseManager = new SentenceClauseManager(pPhrase.getStartArtifact().getParentArtifact());
+		}
+		else
+		{
+			clauseManager 
