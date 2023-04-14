@@ -344,4 +344,10 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		}
 		else
 		{
-			clauseManager 
+			clauseManager = pClauseManager;
+		}
+		Clause related_clause = clauseManager.clauseMap.get(head.getWordIndex()+1);
+		
+		return related_clause;
+	}
+	public static boolean areGovVerbsDirectlyConnected(Phrase pPhrase1, Phrase pPhrase2,SentenceClauseManager pClauseManag
