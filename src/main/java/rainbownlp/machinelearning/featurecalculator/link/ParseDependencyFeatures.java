@@ -350,4 +350,12 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		
 		return related_clause;
 	}
-	public static boolean areGovVerbsDirectlyConnected(Phrase pPhrase1, Phrase pPhrase2,SentenceClauseManager pClauseManag
+	public static boolean areGovVerbsDirectlyConnected(Phrase pPhrase1, Phrase pPhrase2,SentenceClauseManager pClauseManager) throws Exception
+	{
+		boolean are_connected = false;
+		Artifact gov_verb1_artifact = pPhrase1.getGovVerb();
+		Artifact gov_verb2_artifact = pPhrase2.getGovVerb();
+		String p1_gov_verp=null;
+		Integer p1_gov_verb_offset=null;
+		String p2_gov_verp = null;
+		Integer p2_g
