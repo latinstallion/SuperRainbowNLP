@@ -367,4 +367,10 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		if (gov_verb2_artifact != null)
 		{
 			p2_gov_verp = gov_verb2_artifact.getContent();
-			p2_g
+			p2_gov_verb_offset = gov_verb2_artifact.getWordIndex()+1;
+		}
+		SentenceClauseManager clauseManager;
+		Artifact head2 = pPhrase2.getHeadArtifact();
+		if (pClauseManager.getRelatedSentence() != pPhrase1.getStartArtifact().getParentArtifact())
+		{
+			clauseManager = new Sent
