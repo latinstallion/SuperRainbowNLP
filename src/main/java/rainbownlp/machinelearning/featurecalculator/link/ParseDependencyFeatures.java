@@ -358,4 +358,13 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		String p1_gov_verp=null;
 		Integer p1_gov_verb_offset=null;
 		String p2_gov_verp = null;
-		Integer p2_g
+		Integer p2_gov_verb_offset=null;
+		if (gov_verb1_artifact != null)
+		{
+			p1_gov_verp = gov_verb1_artifact.getContent();
+			p1_gov_verb_offset = gov_verb1_artifact.getWordIndex()+1;
+		}
+		if (gov_verb2_artifact != null)
+		{
+			p2_gov_verp = gov_verb2_artifact.getContent();
+			p2_g
