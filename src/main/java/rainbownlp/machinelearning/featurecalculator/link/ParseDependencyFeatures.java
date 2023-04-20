@@ -383,4 +383,16 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		{
 			Artifact head1 = pPhrase1.getHeadArtifact();
 			
-			Clause related_clause1 = clauseManager.clauseMap.get(head1.getWordIndex()
+			Clause related_clause1 = clauseManager.clauseMap.get(head1.getWordIndex()+1);
+			
+			if (related_clause1!=null)
+			{
+				
+				p1_gov_verp = related_clause1.clauseVerb.verbMainPart;
+				p1_gov_verb_offset = related_clause1.clauseVerb.offset;
+			}
+		}
+		if (p1_gov_verp ==null)
+		{
+			
+			Clause related_clause2 = clauseManager.clauseMap.get
