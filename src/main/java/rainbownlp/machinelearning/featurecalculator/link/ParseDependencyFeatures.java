@@ -395,4 +395,14 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 		if (p1_gov_verp ==null)
 		{
 			
-			Clause related_clause2 = clauseManager.clauseMap.get
+			Clause related_clause2 = clauseManager.clauseMap.get(head2.getWordIndex()+1);
+		
+			
+			if (related_clause2!=null)
+			{
+				p2_gov_verp = related_clause2.clauseVerb.verbMainPart;
+				p2_gov_verb_offset = related_clause2.clauseVerb.offset;
+			}
+		}
+		
+		if (p2_gov_verp != null && p1_gov_verp!=null && p1_gov_verp.equals(p2_gov_verp
