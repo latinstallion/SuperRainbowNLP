@@ -405,4 +405,13 @@ public class ParseDependencyFeatures implements IFeatureCalculator {
 			}
 		}
 		
-		if (p2_gov_verp != null && p1_gov_verp!=null && p1_gov_verp.equals(p2_gov_verp
+		if (p2_gov_verp != null && p1_gov_verp!=null && p1_gov_verp.equals(p2_gov_verp) && p1_gov_verb_offset==p2_gov_verb_offset)
+		{
+			are_connected = true;
+			return are_connected;
+		}
+		
+		if (p2_gov_verp != null && p1_gov_verp!=null )
+		{
+			are_connected = StanfordDependencyUtil.haveDirectRelation(p1_gov_verp,p1_gov_verb_offset,
+					p2_gov_verp,p2_gov_verb_offset,clauseManager.
