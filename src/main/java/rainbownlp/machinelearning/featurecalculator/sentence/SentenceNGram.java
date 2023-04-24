@@ -32,3 +32,31 @@ public class SentenceNGram implements IFeatureCalculator {
 				calculateSentenceNGram(2, sentence, exampleToProcess, "Sentence2Gram");
 			}
 		}
+	}
+	
+	void calculateSentenceNGram(int n, Artifact sentence, MLExample example, String featureName)
+	{
+		String[] word_text = 
+				StringUtil.getTermByTermWordnet(sentence.getContent().toLowerCase()).split(" ");
+			
+		for(int i=0;i<word_text.length-n;i++)
+		{
+			String cur_content = "";
+			for(int j=0;j<n;j++)
+			{
+				int new_part_index = i+j;
+				if(!word_text[new_part_index].trim().equals(""))
+				{
+					cur_content = 
+						cur_content.concat("_"+word_text[new_part_index].trim());
+				}
+			}
+			cur_content = cur_content.replaceAll("^_", "");
+			FeatureValuePair value_pair = FeatureValuePair.getInstance(
+					featureName, cur_content, "1");
+			MLExampleFeature.setFeatureExample(example,value_pair);
+
+		}
+	}
+
+}
