@@ -15,4 +15,12 @@ public class SentenceSyntax implements IFeatureCalculator {
 		if(sentence.getArtifactType() !=  Type.Sentence)
 			return;
 		FeatureValuePair wordCountFeature = FeatureValuePair.getInstance("WordCount", 
-				((Integer)sentence.getContent().spl
+				((Integer)sentence.getContent().split(" ").length).toString());
+		
+		MLExampleFeature.setFeatureExample(exampleToProcess, wordCountFeature);
+		
+		
+		FeatureValuePair lineIndexFeature = FeatureValuePair.getInstance("LineIndex", 
+				(sentence.getLineIndex()).toString());
+		
+		MLExampleFeature.setFeatureExa
