@@ -23,4 +23,7 @@ public class SentenceSyntax implements IFeatureCalculator {
 		FeatureValuePair lineIndexFeature = FeatureValuePair.getInstance("LineIndex", 
 				(sentence.getLineIndex()).toString());
 		
-		MLExampleFeature.setFeatureExa
+		MLExampleFeature.setFeatureExample(exampleToProcess, lineIndexFeature);
+	}
+
+}
