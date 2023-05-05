@@ -61,3 +61,46 @@ public class GrammaticalParser {
 	public void parseSentence(String sent)
 	{
 		if (s_parser == null)
+		{
+			s_parser = new StanfordParser();
+		}
+		s_parser.parse(sent);
+		//TODO put dependencies
+		POS = s_parser.getTagged();
+		dependencies = s_parser.getDependencies();
+//		parseTree = s_parser.getPenn();
+	}
+	
+	
+	public void setPOS(String pOS) {
+		POS = pOS;
+	}
+
+	public String getPOS() {
+		return POS;
+	}
+	public void setParseTree(String parseTree) {
+		this.parseTree = parseTree;
+	}
+
+	public String getParseTree() {
+		return parseTree;
+	}
+	public void setDependencies(String dependencies) {
+		this.dependencies = dependencies;
+	}
+
+	public String getDependencies() {
+		return dependencies;
+	}
+	private static class WordTag{
+		public String content;
+		public String POS;
+		public int offset;
+		public WordTag() {
+			// TODO Auto-generated constructor stub
+		}
+	}
+	
+	
+}
