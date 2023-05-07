@@ -15,4 +15,10 @@ import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;
 import opennlp.tools.cmdline.PerformanceMonitor;
 import opennlp.tools.cmdline.postag.POSModelLoader;
-im
+import opennlp.tools.postag.POSModel;
+import opennlp.tools.postag.POSSample;
+import opennlp.tools.postag.POSTaggerME;
+import opennlp.tools.util.InvalidFormatException;
+import opennlp.tools.util.ObjectStream;
+import opennlp.tools.util.PlainTextByLineStream;
+import opennlp.too
