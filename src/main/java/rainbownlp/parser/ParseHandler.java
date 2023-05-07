@@ -21,4 +21,9 @@ import opennlp.tools.postag.POSTaggerME;
 import opennlp.tools.util.InvalidFormatException;
 import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
-import opennlp.too
+import opennlp.tools.util.Span;
+import opennlp.uima.tokenize.WhitespaceTokenizer;
+import rainbownlp.core.Artifact;
+import rainbownlp.util.HibernateUtil;
+//This class will read all the training sentences and parse them and put penn tree and dependency and POS in the databse
+import rainbownlp.util
