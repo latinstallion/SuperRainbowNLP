@@ -26,4 +26,14 @@ import opennlp.uima.tokenize.WhitespaceTokenizer;
 import rainbownlp.core.Artifact;
 import rainbownlp.util.HibernateUtil;
 //This class will read all the training sentences and parse them and put penn tree and dependency and POS in the databse
-import rainbownlp.util
+import rainbownlp.util.ConfigurationUtil;
+
+public class ParseHandler {
+	public ArrayList<WordTag> sentenceWords = new ArrayList<WordTag>();
+	POSModel posModel;
+	POSTaggerME tagger;
+	ChunkerME chunkerME;
+
+	public ParseHandler() throws  IOException
+	{
+		POSModel posMod
