@@ -36,4 +36,9 @@ public class ParseHandler {
 
 	public ParseHandler() throws  IOException
 	{
-		POSModel posMod
+		POSModel posModel = new POSModelLoader()
+			.load(new File(ConfigurationUtil.getResourcePath("en-pos-maxent.bin")));
+		tagger = new POSTaggerME(posModel);
+//		// chunker
+		InputStream is = ConfigurationUtil.getResourceStream("en-chunker.bin");
+		ChunkerModel cModel = new Chunker
