@@ -41,4 +41,15 @@ public class ParseHandler {
 		tagger = new POSTaggerME(posModel);
 //		// chunker
 		InputStream is = ConfigurationUtil.getResourceStream("en-chunker.bin");
-		ChunkerModel cModel = new Chunker
+		ChunkerModel cModel = new ChunkerModel(is);
+ 
+		chunkerME = new ChunkerME(cModel);
+	}
+	public static StanfordParser s_parser = new StanfordParser();
+	public static void main(String[] args) throws Exception
+	{
+
+		
+////		StanfordParser s_parser = new StanfordParser();
+//		//get all sentence artifact
+		List<Artif
