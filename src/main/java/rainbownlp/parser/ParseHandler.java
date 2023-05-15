@@ -52,4 +52,14 @@ public class ParseHandler {
 		
 ////		StanfordParser s_parser = new StanfordParser();
 //		//get all sentence artifact
-		List<Artif
+		List<Artifact> sentences = 
+			Artifact.listByType(Artifact.Type.Sentence,true);
+		ParseHandler ph = new ParseHandler();
+		
+		for (Artifact sentence:sentences)
+		{
+			ph.sentenceChunker(sentence.getContent());
+			
+//			calculatePOS(s_parser,sentence);
+			
+/
