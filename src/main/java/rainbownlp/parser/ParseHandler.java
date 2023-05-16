@@ -62,4 +62,7 @@ public class ParseHandler {
 			
 //			calculatePOS(s_parser,sentence);
 			
-/
+//			//now parse the normalized sentence( here just normalized to head)
+//			NormalizedSentence normalized_sent_obj = NormalizedSentence.getInstance(sentence,NormalizationMethod.MethodType.MentionToHead);
+//			String normalized_sent = normalized_sent_obj.getNormalizedContent();
+//		
