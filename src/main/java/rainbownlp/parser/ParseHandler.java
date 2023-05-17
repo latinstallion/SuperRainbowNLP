@@ -65,4 +65,11 @@ public class ParseHandler {
 //			//now parse the normalized sentence( here just normalized to head)
 //			NormalizedSentence normalized_sent_obj = NormalizedSentence.getInstance(sentence,NormalizationMethod.MethodType.MentionToHead);
 //			String normalized_sent = normalized_sent_obj.getNormalizedContent();
-//		
+//			s_parser.parse(normalized_sent);
+//			
+//			String nor_dependencies = s_parser.getDependencies();
+//			String nor_penn_tree = s_parser.getPenn();
+//			normalized_sent_obj.setNormalizedDependency(nor_dependencies);
+//			normalized_sent_obj.setNormalizedPennTree(nor_penn_tree);
+//			
+/
