@@ -72,4 +72,19 @@ public class ParseHandler {
 //			normalized_sent_obj.setNormalizedDependency(nor_dependencies);
 //			normalized_sent_obj.setNormalizedPennTree(nor_penn_tree);
 //			
-/
+//			HibernateUtil.save(normalized_sent_obj);
+//			
+//			HibernateUtil.clearLoaderSession();
+		break;
+		}
+
+		
+	}
+	
+	public void calculatePOS(Artifact sentence ) throws Exception
+	{
+		if (s_parser == null)
+		{
+			s_parser = new StanfordParser();
+		}
+		s_parse
