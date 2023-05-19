@@ -87,4 +87,10 @@ public class ParseHandler {
 		{
 			s_parser = new StanfordParser();
 		}
-		s_parse
+		s_parser.parse(sentence.getContent());
+		//TODO put dependencies
+		String pos_tagged_sentence = s_parser.getTagged();
+		String dependencies = s_parser.getDependencies();
+		String penn_tree = s_parser.getPenn();
+		
+		sentence.setPOS(pos_tagged_sentence)
