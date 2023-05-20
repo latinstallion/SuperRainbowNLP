@@ -93,4 +93,11 @@ public class ParseHandler {
 		String dependencies = s_parser.getDependencies();
 		String penn_tree = s_parser.getPenn();
 		
-		sentence.setPOS(pos_tagged_sentence)
+		sentence.setPOS(pos_tagged_sentence);
+		sentence.setStanDependency(dependencies);
+		sentence.setStanPennTree(penn_tree);
+		HibernateUtil.save(sentence);
+		
+		ArrayList<WordTag> w_tags = analyzePOSTaggedSentence(pos_tagged_sentence);
+		for (int i=0;i<w_tags.size();i++)
+		{
