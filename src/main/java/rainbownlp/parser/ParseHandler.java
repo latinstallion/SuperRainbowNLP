@@ -101,3 +101,10 @@ public class ParseHandler {
 		ArrayList<WordTag> w_tags = analyzePOSTaggedSentence(pos_tagged_sentence);
 		for (int i=0;i<w_tags.size();i++)
 		{
+			WordTag wt = w_tags.get(i);
+			//get artifact
+			Artifact word_in_sent = Artifact.findInstance(sentence, i);
+					
+			if (word_in_sent.getContent().matches("\\w+") && !word_in_sent.getContent().equals(wt.content))
+			{
+				throw (new Exception("Related artifact is not found"
