@@ -107,4 +107,19 @@ public class ParseHandler {
 					
 			if (word_in_sent.getContent().matches("\\w+") && !word_in_sent.getContent().equals(wt.content))
 			{
-				throw (new Exception("Related artifact is not found"
+				throw (new Exception("Related artifact is not found"));
+			}
+			//set POS
+			word_in_sent.setPOS(wt.POS);
+			HibernateUtil.save(word_in_sent);
+			
+			HibernateUtil.clearLoaderSession();
+		}
+	}
+	public String calculatePOS(String content) throws Exception
+	{
+		if (s_parser == null)
+		{
+			s_parser = new StanfordParser();
+		}
+		s_parser.parse(c
