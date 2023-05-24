@@ -122,4 +122,11 @@ public class ParseHandler {
 		{
 			s_parser = new StanfordParser();
 		}
-		s_parser.parse(c
+		s_parser.parse(content);
+		//TODO put dependencies
+		String pos_tagged_sentence = s_parser.getTagged();
+		return pos_tagged_sentence;
+	}
+	
+	//This will return a list of the word tag objects based on the tagged sentence
+	public ArrayList<WordTag> analyzePOSTaggedSentence(Stri
