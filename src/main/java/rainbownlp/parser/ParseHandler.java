@@ -129,4 +129,12 @@ public class ParseHandler {
 	}
 	
 	//This will return a list of the word tag objects based on the tagged sentence
-	public ArrayList<WordTag> analyzePOSTaggedSentence(Stri
+	public ArrayList<WordTag> analyzePOSTaggedSentence(String pTaggedSentence) throws Exception
+	{
+		String tokens[] = pTaggedSentence.split(" ");
+		ArrayList<WordTag> word_tags =  new ArrayList<ParseHandler.WordTag>();
+		int count=0;
+		for (String token:tokens)
+		{
+			WordTag wt = new WordTag();
+			Pattern p = Pattern.compil
