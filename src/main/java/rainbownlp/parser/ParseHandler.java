@@ -137,4 +137,13 @@ public class ParseHandler {
 		for (String token:tokens)
 		{
 			WordTag wt = new WordTag();
-			Pattern p = Pattern.compil
+			Pattern p = Pattern.compile("(.*)\\/([^\\/]+)");
+			Matcher m = p.matcher(token);
+			if (m.matches())
+			{
+				String content = m.group(1);
+				content =  content.replaceAll("\\\\/", "/");
+				wt.content = content;
+				wt.POS = m.group(2);
+				wt.offset = count;
+				word
