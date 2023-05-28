@@ -146,4 +146,19 @@ public class ParseHandler {
 				wt.content = content;
 				wt.POS = m.group(2);
 				wt.offset = count;
-				word
+				word_tags.add(wt);
+				count++;
+			}
+			else
+			{
+				throw (new Exception("the POS tag doesn't match the pattern"));
+			}
+			
+			
+		}
+		return word_tags;
+	}
+	
+//	public static void nounPhraseTagger() throws IOException
+//	{
+//		InputStream mode
