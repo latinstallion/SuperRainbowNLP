@@ -161,4 +161,12 @@ public class ParseHandler {
 	
 //	public static void nounPhraseTagger() throws IOException
 //	{
-//		InputStream mode
+//		InputStream modelIn = null;
+//		ChunkerModel model = null;
+//
+//		modelIn = new FileInputStream("/host/ubnutustuff/projects/rnlp/rnlp/resources/en-chunker.bin");
+//		model = new ChunkerModel(modelIn);
+//		modelIn.close();
+//		ChunkerME chunker = new ChunkerME(model);
+//		String input = 
+//			"
