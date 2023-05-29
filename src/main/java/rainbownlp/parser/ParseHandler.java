@@ -169,4 +169,14 @@ public class ParseHandler {
 //		modelIn.close();
 //		ChunkerME chunker = new ChunkerME(model);
 //		String input = 
-//			"
+//			"This is a very good test";
+//		
+//		if (s_parser == null)
+//		{
+//			s_parser = new StanfordParser();
+//		}
+//		s_parser.parse(input);
+//		//TODO put dependencies
+//		String pos_tagged_sentence = s_parser.getTagged();
+//		
+//		String sent_tokens[]= input.split
