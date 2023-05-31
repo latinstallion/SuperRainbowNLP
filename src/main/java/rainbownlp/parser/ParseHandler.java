@@ -179,4 +179,17 @@ public class ParseHandler {
 //		//TODO put dependencies
 //		String pos_tagged_sentence = s_parser.getTagged();
 //		
-//		String sent_tokens[]= input.split
+//		String sent_tokens[]= input.split(" ");
+//		
+//		String tag[] = chunker.chunk(sent_tokens, pos_tagged_sentence.split(" "));
+//
+//		for (int i=0; i<sent_tokens.length;i++)
+//		{
+//			System.out.println(sent_tokens[i]+"**"+tag[i]);
+//		}
+		
+		
+
+
+//	}
+	public Span[] sentenceChunker(String sentence_content
