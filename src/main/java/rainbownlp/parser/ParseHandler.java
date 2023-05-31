@@ -192,4 +192,12 @@ public class ParseHandler {
 
 
 //	}
-	public Span[] sentenceChunker(String sentence_content
+	public Span[] sentenceChunker(String sentence_content) throws Exception {
+		 
+		PerformanceMonitor perfMon = new PerformanceMonitor(System.err, "sent");
+		
+//		String sentence_content = sent.getContent();
+//		String[] sent_tokens = {};
+//		List<Artifact> childs = sent.getChildsArtifact();
+//		
+//		for (int i=0;i<childs.si
