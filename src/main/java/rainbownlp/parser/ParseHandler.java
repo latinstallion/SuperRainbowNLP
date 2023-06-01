@@ -200,4 +200,15 @@ public class ParseHandler {
 //		String[] sent_tokens = {};
 //		List<Artifact> childs = sent.getChildsArtifact();
 //		
-//		for (int i=0;i<childs.si
+//		for (int i=0;i<childs.size();i++)
+//		{
+//			sent_tokens[i]=childs.get(i).getContent();
+//			
+//		}
+		
+//		String sentPOS = calculatePOS(sentence_content);
+		
+//		ObjectStream<String> lineStream = new PlainTextByLineStream(
+//				new StringReader(sentence_content));
+ 
+		perfMon.start();
