@@ -212,3 +212,12 @@ public class ParseHandler {
 //				new StringReader(sentence_content));
  
 		perfMon.start();
+//		String line;
+//		String whitespaceTokenizerLine[] = null;
+ 
+		String[] tags = null;
+//		while ((line = lineStream.read()) != null) {
+// 
+//			whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE
+//					.tokenize(line);
+//			tags =
