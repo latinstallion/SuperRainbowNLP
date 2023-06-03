@@ -220,4 +220,12 @@ public class ParseHandler {
 // 
 //			whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE
 //					.tokenize(line);
-//			tags =
+//			tags = tagger.tag(whitespaceTokenizerLine);
+// 
+////			POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
+////			System.out.println(sample.toString());
+// 
+//			perfMon.incrementCounter();
+//		}
+//		perfMon.stopAndPrintFinalResult();
+		String[] toke
