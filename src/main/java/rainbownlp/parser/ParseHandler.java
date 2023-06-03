@@ -228,4 +228,10 @@ public class ParseHandler {
 //			perfMon.incrementCounter();
 //		}
 //		perfMon.stopAndPrintFinalResult();
-		String[] toke
+		String[] tokens= sentence_content.split(" ");
+		tags = tagger.tag(tokens);
+		Span[] spans = chunkerME.chunkAsSpans(tokens, tags);
+//		String shallow_parsed_sent = "";
+//		String sent_transaction = "";
+		for (Span s : spans)
+//			System.out.println(s.toString()+ "  "+s.ge
