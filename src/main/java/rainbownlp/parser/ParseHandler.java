@@ -242,4 +242,10 @@ public class ParseHandler {
 		public String content;
 		public String POS;
 		public int offset;
-		public W
+		public WordTag() {
+			// TODO Auto-generated constructor stub
+		}
+	}
+	
+	
+}
