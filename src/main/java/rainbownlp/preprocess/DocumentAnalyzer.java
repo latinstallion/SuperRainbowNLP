@@ -11,4 +11,12 @@ public abstract class DocumentAnalyzer {
 	}
 	/**
 	 * Process given documents and load them into Artifact table
-	 * @param rootPath root of al
+	 * @param rootPath root of all documents to be processed
+	 * @return number of processed documents
+	 * @throws Exception
+	 */
+	public abstract List<Artifact> processDocuments(String rootPath);
+	
+	DatasetType dsType;
+	/**
+	 * Optional: You can specify the group name the loaded artifacts
