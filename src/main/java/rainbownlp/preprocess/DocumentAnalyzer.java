@@ -19,4 +19,11 @@ public abstract class DocumentAnalyzer {
 	
 	DatasetType dsType;
 	/**
-	 * Optional: You can specify the group name the loaded artifacts
+	 * Optional: You can specify the group name the loaded artifacts belong to. e.g. Test or Train  set
+	 * If not specified train set will be used
+	 * @param dsType
+	 */
+	public void setDatasetType(DatasetType pDsType){
+		dsType = pDsType;
+	}
+}
