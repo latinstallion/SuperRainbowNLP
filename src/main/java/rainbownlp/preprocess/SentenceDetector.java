@@ -9,4 +9,11 @@ import java.util.HashMap;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.util.Span;
-import rainbownlp.util.Confi
+import rainbownlp.util.ConfigurationUtil;
+
+public class SentenceDetector {
+	SentenceDetectorME sentenceDetector = null;
+	public SentenceDetector() throws FileNotFoundException{
+		InputStream modelIn = ConfigurationUtil.class.getClassLoader().getResourceAsStream("en-sent.bin");
+
+		try {
