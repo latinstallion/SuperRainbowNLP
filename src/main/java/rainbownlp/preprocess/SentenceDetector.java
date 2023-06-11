@@ -17,3 +17,15 @@ public class SentenceDetector {
 		InputStream modelIn = ConfigurationUtil.class.getClassLoader().getResourceAsStream("en-sent.bin");
 
 		try {
+		  SentenceModel model = new SentenceModel(modelIn);
+		  sentenceDetector = new SentenceDetectorME(model);
+		}
+		catch (IOException e) {
+		  e.printStackTrace();
+		}
+		finally {
+		  if (modelIn != null) {
+		    try {
+		      modelIn.close();
+		    }
+		    catch (IOExc
