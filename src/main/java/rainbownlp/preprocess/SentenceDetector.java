@@ -28,4 +28,17 @@ public class SentenceDetector {
 		    try {
 		      modelIn.close();
 		    }
-		    catch (IOExc
+		    catch (IOException e) {
+		    }
+		  }
+		}
+	}
+	
+	public String[] getSentence(String text){
+		String sentences[] = sentenceDetector.sentDetect(text);
+		
+		return sentences;
+	}
+	public Integer[] getSentencePos(String text){
+		
+		Span[] spans= sentenceDetector.sentPosDetec
