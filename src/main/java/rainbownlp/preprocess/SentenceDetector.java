@@ -41,4 +41,11 @@ public class SentenceDetector {
 	}
 	public Integer[] getSentencePos(String text){
 		
-		Span[] spans= sentenceDetector.sentPosDetec
+		Span[] spans= sentenceDetector.sentPosDetect(text);
+		Integer[] positions = new Integer[spans.length];
+		for(int i=0;i<spans.length;i++){
+			positions[i] = spans[i].getStart();
+		}
+		return positions;
+	}
+}
