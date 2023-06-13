@@ -102,3 +102,63 @@ public class SimpleDocumentLoader extends DocumentAnalyzer {
 			if (previous_word != null) {
 				new_word.setPreviousArtifact(previous_word);
 				previous_word.setNextArtifact(new_word);
+				HibernateUtil.save(previous_word);
+			}
+
+			HibernateUtil.save(new_word);
+
+			tokensArtifacts.add(new_word);
+			previous_word = new_word;
+
+		}
+	}
+	@Override
+	/**
+	 * Create document(s) artifact(s) and call processDocument for each document
+	 * @param filesRoot
+	 */
+	public List<Artifact> processDocuments(String rootPath) {
+		File f = new File(rootPath);
+		List<Artifact> loaded_documents = new ArrayList<Artifact>();
+		if (f.exists() && f.isFile()) {
+			//Util.log("Loading document :"+filesRoot, Level.INFO);
+			//Util.generateParseFilesIfnotExist(filesRoot);
+
+			Artifact new_doc = Artifact.getInstance(Artifact.Type.Document, rootPath, 0);
+			new_doc.setArtifactOptionalCategory(dsType.name());
+			HibernateUtil.save(new_doc);
+			try {
+				processDocument(new_doc);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			loaded_documents.add(new_doc);
+
+		} else {
+			List<File> files = 
+					FileUtil.getFilesInDirectory(rootPath, documentExtension);
+
+			for(File file : files) {
+				Artifact new_doc = 
+						Artifact.getInstance(Artifact.Type.Document, file.getAbsolutePath(), 0);
+				new_doc.setArtifactOptionalCategory(dsType.name());
+				HibernateUtil.save(new_doc);
+				
+				loaded_documents.add(new_doc);
+			}
+
+			for(Artifact doc:loaded_documents){
+				System.out.print("\nLoading document: " + doc.getAssociatedFilePath());
+				try {
+					processDocument(doc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		this.documents = loaded_documents;
+		return this.documents;
+	}
+
+}
