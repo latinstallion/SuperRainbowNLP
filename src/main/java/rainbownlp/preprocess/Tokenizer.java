@@ -174,3 +174,88 @@ public class Tokenizer {
 			sentences.put(line_number, line);
 		}
 		
+	}
+	
+
+	public void processFile() throws IOException{
+		List<String> lines = FileUtil.loadLineByLine(txt_file_path);
+		
+		int sentence_start=0;
+		for(int line_number = 0;line_number<lines.size();line_number++){
+			String line = lines.get(line_number);
+			List<Word> tokensInSentence = getTokens(line);
+			ArrayList<Integer> tokens_indexes = new ArrayList<Integer>();
+			
+			for(int token_index = 0;token_index<tokensInSentence.size();token_index++)
+			{
+				tokens_indexes.add(tokensInSentence.get(token_index).beginPosition()+sentence_start+line_number+1);
+			}
+			
+			sentences_tokens_indexes.put(line_number, tokens_indexes);
+			sentences_tokens.put(line_number, tokensInSentence);
+			sentences.put(line_number, line);
+			sentence_start+= line.length();
+		}
+		
+	}
+	
+	public void processFileWithTokenization(String tokenizationFilePath) throws IOException{
+		List<String> lines_tokenized = 
+			FileUtil.loadLineByLine(tokenizationFilePath);
+		
+		original_txt_content = 
+			FileUtil.readWholeFile(txt_file_path).replaceAll("\\s+", " ");
+		compressedText = 
+			original_txt_content.replaceAll(" |\\n", "");
+		if(compressedText.equals("")) return;
+		
+		int curIndex = 0;
+		String compressed_original_sofar = ""+original_txt_content.charAt(curIndex);
+		String compressed_tokenized_sofar = "";
+		int sentence_start=0;
+		for(int line_number = 0;line_number<lines_tokenized.size();line_number++){
+			String line = lines_tokenized.get(line_number);
+			List<Word> tokensInSentence = new ArrayList<Word>();
+			String[] tokensInSentence_str = line.split(" ");
+			ArrayList<Integer> tokens_indexes = new ArrayList<Integer>();
+			
+			for(int token_index = 0;token_index<tokensInSentence_str.length;token_index++)
+			{
+				if(!tokensInSentence_str[token_index].equals("")) 
+				{
+					String tmp_compressed_tokenized_sofar = 
+						compressed_tokenized_sofar + 
+						tokensInSentence_str[token_index].charAt(0);
+					while(!compressed_original_sofar.equals(
+							tmp_compressed_tokenized_sofar))
+					{
+						do{
+							curIndex++;
+							compressed_original_sofar += 
+								original_txt_content.charAt(curIndex);
+						}while(original_txt_content.charAt(curIndex) == ' ');
+						compressed_original_sofar = 
+							compressed_original_sofar.replaceAll(" |\\n", "");
+					}
+				}
+				
+				tokens_indexes.add(curIndex);
+				tokensInSentence.add(new 
+						Word(tokensInSentence_str[token_index], curIndex, 
+								curIndex+tokensInSentence_str[token_index].length()));
+				compressed_tokenized_sofar += tokensInSentence_str[token_index];
+			}
+			
+			sentences_tokens_indexes.put(line_number, tokens_indexes);
+			sentences_tokens.put(line_number, tokensInSentence);
+			sentences.put(line_number, line);
+			sentence_start+= line.length();
+		}
+		
+	}
+	public HashMap<Integer, String>  getSentences() {
+		
+		return sentences;
+	}
+
+}
