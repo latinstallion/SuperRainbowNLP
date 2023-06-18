@@ -18,3 +18,10 @@ public class ArtifactTest   {
 		doc_artifact.setContent( "this is test. hello test.");
 		
 		HibernateUtil.save(doc_artifact);
+
+		assertEquals(doc_artifact.getContent(), "this is test. hello test.");
+		assertEquals(doc_artifact.getArtifactType(), Type.Document);
+		assertTrue(doc_artifact.getArtifactId()!=-1);
+		
+		Artifact sentence_artifact = Artifact.getInstance(Type.Sentence);
+		sentence_
