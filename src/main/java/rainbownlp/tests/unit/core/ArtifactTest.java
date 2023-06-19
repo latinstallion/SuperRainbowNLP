@@ -24,4 +24,11 @@ public class ArtifactTest   {
 		assertTrue(doc_artifact.getArtifactId()!=-1);
 		
 		Artifact sentence_artifact = Artifact.getInstance(Type.Sentence);
-		sentence_
+		sentence_artifact.setContent("this is test.");
+		sentence_artifact.setParentArtifact(doc_artifact);
+		
+		HibernateUtil.save(sentence_artifact);
+		
+		assertEquals(sentence_artifact.getContent(), "this is test.");
+		assertEquals(sentence_artifact.getArtifactType(), Type.Sentence);
+		assertEquals(sentenc
