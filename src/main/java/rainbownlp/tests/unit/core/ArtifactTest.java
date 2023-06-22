@@ -31,4 +31,10 @@ public class ArtifactTest   {
 		
 		assertEquals(sentence_artifact.getContent(), "this is test.");
 		assertEquals(sentence_artifact.getArtifactType(), Type.Sentence);
-		assertEquals(sentenc
+		assertEquals(sentence_artifact.getParentArtifact().getArtifactId(), doc_artifact.getArtifactId());
+		
+		
+		Artifact sentence_artifact2 = Artifact.getInstance(Type.Sentence);
+		sentence_artifact2.setContent("hello test.");
+		sentence_artifact2.setParentArtifact(doc_artifact);
+		sentence_artifact2.setPreviousA
