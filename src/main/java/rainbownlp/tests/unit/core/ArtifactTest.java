@@ -44,4 +44,8 @@ public class ArtifactTest   {
 		assertEquals(sentence_artifact.getNextArtifact().getArtifactId(),
 				sentence_artifact2.getArtifactId());
 		assertEquals(sentence_artifact2.getPreviousArtifact().getArtifactId(), 
-				sentence_artifact.getArt
+				sentence_artifact.getArtifactId());
+		
+	}
+
+}
