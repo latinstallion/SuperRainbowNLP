@@ -16,4 +16,12 @@ public class MLExampleFeatureTest   {
 	
 	@Test
 	public void testCreateArtifact() {
-		Artifact doc_artifact = Artifac
+		Artifact doc_artifact = Artifact.getInstance(Type.Document);
+		doc_artifact.setContent( "this is test. hello test.");
+		HibernateUtil.save(doc_artifact);
+
+		FeatureValuePair feature1 = 
+			FeatureValuePair.getInstance(FeatureName.TWOGram, "test_test");
+		
+		assertNotNull(feature1);
+		assert
