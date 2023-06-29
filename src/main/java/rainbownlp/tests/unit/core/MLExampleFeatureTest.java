@@ -30,4 +30,11 @@ public class MLExampleFeatureTest   {
 		
 		MLExample artifact_example = new MLExample();
 		artifact_example.setCorpusName("test");
-//		artifact_example.setRe
+//		artifact_example.setRelatedArtifact(doc_artifact);
+//		
+//		assertTrue(artifact_example.getRelatedArtifact().equals(doc_artifact));
+		
+		MLExampleFeature artifact_feature = 
+			MLExampleFeature.setFeatureExample(artifact_example, feature1);
+		
+		assertTr
