@@ -11,4 +11,12 @@ public class ExtensionFilter implements FilenameFilter, FileFilter {
 	  }
 	  
 	  @Override
-	public boolea
+	public boolean accept(File dir, String name) {
+	    return (name.endsWith(extension));
+	  }
+
+	@Override
+	public boolean accept(File file) {
+		return file.toString().endsWith(extension);
+	}
+}
