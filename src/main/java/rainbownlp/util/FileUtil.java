@@ -366,3 +366,16 @@ public class FileUtil {
 		DocumentBuilder db = dbf.newDocumentBuilder();
 
 		//parse using builder to get DOM representation of the XML file
+		Document dom = db.parse(xmlFile);
+
+
+		return dom;
+	}
+
+	public static void logLine(String line) {
+		logLine(null, line);
+	}
+
+ 
+
+}
