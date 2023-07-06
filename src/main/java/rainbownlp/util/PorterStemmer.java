@@ -31,4 +31,15 @@ package rainbownlp.util;
    Considerably revised 4/9/00 in the light of many helpful suggestions
    from Brian Goetz of Quiotix Corporation (brian@quiotix.com).
 
-   Rele
+   Release 4
+
+*/
+
+import java.io.*;
+
+/**
+  * Stemmer, implementing the Porter Stemming Algorithm
+  *
+  * The Stemmer class transforms a word into its root form.  The input
+  * word can be provided a character at time (by calling add()), or at once
+  * by calling one of the various stem(somethi
