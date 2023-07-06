@@ -22,4 +22,13 @@ package rainbownlp.util;
 
    Similarly,
 
-   Bug 2 (reported by Steve Dyrdahl 22/2/00) fixed as marke
+   Bug 2 (reported by Steve Dyrdahl 22/2/00) fixed as marked below.
+   'ion' by itself leaves j = -1 in the test for 'ion' in step 5, and
+   b[j] is then outside the bounds of b.
+
+   Release 3
+
+   Considerably revised 4/9/00 in the light of many helpful suggestions
+   from Brian Goetz of Quiotix Corporation (brian@quiotix.com).
+
+   Rele
