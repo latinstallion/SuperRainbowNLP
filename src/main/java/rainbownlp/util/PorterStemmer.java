@@ -42,4 +42,13 @@ import java.io.*;
   *
   * The Stemmer class transforms a word into its root form.  The input
   * word can be provided a character at time (by calling add()), or at once
-  * by calling one of the various stem(somethi
+  * by calling one of the various stem(something) methods.
+  */
+
+public class PorterStemmer
+{  private char[] b;
+   private int i,     /* offset into b */
+               i_end, /* offset to end of stemmed word */
+               j, k;
+   private static final int INC = 50;
+      
