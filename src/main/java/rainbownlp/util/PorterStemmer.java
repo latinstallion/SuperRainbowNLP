@@ -51,4 +51,13 @@ public class PorterStemmer
                i_end, /* offset to end of stemmed word */
                j, k;
    private static final int INC = 50;
-      
+                     /* unit of size whereby b is increased */
+   public PorterStemmer()
+   {  b = new char[INC];
+      i = 0;
+      i_end = 0;
+   }
+
+   /**
+    * Add a character to the word being stemmed.  When you are finished
+    * adding characters, you can call stem(void) to
