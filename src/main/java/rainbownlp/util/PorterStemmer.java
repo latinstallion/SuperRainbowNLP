@@ -60,4 +60,17 @@ public class PorterStemmer
 
    /**
     * Add a character to the word being stemmed.  When you are finished
-    * adding characters, you can call stem(void) to
+    * adding characters, you can call stem(void) to stem the word.
+    */
+
+   public void add(char ch)
+   {  if (i == b.length)
+      {  char[] new_b = new char[i+INC];
+         for (int c = 0; c < i; c++) new_b[c] = b[c];
+         b = new_b;
+      }
+      b[i++] = ch;
+   }
+
+
+   /** Adds wLen characters to the word being stemmed contained in a 
