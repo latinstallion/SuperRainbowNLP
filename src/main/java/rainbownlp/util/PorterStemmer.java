@@ -73,4 +73,12 @@ public class PorterStemmer
    }
 
 
-   /** Adds wLen characters to the word being stemmed contained in a 
+   /** Adds wLen characters to the word being stemmed contained in a portion
+    * of a char[] array. This is like repeated calls of add(char ch), but
+    * faster.
+    */
+
+   public void add(char[] w, int wLen)
+   {  if (i+wLen >= b.length)
+      {  char[] new_b = new char[i+wLen+INC];
+         for (int c = 0; c < i; c++) new_b[c]
