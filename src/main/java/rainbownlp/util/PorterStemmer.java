@@ -90,3 +90,14 @@ public class PorterStemmer
    /**
     * After a word has been stemmed, it can be retrieved by toString(),
     * or a reference to the internal buffer can be retrieved by getResultBuffer
+    * and getResultLength (which is generally more efficient.)
+    */
+   public String toString() { return new String(b,0,i_end); }
+
+   /**
+    * Returns the length of the word resulting from the stemming process.
+    */
+   public int getResultLength() { return i_end; }
+
+   /**
+    * R
