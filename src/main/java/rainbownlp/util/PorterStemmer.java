@@ -100,4 +100,10 @@ public class PorterStemmer
    public int getResultLength() { return i_end; }
 
    /**
-    * R
+    * Returns a reference to a character buffer containing the results of
+    * the stemming process.  You also need to consult getResultLength()
+    * to determine the length of the result.
+    */
+   public char[] getResultBuffer() { return b; }
+
+   /* cons(i) is true <=> b[i] is a
