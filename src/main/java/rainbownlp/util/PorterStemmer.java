@@ -106,4 +106,14 @@ public class PorterStemmer
     */
    public char[] getResultBuffer() { return b; }
 
-   /* cons(i) is true <=> b[i] is a
+   /* cons(i) is true <=> b[i] is a consonant. */
+
+   private final boolean cons(int i)
+   {  switch (b[i])
+      {  case 'a': case 'e': case 'i': case 'o': case 'u': return false;
+         case 'y': return (i==0) ? true : !cons(i-1);
+         default: return true;
+      }
+   }
+
+   /* m() measures the number of consonant sequ
