@@ -116,4 +116,12 @@ public class PorterStemmer
       }
    }
 
-   /* m() measures the number of consonant sequ
+   /* m() measures the number of consonant sequences between 0 and j. if c is
+      a consonant sequence and v a vowel sequence, and <..> indicates arbitrary
+      presence,
+
+         <c><v>       gives 0
+         <c>vc<v>     gives 1
+         <c>vcvc<v>   gives 2
+         <c>vcvcvc<v> gives 3
+  
