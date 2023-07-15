@@ -124,4 +124,18 @@ public class PorterStemmer
          <c>vc<v>     gives 1
          <c>vcvc<v>   gives 2
          <c>vcvcvc<v> gives 3
-  
+         ....
+   */
+
+   private final int m()
+   {  int n = 0;
+      int i = 0;
+      while(true)
+      {  if (i > j) return n;
+         if (! cons(i)) break; i++;
+      }
+      i++;
+      while(true)
+      {  while(true)
+         {  if (i > j) return n;
+               
