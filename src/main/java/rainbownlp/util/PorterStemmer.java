@@ -152,4 +152,14 @@ public class PorterStemmer
        }
    }
 
-   /* vowelinstem() is true <=> 0
+   /* vowelinstem() is true <=> 0,...j contains a vowel */
+
+   private final boolean vowelinstem()
+   {  int i; for (i = 0; i <= j; i++) if (! cons(i)) return true;
+      return false;
+   }
+
+   /* doublec(j) is true <=> j,(j-1) contain a double consonant. */
+
+   private final boolean doublec(int j)
+   {  if 
