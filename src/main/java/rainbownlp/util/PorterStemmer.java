@@ -138,4 +138,18 @@ public class PorterStemmer
       while(true)
       {  while(true)
          {  if (i > j) return n;
-               
+               if (cons(i)) break;
+               i++;
+         }
+         i++;
+         n++;
+         while(true)
+         {  if (i > j) return n;
+            if (! cons(i)) break;
+            i++;
+         }
+         i++;
+       }
+   }
+
+   /* vowelinstem() is true <=> 0
