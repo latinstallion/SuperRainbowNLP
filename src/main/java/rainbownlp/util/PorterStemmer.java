@@ -162,4 +162,13 @@ public class PorterStemmer
    /* doublec(j) is true <=> j,(j-1) contain a double consonant. */
 
    private final boolean doublec(int j)
-   {  if 
+   {  if (j < 1) return false;
+      if (b[j] != b[j-1]) return false;
+      return cons(j);
+   }
+
+   /* cvc(i) is true <=> i-2,i-1,i has the form consonant - vowel - consonant
+      and also if the second c is not w,x or y. this is used when trying to
+      restore an e at the end of a short word. e.g.
+
+         cav
