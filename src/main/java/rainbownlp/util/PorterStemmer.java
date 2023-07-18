@@ -171,4 +171,17 @@ public class PorterStemmer
       and also if the second c is not w,x or y. this is used when trying to
       restore an e at the end of a short word. e.g.
 
-         cav
+         cav(e), lov(e), hop(e), crim(e), but
+         snow, box, tray.
+
+   */
+
+   private final boolean cvc(int i)
+   {  if (i < 2 || !cons(i) || cons(i-1) || !cons(i-2)) return false;
+      {  int ch = b[i];
+         if (ch == 'w' || ch == 'x' || ch == 'y') return false;
+      }
+      return true;
+   }
+
+   private fina
