@@ -184,4 +184,13 @@ public class PorterStemmer
       return true;
    }
 
-   private fina
+   private final boolean ends(String s)
+   {  int l = s.length();
+      int o = k-l+1;
+      if (o < 0) return false;
+      for (int i = 0; i < l; i++) if (b[o+i] != s.charAt(i)) return false;
+      j = k-l;
+      return true;
+   }
+
+   /* setto(s) sets (j+1),...k to the characters in the string 
