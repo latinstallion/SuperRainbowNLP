@@ -193,4 +193,16 @@ public class PorterStemmer
       return true;
    }
 
-   /* setto(s) sets (j+1),...k to the characters in the string 
+   /* setto(s) sets (j+1),...k to the characters in the string s, readjusting
+      k. */
+
+   private final void setto(String s)
+   {  int l = s.length();
+      int o = j+1;
+      for (int i = 0; i < l; i++) b[o+i] = s.charAt(i);
+      k = j+l;
+   }
+
+   /* r(s) is used further down. */
+
+   private final void r(String s) { if (m() > 0) setto(s
