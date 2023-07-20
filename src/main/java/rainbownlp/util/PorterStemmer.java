@@ -217,4 +217,16 @@ public class PorterStemmer
 
           feed      ->  feed
           agreed    ->  agree
-     
+          disabled  ->  disable
+
+          matting   ->  mat
+          mating    ->  mate
+          meeting   ->  meet
+          milling   ->  mill
+          messing   ->  mess
+
+          meetings  ->  meet
+
+   */
+
+   private final void step1(
