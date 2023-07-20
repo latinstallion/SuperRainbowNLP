@@ -205,4 +205,16 @@ public class PorterStemmer
 
    /* r(s) is used further down. */
 
-   private final void r(String s) { if (m() > 0) setto(s
+   private final void r(String s) { if (m() > 0) setto(s); }
+
+   /* step1() gets rid of plurals and -ed or -ing. e.g.
+
+          caresses  ->  caress
+          ponies    ->  poni
+          ties      ->  ti
+          caress    ->  caress
+          cats      ->  cat
+
+          feed      ->  feed
+          agreed    ->  agree
+     
