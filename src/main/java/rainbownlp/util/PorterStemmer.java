@@ -237,3 +237,11 @@ public class PorterStemmer
       }
       if (ends("eed")) { if (m() > 0) k--; } else
       if ((ends("ed") || ends("ing")) && vowelinstem())
+      {  k = j;
+         if (ends("at")) setto("ate"); else
+         if (ends("bl")) setto("ble"); else
+         if (ends("iz")) setto("ize"); else
+         if (doublec(k))
+         {  k--;
+            {  int ch = b[k];
+               if (ch == 'l' || ch == 's' || ch 
