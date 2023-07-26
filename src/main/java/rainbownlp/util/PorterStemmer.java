@@ -255,4 +255,10 @@ public class PorterStemmer
 
    private final void step2() { if (ends("y") && vowelinstem()) b[k] = 'i'; }
 
-   /* step3(
+   /* step3() maps double suffices to single ones. so -ization ( = -ize plus
+      -ation) maps to -ize etc. note that the string before the suffix must give
+      m() > 0. */
+
+   private final void step3() { if (k == 0) return; /* For Bug 1 */ switch (b[k-1])
+   {
+  
