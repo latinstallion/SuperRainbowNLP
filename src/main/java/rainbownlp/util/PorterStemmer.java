@@ -244,4 +244,15 @@ public class PorterStemmer
          if (doublec(k))
          {  k--;
             {  int ch = b[k];
-               if (ch == 'l' || ch == 's' || ch 
+               if (ch == 'l' || ch == 's' || ch == 'z') k++;
+            }
+         }
+         else if (m() == 1 && cvc(k)) setto("e");
+     }
+   }
+
+   /* step2() turns terminal y to i when there is another vowel in the stem. */
+
+   private final void step2() { if (ends("y") && vowelinstem()) b[k] = 'i'; }
+
+   /* step3(
