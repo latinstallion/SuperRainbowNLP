@@ -261,4 +261,9 @@ public class PorterStemmer
 
    private final void step3() { if (k == 0) return; /* For Bug 1 */ switch (b[k-1])
    {
-  
+       case 'a': if (ends("ational")) { r("ate"); break; }
+                 if (ends("tional")) { r("tion"); break; }
+                 break;
+       case 'c': if (ends("enci")) { r("ence"); break; }
+                 if (ends("anci")) { r("ance"); break; }
+        
