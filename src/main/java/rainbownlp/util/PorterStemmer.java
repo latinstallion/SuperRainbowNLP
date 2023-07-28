@@ -276,4 +276,9 @@ public class PorterStemmer
                  if (ends("ousli")) { r("ous"); break; }
                  break;
        case 'o': if (ends("ization")) { r("ize"); break; }
-                 if (ends("ation")) { r("ate"); b
+                 if (ends("ation")) { r("ate"); break; }
+                 if (ends("ator")) { r("ate"); break; }
+                 break;
+       case 's': if (ends("alism")) { r("al"); break; }
+                 if (ends("iveness")) { r("ive"); break; }
+                 if (ends("fulness")) { r("ful"); break; }
