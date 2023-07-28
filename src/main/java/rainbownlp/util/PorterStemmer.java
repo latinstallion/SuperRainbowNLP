@@ -271,4 +271,9 @@ public class PorterStemmer
                  break;
        case 'l': if (ends("bli")) { r("ble"); break; }
                  if (ends("alli")) { r("al"); break; }
-                 if (ends("entli")) 
+                 if (ends("entli")) { r("ent"); break; }
+                 if (ends("eli")) { r("e"); break; }
+                 if (ends("ousli")) { r("ous"); break; }
+                 break;
+       case 'o': if (ends("ization")) { r("ize"); break; }
+                 if (ends("ation")) { r("ate"); b
