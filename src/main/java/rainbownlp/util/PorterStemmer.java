@@ -282,3 +282,9 @@ public class PorterStemmer
        case 's': if (ends("alism")) { r("al"); break; }
                  if (ends("iveness")) { r("ive"); break; }
                  if (ends("fulness")) { r("ful"); break; }
+                 if (ends("ousness")) { r("ous"); break; }
+                 break;
+       case 't': if (ends("aliti")) { r("al"); break; }
+                 if (ends("iviti")) { r("ive"); break; }
+                 if (ends("biliti")) { r("ble"); break; }
+        
