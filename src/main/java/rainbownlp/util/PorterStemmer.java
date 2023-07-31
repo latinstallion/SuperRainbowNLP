@@ -296,4 +296,9 @@ public class PorterStemmer
    private final void step4() { switch (b[k])
    {
        case 'e': if (ends("icate")) { r("ic"); break; }
-            
+                 if (ends("ative")) { r(""); break; }
+                 if (ends("alize")) { r("al"); break; }
+                 break;
+       case 'i': if (ends("iciti")) { r("ic"); break; }
+                 break;
+       case 'l': if (ends("ical")) { r("ic"
