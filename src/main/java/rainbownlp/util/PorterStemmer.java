@@ -287,4 +287,13 @@ public class PorterStemmer
        case 't': if (ends("aliti")) { r("al"); break; }
                  if (ends("iviti")) { r("ive"); break; }
                  if (ends("biliti")) { r("ble"); break; }
-        
+                 break;
+       case 'g': if (ends("logi")) { r("log"); break; }
+   } }
+
+   /* step4() deals with -ic-, -full, -ness etc. similar strategy to step3. */
+
+   private final void step4() { switch (b[k])
+   {
+       case 'e': if (ends("icate")) { r("ic"); break; }
+            
