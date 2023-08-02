@@ -311,4 +311,8 @@ public class PorterStemmer
    /* step5() takes off -ant, -ence etc., in context <c>vcvc<v>. */
 
    private final void step5()
- 
+   {   if (k == 0) return; /* for Bug 1 */ switch (b[k-1])
+       {  case 'a': if (ends("al")) break; return;
+          case 'c': if (ends("ance")) break;
+                    if (ends("ence")) break; return;
+          case 'e': if (ends("er")) break; retur
