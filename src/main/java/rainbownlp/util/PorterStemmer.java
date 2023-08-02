@@ -301,4 +301,14 @@ public class PorterStemmer
                  break;
        case 'i': if (ends("iciti")) { r("ic"); break; }
                  break;
-       case 'l': if (ends("ical")) { r("ic"
+       case 'l': if (ends("ical")) { r("ic"); break; }
+                 if (ends("ful")) { r(""); break; }
+                 break;
+       case 's': if (ends("ness")) { r(""); break; }
+                 break;
+   } }
+
+   /* step5() takes off -ant, -ence etc., in context <c>vcvc<v>. */
+
+   private final void step5()
+ 
