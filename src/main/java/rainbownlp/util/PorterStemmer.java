@@ -315,4 +315,11 @@ public class PorterStemmer
        {  case 'a': if (ends("al")) break; return;
           case 'c': if (ends("ance")) break;
                     if (ends("ence")) break; return;
-          case 'e': if (ends("er")) break; retur
+          case 'e': if (ends("er")) break; return;
+          case 'i': if (ends("ic")) break; return;
+          case 'l': if (ends("able")) break;
+                    if (ends("ible")) break; return;
+          case 'n': if (ends("ant")) break;
+                    if (ends("ement")) break;
+                    if (ends("ment")) break;
+ 
