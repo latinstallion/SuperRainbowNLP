@@ -322,4 +322,8 @@ public class PorterStemmer
           case 'n': if (ends("ant")) break;
                     if (ends("ement")) break;
                     if (ends("ment")) break;
- 
+                    /* element etc. not stripped before the m */
+                    if (ends("ent")) break; return;
+          case 'o': if (ends("ion") && j >= 0 && (b[j] == 's' || b[j] == 't')) break;
+                                    /* j >= 0 fixes Bug 2 */
+            
