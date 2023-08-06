@@ -326,4 +326,9 @@ public class PorterStemmer
                     if (ends("ent")) break; return;
           case 'o': if (ends("ion") && j >= 0 && (b[j] == 's' || b[j] == 't')) break;
                                     /* j >= 0 fixes Bug 2 */
-            
+                    if (ends("ou")) break; return;
+                    /* takes care of -ous */
+          case 's': if (ends("ism")) break; return;
+          case 't': if (ends("ate")) break;
+                    if (ends("iti")) break; return;
+          case 'u': if (ends(
