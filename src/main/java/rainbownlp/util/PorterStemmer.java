@@ -331,4 +331,14 @@ public class PorterStemmer
           case 's': if (ends("ism")) break; return;
           case 't': if (ends("ate")) break;
                     if (ends("iti")) break; return;
-          case 'u': if (ends(
+          case 'u': if (ends("ous")) break; return;
+          case 'v': if (ends("ive")) break; return;
+          case 'z': if (ends("ize")) break; return;
+          default: return;
+       }
+       if (m() > 1) k = j;
+   }
+
+   /* step6() removes a final -e if m() > 1. */
+
+   private fin
