@@ -341,4 +341,13 @@ public class PorterStemmer
 
    /* step6() removes a final -e if m() > 1. */
 
-   private fin
+   private final void step6()
+   {  j = k;
+      if (b[k] == 'e')
+      {  int a = m();
+         if (a > 1 || a == 1 && !cvc(k-1)) k--;
+      }
+      if (b[k] == 'l' && doublec(k) && m() > 1) k--;
+   }
+
+   /** Stem the word placed into the Stemmer buffer thr
