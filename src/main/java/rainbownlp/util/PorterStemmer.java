@@ -357,4 +357,9 @@ public class PorterStemmer
     */
    public void stem()
    {  k = i - 1;
-      if (
+      if (k > 1) { step1(); step2(); step3(); step4(); step5(); step6(); }
+      i_end = k+1; i = 0;
+   }
+
+   /** Test program for demonstrating the Stemmer.  It reads text from a
+    * a list of files, stems each word, and writes the result to sta
