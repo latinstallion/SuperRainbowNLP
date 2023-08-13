@@ -369,4 +369,15 @@ public class PorterStemmer
     */
    public static void main(String[] args)
    {
- 
+      char[] w = new char[501];
+      PorterStemmer s = new PorterStemmer();
+      for (int i = 0; i < args.length; i++)
+      try
+      {
+         FileInputStream in = new FileInputStream(args[i]);
+
+         try
+         { while(true)
+
+           {  int ch = in.read();
+            
