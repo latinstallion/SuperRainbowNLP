@@ -380,4 +380,11 @@ public class PorterStemmer
          { while(true)
 
            {  int ch = in.read();
-            
+              if (Character.isLetter((char) ch))
+              {
+                 int j = 0;
+                 while(true)
+                 {  ch = Character.toLowerCase((char) ch);
+                    w[j] = (char) ch;
+                    if (j < 500) j++;
+                 
