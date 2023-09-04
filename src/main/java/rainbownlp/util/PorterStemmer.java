@@ -402,4 +402,9 @@ public class PorterStemmer
                           /* and now, to test toString() : */
                           u = s.toString();
 
-                
+                          /* to test getResultBuffer(), getResultLength() : */
+                          /* u = new String(s.getResultBuffer(), 0, s.getResultLength()); */
+
+                          System.out.print(u);
+                       }
+              
