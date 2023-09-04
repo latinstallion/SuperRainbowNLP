@@ -393,4 +393,13 @@ public class PorterStemmer
                        /* to test add(char ch) */
                        for (int c = 0; c < j; c++) s.add(w[c]);
 
-                       /* or, to test add(char[] 
+                       /* or, to test add(char[] w, int j) */
+                       /* s.add(w, j); */
+
+                       s.stem();
+                       {  String u;
+
+                          /* and now, to test toString() : */
+                          u = s.toString();
+
+                
