@@ -407,4 +407,14 @@ public class PorterStemmer
 
                           System.out.print(u);
                        }
-              
+                       break;
+                    }
+                 }
+              }
+              if (ch < 0) break;
+              System.out.print((char)ch);
+           }
+         }
+         catch (IOException e)
+         {  System.out.println("error reading " + args[i]);
+           
