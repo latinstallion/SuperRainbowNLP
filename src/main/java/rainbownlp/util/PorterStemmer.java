@@ -387,4 +387,10 @@ public class PorterStemmer
                  {  ch = Character.toLowerCase((char) ch);
                     w[j] = (char) ch;
                     if (j < 500) j++;
-                 
+                    ch = in.read();
+                    if (!Character.isLetter((char) ch))
+                    {
+                       /* to test add(char ch) */
+                       for (int c = 0; c < j; c++) s.add(w[c]);
+
+                       /* or, to test add(char[] 
