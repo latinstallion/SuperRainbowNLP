@@ -417,4 +417,15 @@ public class PorterStemmer
          }
          catch (IOException e)
          {  System.out.println("error reading " + args[i]);
-           
+            break;
+         }
+      }
+      catch (FileNotFoundException e)
+      {  System.out.println("file " + args[i] + " not found");
+         break;
+      }
+   }
+
+   public String stem(String word) {
+	   /* to test add(char ch) */
+	   for (int c = 0; c < word.length(); c++) add(word
