@@ -428,4 +428,13 @@ public class PorterStemmer
 
    public String stem(String word) {
 	   /* to test add(char ch) */
-	   for (int c = 0; c < word.length(); c++) add(word
+	   for (int c = 0; c < word.length(); c++) add(word.charAt(c));
+
+	   /* or, to test add(char[] w, int j) */
+	   /* s.add(w, j); */
+
+	   stem();
+	   String u = toString();
+	   return u;
+   }
+}
