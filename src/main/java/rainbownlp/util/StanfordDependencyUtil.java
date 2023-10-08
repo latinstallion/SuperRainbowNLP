@@ -394,3 +394,72 @@ public class StanfordDependencyUtil {
 		}
 		return time_rel_deps;
 	}
+	public static HashMap<Integer, String> getRelatedWords(String content, int offset,ArrayList<DependencyLine> dep_lines)
+	{
+		HashMap<Integer, String> related_words = new HashMap<Integer, String>();
+		List<DependencyLine> dependents = getAllDependents(dep_lines, content, offset);
+		for(DependencyLine dep: dependents)
+		{
+			related_words.put(dep.secondOffset, dep.secondPart);
+		}
+		List<DependencyLine> governers  = getAllGovernors(dep_lines,content,offset);
+		for(DependencyLine gov: governers)
+		{
+			related_words.put(gov.firstOffset, gov.firstPart);
+		}
+		return related_words;
+	}
+	public static List<DependencyLine> getAllRelatedDepLines(
+			ArrayList<DependencyLine> dep_lines, String target, int offset)
+	{
+		List<DependencyLine> related = new ArrayList<DependencyLine> ();
+		for (DependencyLine dep: dep_lines)
+		{
+			if ((dep.secondPart.equals(target) && dep.secondOffset==offset)
+				|| (dep.firstPart.equals(target) && dep.firstOffset==offset))
+			{
+				related.add(dep);
+			}
+		}
+		return related;
+	}
+//	prep_on(admitted,date) returns admitted or prep_of(date,admission)
+	public static List<String> getAllArgsInPrep
+		(String content, int offset,ArrayList<DependencyLine> dep_lines)
+	{
+		List<String> args_in_prep = new ArrayList<String>();
+		
+		List<DependencyLine> dependents_in_pre = StanfordDependencyUtil.getRelatedDependentsInPrep
+			(content, offset, dep_lines);
+		for (DependencyLine dependent: dependents_in_pre)
+		{
+			args_in_prep.add(dependent.secondPart);
+		}
+		List<DependencyLine> govs_in_pre = StanfordDependencyUtil.getRelatedGovsInPrep
+		  (content, offset, dep_lines);
+		for(DependencyLine gov_dep : govs_in_pre)
+		{
+			args_in_prep.add(gov_dep.firstPart);
+		}
+		return args_in_prep;
+	}
+	//just returns the dep line of p1 is gov
+	public static DependencyLine getRelatedDependencyBetween(Phrase phrase1, Phrase Phrase2, ArrayList<DependencyLine> dep_lines)
+	{
+		DependencyLine between_dep_line= null;
+		String target1 = phrase1.getNormalizedHead();
+		String target2 = Phrase2.getNormalizedHead();
+		Integer offset1 = phrase1.getNormalOffset()+1;
+		Integer offset2 = Phrase2.getNormalOffset()+1;
+		for(DependencyLine dep_line:dep_lines)
+		{
+			if ((((dep_line.firstPart.equals(target1) && dep_line.firstOffset==offset1)) &&
+					(dep_line.secondPart.equals(target2) && dep_line.secondOffset== offset2)))
+			{
+				between_dep_line =dep_line;
+				break;
+			}
+		}
+		return between_dep_line;
+	}
+}
