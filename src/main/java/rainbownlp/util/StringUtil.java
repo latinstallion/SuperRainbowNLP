@@ -17,4 +17,16 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 
-public class StringUtil
+public class StringUtil {
+
+	static Properties props = new Properties();
+	static StanfordCoreNLP pipeline = null;
+	static{
+	  props.put("annotators", "lemma"); 
+	  pipeline = new StanfordCoreNLP(props, false);
+	}
+	/**
+	 * 
+	 * @param inputString
+	 * @return MD5 hash of given string
+	 * @th
