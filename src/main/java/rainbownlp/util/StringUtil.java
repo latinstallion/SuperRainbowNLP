@@ -29,4 +29,10 @@ public class StringUtil {
 	 * 
 	 * @param inputString
 	 * @return MD5 hash of given string
-	 * @th
+	 * @throws UnsupportedEncodingException
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static String getStringDigest(String inputString)
+			throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		
