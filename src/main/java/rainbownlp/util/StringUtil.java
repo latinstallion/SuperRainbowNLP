@@ -35,4 +35,15 @@ public class StringUtil {
 	public static String getStringDigest(String inputString)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
-		
+		md.update(inputString.getBytes(), 0, inputString.length());
+
+		return new BigInteger(1, md.digest()).toString(16);
+	}
+
+	/**
+	 * Customized definition of stop words for word
+	 * @param word
+	 * @return
+	 */
+	public static boolean isStopWord(String word){
+		boolean isStopWord
