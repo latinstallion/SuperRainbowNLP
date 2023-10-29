@@ -46,4 +46,22 @@ public class StringUtil {
 	 * @return
 	 */
 	public static boolean isStopWord(String word){
-		boolean isStopWord
+		boolean isStopWord = false;
+		
+		if(word.length() < 2
+				||	Stopwords.isStopword(word)
+				|| word.matches("\\W+")
+				)
+			isStopWord = true;
+		
+		return isStopWord;
+	}
+	
+
+	
+	/**
+	 * Porter stem
+	 * @param word
+	 * @return stemmed word
+	 */
+	public static String getWordPorterStem(String word)
