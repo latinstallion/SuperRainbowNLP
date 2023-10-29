@@ -65,3 +65,11 @@ public class StringUtil {
 	 * @return stemmed word
 	 */
 	public static String getWordPorterStem(String word)
+	{
+		PorterStemmer stemmer = new PorterStemmer();
+		String stemmed_word = stemmer.stem(word).toLowerCase();
+		return stemmed_word;
+	}
+	public static String prepareSQLString(String sqlString) {
+		sqlString = sqlString.replace("\\", "\\\\").
+			replace("'", "
