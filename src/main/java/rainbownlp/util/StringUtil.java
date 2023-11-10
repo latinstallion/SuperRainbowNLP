@@ -86,4 +86,7 @@ public static String castForRegex(String textContent) {
 	}
 public static String decastRegex(String textContent) {
 		
-		return textContent.replace
+		return textContent.replace("\\\\","\\").replace("\\/","/").replace("\\*", "*").replace("\\+", "+").replace("\\.", ".").replace("\\?", "?")
+			.replace("\\)", ")").replace("\\_", "_")
+			.replace("\\{", "{").replace("\\}", "}").replace("\\(", "(").
+			replace("\\[", "[").replace("
