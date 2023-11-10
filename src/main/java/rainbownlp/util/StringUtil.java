@@ -80,4 +80,10 @@ public class StringUtil {
 
 public static String castForRegex(String textContent) {
 		
-		return textContent.replace("\\","\\\\").replace("/","\\/").replace("*", "\\*").replace("+", "\\+").replace(".", "\\.").replace
+		return textContent.replace("\\","\\\\").replace("/","\\/").replace("*", "\\*").replace("+", "\\+").replace(".", "\\.").replace("?", "\\?")
+			.replace(")", "\\)").replace("{", "\\{").replace("}", "\\}")
+			.replace("(", "\\(").replace("[", "\\[").replace("]", "\\]").replace("%", "\\%");
+	}
+public static String decastRegex(String textContent) {
+		
+		return textContent.replace
