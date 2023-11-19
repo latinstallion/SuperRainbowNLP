@@ -89,4 +89,14 @@ public static String decastRegex(String textContent) {
 		return textContent.replace("\\\\","\\").replace("\\/","/").replace("\\*", "*").replace("\\+", "+").replace("\\.", ".").replace("\\?", "?")
 			.replace("\\)", ")").replace("\\_", "_")
 			.replace("\\{", "{").replace("\\}", "}").replace("\\(", "(").
-			replace("\\[", "[").replace("
+			replace("\\[", "[").replace("\\]", "]").replace("\\%", "%");
+	}
+	
+	public static String getTermByTermPorter(String phrase)
+	{
+		String[] words = phrase.split(" ");
+		String rootString = "";
+		for(int i=0;i<words.length;i++){
+			rootString += StringUtil.getWordPorterStem(words[i])+" ";
+		}
+		return rootStrin
