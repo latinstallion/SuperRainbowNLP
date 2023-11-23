@@ -99,4 +99,12 @@ public static String decastRegex(String textContent) {
 		for(int i=0;i<words.length;i++){
 			rootString += StringUtil.getWordPorterStem(words[i])+" ";
 		}
-		return rootStrin
+		return rootString.trim();
+	}
+	
+	public static String compress(String text) {
+		return text.replace(" ", "").replace(" ", "");
+	}
+	static HashMap<String, String> lemmaCache = new HashMap<String, String>();
+
+	public static String getTermByTermWordnet(String phra
