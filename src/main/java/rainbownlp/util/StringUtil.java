@@ -116,4 +116,14 @@ public static String decastRegex(String textContent) {
 //		String rootString = "";
 //		for(int i=0;i<words.length;i++)
 //		{
-//			String lemma = l
+//			String lemma = lemmaCache.get(words[i]);
+//			if(lemma == null)
+//			{
+//				lemma = lemmatiser.stem(words[i]);
+//				lemmaCache.put(words[i], lemma);
+//			}
+//			rootString = rootString.concat(lemma+" ");
+//		}
+		StringBuilder rootStr = new StringBuilder();
+		  
+		  Annot
