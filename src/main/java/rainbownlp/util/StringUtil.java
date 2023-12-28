@@ -126,4 +126,8 @@ public static String decastRegex(String textContent) {
 //		}
 		StringBuilder rootStr = new StringBuilder();
 		  
-		  Annot
+		  Annotation document = pipeline.process(phrase);  
+		  for(CoreMap sentence: document.get(SentencesAnnotation.class)) {    
+		    for(CoreLabel token: sentence.get(TokensAnnotation.class)) {       
+		    String word = token.get(TextAnnotation.class);      
+		  
