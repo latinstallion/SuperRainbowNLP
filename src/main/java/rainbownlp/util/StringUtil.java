@@ -148,4 +148,8 @@ public static String decastRegex(String textContent) {
 //		return word_lemma;
 		
 		 Annotation document = pipeline.process(word);  
-		  for(CoreMap
+		  for(CoreMap sentence: document.get(SentencesAnnotation.class)) {    
+		    for(CoreLabel token: sentence.get(TokensAnnotation.class)) {       
+		    String lemma = token.get(LemmaAnnotation.class); 
+		    System.out.println(word+" --> lemmatized version :" + lemma);
+		    word_lem
