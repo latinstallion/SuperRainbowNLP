@@ -163,4 +163,12 @@ public static String decastRegex(String textContent) {
 		return false;
 	}
 
-	public static boolean i
+	public static boolean isEmpty(String stringToCheck) {
+		if(stringToCheck == null || stringToCheck.equals(""))
+			return true;
+		return false;
+	}
+
+	public static String concatArray(String string, String[] words) {
+		StringBuilder concat = new StringBuilder();
+		for(int i=0;i<wor
