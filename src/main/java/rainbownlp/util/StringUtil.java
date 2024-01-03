@@ -139,4 +139,13 @@ public static String decastRegex(String textContent) {
 	}
 	public static String getWordLemma(String word)
 	{
-//		if(lemmatiser
+//		if(lemmatiser ==null)
+//			lemmatiser = new EngLemmatiser("/home/ehsan/rnlp/nlpdata/lemmatiser",
+//					true, false);
+		String word_lemma= "";
+//
+//		word_lemma= lemmatiser.stem(word);
+//		return word_lemma;
+		
+		 Annotation document = pipeline.process(word);  
+		  for(CoreMap
