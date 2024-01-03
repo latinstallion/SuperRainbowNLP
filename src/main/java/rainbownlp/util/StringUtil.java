@@ -152,4 +152,15 @@ public static String decastRegex(String textContent) {
 		    for(CoreLabel token: sentence.get(TokensAnnotation.class)) {       
 		    String lemma = token.get(LemmaAnnotation.class); 
 		    System.out.println(word+" --> lemmatized version :" + lemma);
-		    word_lem
+		    word_lemma += lemma+" ";
+		    } }
+		  return word_lemma;
+	}
+
+	public static boolean isDate(String token) {
+		// not clear about the logic need testing
+//		return !StringToTime.date(token).getClass().getName().endsWith("Boolean");
+		return false;
+	}
+
+	public static boolean i
