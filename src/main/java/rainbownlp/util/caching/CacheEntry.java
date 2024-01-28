@@ -18,3 +18,17 @@ import rainbownlp.util.HibernateUtil;
  *
  */
 public class CacheEntry {
+	private String keyValue;
+	private String value;
+	@Column(columnDefinition="TEXT")
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	@Id
+	public String getKeyValue() {
+		return keyValue;
+	}
+	
