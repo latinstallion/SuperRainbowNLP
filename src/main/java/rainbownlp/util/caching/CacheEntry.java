@@ -44,4 +44,14 @@ public class CacheEntry {
 		CacheEntry entry = get(pKey);
 	    if(entry == null)
 	    {
-	    	entry = new
+	    	entry = new CacheEntry();
+	    	entry.setKeyValue(pKey);
+	    	HibernateUtil.save(entry);
+	    }
+		return entry;
+	}
+	synchronized public static CacheEntry createInstance(String pKey, String value) {
+		CacheEntry entry = get(pKey);
+	    if(entry == null)
+	    {
+	   
