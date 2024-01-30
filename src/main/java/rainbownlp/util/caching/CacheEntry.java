@@ -54,4 +54,13 @@ public class CacheEntry {
 		CacheEntry entry = get(pKey);
 	    if(entry == null)
 	    {
-	   
+	    	entry = new CacheEntry();
+	    	entry.setKeyValue(pKey);
+	    	entry.setValue(value);
+	    	HibernateUtil.saveWithNewSession(entry);
+	    }
+		return entry;
+	}
+	
+	synchronized public static CacheEntry get(String pKey){
+		String hql = "from CacheEntry wh
