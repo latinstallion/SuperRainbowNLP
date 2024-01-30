@@ -31,4 +31,17 @@ public class CacheEntry {
 	public String getKeyValue() {
 		return keyValue;
 	}
+	public void setKeyValue(String keyValue) {
+		this.keyValue = keyValue;
+	}
 	
+	/**
+	 * Loads cache entry by id
+	 * @param pArtifactID
+	 * @return
+	 */
+	synchronized public static CacheEntry getInstance(String pKey) {
+		CacheEntry entry = get(pKey);
+	    if(entry == null)
+	    {
+	    	entry = new
