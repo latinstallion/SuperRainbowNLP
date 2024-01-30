@@ -63,4 +63,13 @@ public class CacheEntry {
 	}
 	
 	synchronized public static CacheEntry get(String pKey){
-		String hql = "from CacheEntry wh
+		String hql = "from CacheEntry where keyValue = :key";
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("key", pKey);
+	    
+		CacheEntry entry=(CacheEntry)HibernateUtil.executeGetOneValue(hql,params);;
+
+		return entry;
+	}
+}
