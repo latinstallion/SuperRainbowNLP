@@ -28,4 +28,9 @@
 
 <hibernate-configuration>
 
-    <sess
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/rnlp</property>
+        <property
