@@ -33,4 +33,11 @@
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost/rnlp</property>
-        <property
+        <property name="connection.username">DBUSER</property>
+        <property name="connection.password">DBPASS</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">100</property>
+
+        <!-- SQL dialect -->
+        <property na
