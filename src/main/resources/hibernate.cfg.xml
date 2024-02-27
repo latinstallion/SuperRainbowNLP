@@ -40,4 +40,10 @@
         <property name="connection.pool_size">100</property>
 
         <!-- SQL dialect -->
-        <property na
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.EHCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
