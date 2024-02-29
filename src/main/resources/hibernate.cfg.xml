@@ -58,4 +58,9 @@
 		<mapping class="rainbownlp.core.PhraseLink"/>
 		<mapping class="rainbownlp.core.Phrase"/>
 		<mapping class="rainbownlp.machinelearning.MLExampleFeature"/>
-		<mapping class="rainbownl
+		<mapping class="rainbownlp.machinelearning.MLExample"/>
+		<mapping class="rainbownlp.core.FeatureValuePair"/>
+		<mapping class="rainbownlp.util.caching.CacheEntry"/>
+
+		<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.ClinicalEvent"/> -->
+<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.TimexPhrase
