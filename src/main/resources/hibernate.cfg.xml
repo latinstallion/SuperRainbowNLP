@@ -63,4 +63,8 @@
 		<mapping class="rainbownlp.util.caching.CacheEntry"/>
 
 		<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.ClinicalEvent"/> -->
-<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.TimexPhrase
+<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.TimexPhrase"/> -->
+<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.SecTime"/> -->
+<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.SentencePattern"/> -->
+<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.analyzer.NormalizedSentence"/> -->
+<!-- 		<mappin
