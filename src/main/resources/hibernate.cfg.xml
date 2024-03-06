@@ -67,4 +67,7 @@
 <!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.SecTime"/> -->
 <!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.SentencePattern"/> -->
 <!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.analyzer.NormalizedSentence"/> -->
-<!-- 		<mappin
+<!-- 		<mapping class="rainbownlp.i2b2.sharedtask2012.patternminer.GeneralizedSentence"/> -->		
+    </session-factory>
+
+</hibernate-configuration>
