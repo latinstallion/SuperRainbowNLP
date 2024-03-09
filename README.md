@@ -14,4 +14,6 @@ Relationship Extraction
 ==========
 For relationship extraction, the system needs to first load the text document and the entities annotations.
 
-1. Load test/train documents into the 
+1. Load test/train documents into the framework using 'SimpleDocumentLoader' or create a new document loader by implementing the 'IDocumentAnalyzer' interface (for test/train sets).
+
+2. Load annotations by creating instances of 'Phrase' and 'PhraseLink' and ensure to save them with HibernateUtil (for te
