@@ -16,4 +16,12 @@ For relationship extraction, the system needs to first load the text document an
 
 1. Load test/train documents into the framework using 'SimpleDocumentLoader' or create a new document loader by implementing the 'IDocumentAnalyzer' interface (for test/train sets).
 
-2. Load annotations by creating instances of 'Phrase' and 'PhraseLink' and ensure to save them with HibernateUtil (for te
+2. Load annotations by creating instances of 'Phrase' and 'PhraseLink' and ensure to save them with HibernateUtil (for test/train sets).
+
+3. Create machine learning examples by creating Phrase/PhraseLink and MLExample objects (for test/train sets)
+
+4. Calculate features for every machine learning example (MLExample objects)
+
+5. Train a machine learning model with train examples.
+
+6. Evaluate the model using test e
