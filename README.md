@@ -32,4 +32,6 @@ https://github.com/latinstallion/temporal-relation.git
 
 How to cite in your publication?
 ==========
-Ple
+Please cite the following publication if you use SuperRainbowNLP in your experiments:
+
+Emadzadeh, E.; Jonnalagadda, S.; Gonzalez, G., 'Evaluating Distributional Semantic and Feature Selection for Extracting Relationships from Biological 
