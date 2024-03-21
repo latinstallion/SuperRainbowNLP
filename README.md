@@ -24,4 +24,12 @@ For relationship extraction, the system needs to first load the text document an
 
 5. Train a machine learning model with train examples.
 
-6. Evaluate the model using test e
+6. Evaluate the model using test examples.
+
+This is an example of temporal relationship extraction implementation used for I2B2 shared task submission (https://www.i2b2.org/NLP/TemporalRelations/) :
+https://github.com/latinstallion/temporal-relation.git
+
+
+How to cite in your publication?
+==========
+Ple
