@@ -34,4 +34,9 @@ How to cite in your publication?
 ==========
 Please cite the following publication if you use SuperRainbowNLP in your experiments:
 
-Emadzadeh, E.; Jonnalagadda, S.; Gonzalez, G., 'Evaluating Distributional Semantic and Feature Selection for Extracting Relationships from Biological 
+Emadzadeh, E.; Jonnalagadda, S.; Gonzalez, G., 'Evaluating Distributional Semantic and Feature Selection for Extracting Relationships from Biological Text,' Machine Learning and Applications and Workshops (ICMLA), 2011 10th International Conference on , vol.2, no., pp.66,71, 18-21 Dec. 2011
+
+Question/Comments
+==========
+Feel free to contact us with your question/comments:
+Latinstallion (Latinstallion (at) gmail.com)
